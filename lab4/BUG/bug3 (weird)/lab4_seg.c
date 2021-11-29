@@ -32,11 +32,14 @@
 unsigned char 	new_data = FALSE;
 uint16_t 	adc_data; //holds the adc raw values
 
-char    lcd_string_array[16] = {"ALARM IS SET"};  //holds a string to refresh the LCD
+char    lcd_string_array[16] = {"alarm"};  //holds a string to refresh the LCD
 
 volatile int time_setting = FALSE; //12 hr or 24 hr setting
 
 //alarm variables
+volatile int	al_hr12 = 12;
+volatile int 	al_min12 = 0;
+volatile int 	al_sec = 0; //test
 volatile int 	alarm = FALSE;
 volatile int	sec_temp;
 volatile int	min_temp;
@@ -44,17 +47,11 @@ volatile int	hr_temp;
 volatile int dp = FALSE;
 volatile int toggle = FALSE;
 volatile int holder;
-volatile int time = 1259;
-volatile int alarm_time = 1200;
-int 		tone = FALSE;
-int 		display = FALSE;
-int 		snooze_time = FALSE;
-
+volatile int time = 100;
 
 //time variables
 volatile int 	seconds = 0;
-volatile int 	incr_time = 0; // count increment status
-volatile int 	incr_alarm = 0;
+volatile int 	increment = 0; // count increment status
 volatile uint8_t mode = 0; // mode select state
 volatile uint8_t setting = 0;
 
@@ -196,10 +193,10 @@ return ( en_val ); // return encoder state
 
 void update_EN(int val_rot){
 //changes the real time without affecting alarm time
-	if(val_rot == 1){ time += (100*incr_time);} //if rotating to the right for left encoder then increment 
-	else if(val_rot ==0){time -= (100*incr_time);}//if rotating to the left for left encoder then decrement
-	else if(val_rot == 2){time -= incr_time;} // if rotating to the left for right encoder then decrement
-	else if(val_rot == 3){time += incr_time;}// if rotatiing to the right for right encoder then increment
+	if(val_rot == 1){ time += (100*increment);} //if rotating to the right for left encoder then increment 
+	else if(val_rot ==0){time -= (100*increment);}//if rotating to the left for left encoder then decrement
+	else if(val_rot == 2){time -= increment;} // if rotating to the left for right encoder then decrement
+	else if(val_rot == 3){time += increment;}// if rotatiing to the right for right encoder then increment
 	else{val_rot =-1;} // dont do anything if nothing is rotated
 }
 
@@ -232,10 +229,13 @@ PORTD &= ~(1<<PD2); // falling edge
 
 //oscilator tone
 ISR(TIMER1_COMPA_vect){
-
-
-	DDRE |= 1 << PE3; // PE1 will output for volume
-	PORTC ^= 1 << PC0; // PC0 will toggle tone
+	//if alarm matches and not in alarm toggle mode then trigger the ALARM!
+	/*
+	if( ( (alarm_compare()) && (mode != 0x40)) ){
+		DDRE |= 1 << PE3;
+		PORTC ^= 1 << PC0;
+	}
+	*/
 }
 
 
@@ -254,18 +254,18 @@ ISR( TIMER0_COMP_vect ) {
 saveA = PORTA;
 saveB = PORTB;
 
-alarm_compare();
-
-static uint16_t timer = 0;  //hold value of count between interrupts
+static uint8_t timer = 0;  //hold value of count between interrupts
 timer++;  //extend counter
+//int seconds_holder = 1;
 
 if((timer% 64) == 0){ // turn off for half a second 
 	segment_data[2] = 0x07; //turn off colon
 } 
+ 
 
-if((timer% 512) == 0){
-	segment_data[2] = 0x0C; //turn on colon
- 	seconds+= seconds_holder; //increment seconds
+if((timer% 128) == 0){
+	segment_data[2] = 0xC;
+ 	seconds+= seconds_holder;
 } // test, FASTER
 
 
@@ -273,48 +273,55 @@ if((timer% 512) == 0){
 PORTB = 0x50;  //enable tristate buffer for pushbutton switches
 _delay_ms(.1);//need a delay to active buffer
 
+//increment = 0; // initial increment of the encoders would be 0 when timer is running
 
 if(chk_buttons(0)){mode ^= 1<<6;}//sets alarm
 
 if (chk_buttons(3)){mode ^= 1 << 2;}//snooze alarm
 if (chk_buttons(2)){mode ^= 1 << 5;}//disable alarm
 if (chk_buttons(7)){mode ^= 1 << 3;} //sets time
+if( chk_buttons(2) ){setting ^= (1 << 5);} // turn off the alarm permanently and dont display on bar graph.
 	
 PORTB = 0x70;//disable tristate
 
 
-read_SPI();		//read in from the SPI
-read = process_EN(); 	// decrypt the data from the SPI and determine the encoder movement
-update_EN(read);	// increase the time with the encoder movement 
-update_EN_alarm(read);	// increase the alarm_time with the encoder movement
+read_SPI();//read in from the SPI
+read = process_EN(); // decrypt the data from the SPI and determine the encoder movement
+update_EN(read);// increase the count regarding the modes
 
-write_SPI(mode); 	// write to the bar graph
-
+write_SPI(mode); // write to the bar graph
 //restore the state when leaving the ISR
 PORTA = saveA;
 PORTB = saveB;
 
-DDRA = 0xFF; 		//set PORTA to all outputs
+DDRA = 0xFF; //set PORTA to all outputs
 
 
 }//end of ISR Timer0
 
 
 
+/********************************************************************
+ *				alarm_set
+ *******************************************************************/
+void alarm_set(void){
+//save the alarm time that the user chooses
+hr_temp = al_hr12;
+min_temp = al_min12;
+}
+
 
 /********************************************************************
  *				alarm_compare
  *******************************************************************/
-void alarm_compare(void){
-	if(( mode != 0x08 && mode != 0x40)){
-		
-		if((alarm_time == time) && (tone == TRUE)){
-		OCR3A = 5;
-		TCCR1B |= 1 << CS10;
-		}
-	}	
-}
+int alarm_compare(void){
 
+//return true if alarm time and real time match
+//if( (hours == hr_temp) && (minutes == min_temp)){
+//	return TRUE;
+//}
+//return FALSE; // return false otherwise
+}
 
 /********************************************************************
  *				alarm_bound_24
@@ -323,8 +330,7 @@ void alarm_compare(void){
  ****** *************************************************************/
 void alarm_bound_24(void){
 //bound minutes from 0 to 60
-/*
-	if (al_min12 > 59){
+if (al_min12 > 59){
 	  al_min12 = 0;
 }
 
@@ -333,8 +339,6 @@ if(al_min12 < 0){al_min12 = 59;}//need to save the negative value to add toward 
 //bound the hours from 12 to 1 and 1 to 12
 if(al_hr12 > 23){al_hr12 = 0;}
 if(al_hr12 < 0){al_hr12 = 23;}
-*/
-int i;
 }
 
 
@@ -344,23 +348,16 @@ int i;
  * the alarm with the encoders.
  ********************************************************************/
 void alarm_bound_12(void){
-int hours = alarm_time/100;  // convert integer time into hours
-int minutes = alarm_time - (hours*100); // convert the integer time into minutes
-
-if(minutes == 99){alarm_time -= 40;alarm_time+=100;} // decrement hours; ex (200 -> 159)
-
-//bound the minutes from 0 to 60
-if (minutes == 60){
-	  alarm_time += 40;
-	  alarm_time -= 100;
+//bound minutes from 0 to 60
+if (al_min12 > 59){
+	  al_min12 = 0;
 }
 
+if(al_min12 < 0){al_min12 = 59;}//need to save the negative value to add toward the decrement 
 
-// bound the minutes from 60 to 0
 //bound the hours from 12 to 1 and 1 to 12
-if(hours > 12){alarm_time = 100;alarm_time += minutes;}
-if(hours < 1){alarm_time = 1200;alarm_time += minutes;}
-
+if(al_hr12 > 12){al_hr12 = 1;}
+if(al_hr12 < 1){al_hr12 = 12;}
 }
 
 /********************************************************************
@@ -393,11 +390,7 @@ void time_bound_12(void){
 int hours = time/100;  // convert integer time into hours
 int minutes = time - (hours*100); // convert the integer time into minutes
 
-if(minutes == 99){
-	time -= 40;
-	if(time == 59){time +=1200;} //FIX THE 100 TO 1259 BUG
-	else{time+=100;}
-} // decrement hours; ex (200 -> 159)
+if(minutes == 99){time -= 40;time+=100;} // decrement hours; ex (200 -> 159)
 //bound the minutes from 0 to 60
 if (minutes == 60){
 	  time += 40;
@@ -474,29 +467,107 @@ void time_tracker_24(int sec, int min){
 /********************************************************************
  *				update_encoder_alarm
  ********************************************************************/
+
 void update_EN_alarm(int val_rot){
 //changes the alarm time without affecting real time
-	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
-	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
-	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
-	else if(val_rot == 3){alarm_time += incr_alarm;}// if rotatiing to the right for right encoder then increment
+	if(val_rot == 1){ al_hr12 += increment;} //if rotating to the right for left encoder then increment 
+	else if(val_rot ==0){al_hr12-= increment;}//if rotating to the left for left encoder then decrement
+	else if(val_rot == 2){al_min12-= increment;} // if rotating to the left for right encoder then decrement
+	else if(val_rot == 3){al_min12+= increment;}// if rotatiing to the right for right encoder then increment
 	else{val_rot =-1;} // dont do anything if nothing is rotated
 }
+//***********************************************************************************
+//                                   minutes_seg                                    
+//takes a 16-bit binary input value and places the appropriate equivalent 4 digit 
+//segment_data will hold hours and minutes.
+//indices 3-4 will hold the hours
+//indices 0-1 will hold the minutes                      
+//**********************************************************************************
 
-/**********************************************************************
- *				digit_display
- **********************************************************************/
-void digit_display(void){
-int index;
+void minutes_seg(uint16_t min, uint16_t hr) {
+/*
+//initialzing the local variables of the function
+int minutes_index = 0; // focus on the lower number indices
+int temp = 0; //temprary variable
+int hours_index = 3; //focus on the higher number indices
 
-PORTB = 0x00;
-
-	for(index = 0; index < 5; index++){
-		PORTA = segment_data[index]; //send 7 segment code to LED segments
-		_delay_ms(1.5);
-		PORTB += 0x10; // within 4 digits for the hex value
-	}
+//base case starting at 0 minutes and display 0|0
+if(min == 0){
+	segment_data[0] = dec_to_7seg[0];
+	segment_data[1] = dec_to_7seg[0];
+minutes_index++;
 }
+//convert the min value and store into segment_data array 
+	while(min > 0){
+		temp = min % 10; // isolate to a single digit
+//	        if(minutes_index == 2){minutes_index++;};
+		segment_data[minutes_index] = dec_to_7seg[temp]; //use the digit to store the hexidecimal value to seg array
+		min = min/10; // continue to the calculation to the next digit
+		minutes_index++; // increase the minute index
+                if(minutes_index == 2){minutes_index = 0; break;}
+	}
+
+//convert the hr value and store into segment_data array 
+	while(TRUE){
+		temp = hr % 10; //isolate to a single digit
+		segment_data[hours_index] = dec_to_7seg[temp];//use the digit to store the hexidecimal value to seg array
+		hr = hr/10; // continute the calculation to the next digit
+		hours_index++; // increase hr index
+	        if(hours_index == 5){hours_index = 3; break;}
+	}
+//clear the leading blanks for the hours
+if(hours_index == 4){
+	if(hr == 0){
+	segment_data[4] = dec_to_7seg[0];
+	segment_data[5] = dec_to_7seg[0];
+	}
+	else{for(int i = 4; i < 5; i++){segment_data[i] = dec_to_7seg[10];}}
+}
+}
+*/
+
+//initialzing the local variables of the function
+int minutes_index = 0; // focus on the lower number indices
+int temp = 0; //temprary variable
+int hours_index = 3; //focus on the higher number indices
+
+//base case starting at 0 minutes and display 0|0
+if(min == 0){
+	segment_data[0] = dec_to_7seg[0];
+	segment_data[1] = dec_to_7seg[0];
+minutes_index++;
+}
+//convert the min value and store into segment_data array 
+while(TRUE){
+		temp = min % 10; // isolate to a single digit
+//	        if(minutes_index == 2){minutes_index++;};
+		segment_data[minutes_index] = dec_to_7seg[temp]; //use the digit to store the hexidecimal value to seg array
+		min = min/10; // continue to the calculation to the next digit
+		minutes_index++; // increase the minute index
+                if(minutes_index == 2){minutes_index = 0; break;}
+	}
+//convert the hr value and store into segment_data array 
+	while(TRUE){
+		temp = hr % 10; //isolate to a single digit
+		segment_data[hours_index] = dec_to_7seg[temp];//use the digit to store the hexidecimal value to seg array
+		hr = hr/10; // continute the calculation to the next digit
+		hours_index++; // increase hr index
+	        if(hours_index == 5){hours_index = 3; break;}
+	}
+//clear the leading blanks for the hours
+/*
+if(hours_index == 4){
+	if(hr == 0){
+	segment_data[4] = dec_to_7seg[0];
+	segment_data[5] = dec_to_7seg[0];
+	}
+	else{for(int i = 4; i < 5; i++){segment_data[i] = dec_to_7seg[10];}}
+}
+*/
+}
+
+
+
 
 /**********************************************************************
  *				spi_init
@@ -516,11 +587,11 @@ DDRE = 0xFF;// set PORTE to all outputs
  *				volume_init
  **********************************************************************/
 void volume_init(void){
+DDRE = 1 << PE3;
 TCCR3A = (1 << COM3A1 | (1 << WGM31) ); //normal operation w/ OC3A is disconnected
 TCCR3B |= (  (1 << CS30) | ( 1 << WGM32) | (1 << WGM33) ); //fast pwm 
 ICR3 = 10; // Set overflow top 
 OCR3A = 0; // set compare match
-
 }
 
 /**********************************************************************
@@ -531,8 +602,8 @@ DDRC = 0xFF; // set all of PORTC as outputs
 TCCR1A = 0x00; // normal operation w/ OC1A is disconnected
 TIMSK |= 1 << OCIE1A; //output compare enable for timercounter1A
 OCR1A = 3999; // 4kHz and triggers ISR
-//clk is not set
-TCCR1B |= (1 << WGM12); // CTC mode, clear with OCR and no prescaling
+//clk disabled
+TCCR1B |= (1<<WGM12); // CTC mode, clear with OCR and no prescaling
 }
 
 /**********************************************************************
@@ -542,7 +613,7 @@ void clock_init(void){
 ASSR   |=  1<<AS0; //ext osc TOSC in 32kHz 
 TIMSK |= 1 << OCIE0; //interrupt flag on compare register 
 TCCR0 |= ((1 << WGM01) | (1 << CS00)); //CTC mode, with clk/no pre-scaling
-OCR0 = 127; // Set top 
+OCR0 = 60; // Set top 
 //TIMSK |= 1 << TOIE0;
 //TCCR0 |= (1 << CS00) | (1 << CS02) ; 
 }
@@ -588,7 +659,7 @@ if(sum == 0){segment_data[digit_index] = dec_to_7seg[0];};
                 sum = sum/10; // continue to the next digit
                 digit_index++; // increase the digit index
         }
-        //segment_data[2] = dec_to_7seg[11]; //replace the colon with a blank colon
+        segment_data[2] = dec_to_7seg[11]; //replace the colon with a blank colon
 
 //need to turn off the rest of the digits
 	if (digit_index < 5) //if there are less digits than segment numbers
@@ -600,7 +671,7 @@ if(sum == 0){segment_data[digit_index] = dec_to_7seg[0];};
 //***********************************************************************************
 uint8_t main()
 {
-//DDRE &= ~(1 << PE3);
+DDRE &= ~(1 << PE3);
 spi_init();	//initialize SPI and port configurations
 lcd_init();	//initialize LCD display
 clear_display(); //Clean LCD display
@@ -614,6 +685,7 @@ volume_init();	//initialize timer/counter3
 
 
 while(1){ // main loop
+
 ADCSR |= (1<<ADSC); //start writing 
 	while(bit_is_clear(ADCSRA, ADIF)){};
 
@@ -621,79 +693,68 @@ ADCSR |= (1 << ADIF);//clear flag by writing one
 adc_data = ADCH; // store ADC values
 	
 //write_SPI(mode); // write to the bar graph
+if( setting == 0x20 ){ // turn off the alarm permanently and dont display on bar graph.
+	alarm = FALSE;	
+	dp = FALSE;	
+	clear_display();
+	hr_temp = -1;
+	PORTC &= ~(1 << PC0);
+	DDRE &= ~(1 << PE3); 
+}
 
 switch(mode){
 	case 0x40: //Setting alarm
-		alarm = TRUE;	//alarm is on
-		tone = TRUE;	//turn on tone
-		dp = TRUE;	//turn on decimal point
-		display = TRUE;	//set to display alarm time
-		incr_alarm = 1;	//increment alarm time
+		alarm = TRUE;
+		dp = TRUE;
+		increment = 1;
+		//read_SPI();//read in from the SPI
+		//read = process_EN(); // decrypt the data from the SPI and determine the encoder movement
+		//update_EN_alarm(read);// increase the count regarding the modes
 
 //you can set an if statement to change the bounds whether setting == true or false
-		alarm_bound_12(); //bound the time for 12hr mark
+		//alarm_bound_12(); //bound the time for 12hr mark
 //		alarm_bound_24(); //bound the time for 24hr mark	
-		break;
-
-	case 0x20: //disable alarm	
-		alarm = FALSE;	//alarm is off
-		dp = FALSE;	//turn off the decimal point
-		tone = FALSE;	//turn off the tone
-		snooze_time = FALSE;
-		clear_display(); //clear lcd screen
-		OCR3A = 0;	// clear the compare
-		TCCR1B &= ~(1 << CS10);	//clear the clock
-		mode &= ~(1 << 5); // set conditions only once so clear the bit
+	//	alarm_set(); //save temp values
 		break;
 
 	case 0x08: // setting time
-		incr_time = 1;	//increment time
-		seconds_holder = 0;	//seconds is not counting
-		time_bound_12();	//bound the encoders
+		increment = 1;
+		seconds_holder = 0;
+		time_bound_12();
 		break;
 	
 	case 0x04://snooze alarm
+	//	holder = hr_temp;
+	//	hr_temp = -1;
 	//	if( (seconds % 10) == 0){hr_temp = holder;} //after 10 seconds has passed then trigger alarm
-	if(snooze_time == FALSE){
-		tone = FALSE;
-		OCR3A = 0;
-		TCCR1B &= ~(1 << CS10);	//clear the clock
-	}
-		snooze_time = TRUE;
-		int temp = seconds % 10;
-		if(snooze_time){
-			if(seconds % 10 == 0){
-			tone = TRUE;
-			OCR3A = 5;
-			TCCR1B |= 1 << CS10;
-			}	
-		}
-		
-	//	mode &= ~(1 << 2);	//set conditions only once so clear the bit
 		break;
 
-	default:
-		incr_time = 0; 	// encoders should not change time when clock is running
-		incr_alarm = 0; // encoders should not change alarm time when clock is running 
-		seconds_holder = 1; // increment seconds 
 }
 
 time_tracker_12(); //keep track of the time in 12 hr format 
+//time_tracker_24(seconds, minutes); // keep track of the time in 24 hr format
 
+
+//time_bound_12(); // set bounds for changing the time with the encoders 12 hr
+//time_bound_24(); // set bounds for changing the time with encoders 24 hr
 
 
 PORTA = 0xFF;  //make PORTA an input port with pullups 	
+/*
+	//if ALARM is set then change the LED screen to let user to choose a desired time
+	if(alarm == TRUE){minutes_seg(al_min12,al_hr12);
+	//send to LCD to let user know ALARM is set
+		string2lcd(lcd_string_array);
+  		cursor_home(); 
+	}
 
-if((alarm == TRUE) && (mode == 0x40)){
-	segsum(alarm_time);
-	string2lcd(lcd_string_array);
-	cursor_home();
-}
-else{segsum(time);}
+	else{minutes_seg(minutes, hours);} // send to LED to display time
+*/
+segsum(time);
+
 
 //DIGIT SHIFTS
 //bound a counter (0-4) to keep track of digit to display ;
-
 PORTB = 0x00;
 
 	for(int index = 0; index < 5; index++){
@@ -703,10 +764,11 @@ PORTB = 0x00;
 	}
 
 	//handles decimal point display when alarm is triggered
-	if(alarm){
+	if(dp == TRUE){
 		PORTB = 0; // digit 0
 		PORTA = 0x7F; // turn on decimal point
 	}
+	
 DDRA = 0xFF;  //make PORTA an output
 sei(); // ISR will return here
 

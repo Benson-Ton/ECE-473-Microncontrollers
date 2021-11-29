@@ -1,0 +1,4419 @@
+
+Main_lab4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000028  00800100  0000189a  0000192e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000189a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000054  00800128  00800128  00001956  2**0
+                  ALLOC
+  3 .stab         000034ec  00000000  00000000  00001958  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00001654  00000000  00000000  00004e44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      00000011  00000000  00000000  00006498  2**0
+                  CONTENTS, READONLY
+  6 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000064ac  2**2
+                  CONTENTS, READONLY
+  7 .debug_info   00000780  00000000  00000000  000064e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000718  00000000  00000000  00006c68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   0000001a  00000000  00000000  00007380  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000027d  00000000  00000000  0000739a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 46 00 	jmp	0x8c	; 0x8c <__ctors_end>
+       4:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+       8:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+       c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      10:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      14:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      18:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      1c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      20:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      24:	0c 94 d4 01 	jmp	0x3a8	; 0x3a8 <__vector_9>
+      28:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      2c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      30:	0c 94 c1 01 	jmp	0x382	; 0x382 <__vector_12>
+      34:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      38:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      3c:	0c 94 8d 03 	jmp	0x71a	; 0x71a <__vector_15>
+      40:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      44:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      48:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      4c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      50:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      54:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      58:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      5c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      60:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      64:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      68:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      6c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      70:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      74:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      78:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      7c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      80:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      84:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+      88:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+
+0000008c <__ctors_end>:
+      8c:	11 24       	eor	r1, r1
+      8e:	1f be       	out	0x3f, r1	; 63
+      90:	cf ef       	ldi	r28, 0xFF	; 255
+      92:	d0 e1       	ldi	r29, 0x10	; 16
+      94:	de bf       	out	0x3e, r29	; 62
+      96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+      98:	11 e0       	ldi	r17, 0x01	; 1
+      9a:	a0 e0       	ldi	r26, 0x00	; 0
+      9c:	b1 e0       	ldi	r27, 0x01	; 1
+      9e:	ea e9       	ldi	r30, 0x9A	; 154
+      a0:	f8 e1       	ldi	r31, 0x18	; 24
+      a2:	00 e0       	ldi	r16, 0x00	; 0
+      a4:	0b bf       	out	0x3b, r16	; 59
+      a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+      a8:	07 90       	elpm	r0, Z+
+      aa:	0d 92       	st	X+, r0
+      ac:	a8 32       	cpi	r26, 0x28	; 40
+      ae:	b1 07       	cpc	r27, r17
+      b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+
+000000b2 <__do_clear_bss>:
+      b2:	21 e0       	ldi	r18, 0x01	; 1
+      b4:	a8 e2       	ldi	r26, 0x28	; 40
+      b6:	b1 e0       	ldi	r27, 0x01	; 1
+      b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
+
+000000ba <.do_clear_bss_loop>:
+      ba:	1d 92       	st	X+, r1
+
+000000bc <.do_clear_bss_start>:
+      bc:	ac 37       	cpi	r26, 0x7C	; 124
+      be:	b2 07       	cpc	r27, r18
+      c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
+      c2:	0e 94 76 0a 	call	0x14ec	; 0x14ec <main>
+      c6:	0c 94 4b 0c 	jmp	0x1896	; 0x1896 <_exit>
+
+000000ca <__bad_interrupt>:
+      ca:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000ce <chk_buttons>:
+// Checks the state of pushbutton S0 It shifts in ones till the button is pushed. 
+// Function returns a 1 only once per debounced button push so a debounce and toggle 
+// function can be implemented at the same time. Expects active low pushbutton on 
+// Port A  bit zero. Debounce time is determined by external loop delay times 12. 
+//*******************************************************************************
+uint8_t chk_buttons(int button) {
+      ce:	ac 01       	movw	r20, r24
+static uint16_t states[8] = {0}; // an array to store the states of all buttons on the button board
+
+// states[0] corresponds to S1 on the board and states[7] corresponds to S8
+states[button] = (states[button]<<1 | (! bit_is_clear(PINA, button)) | 0xE000); //first extract the bit that corresponds to the button
+      d0:	99 b3       	in	r25, 0x19	; 25
+      d2:	fa 01       	movw	r30, r20
+      d4:	ee 0f       	add	r30, r30
+      d6:	ff 1f       	adc	r31, r31
+      d8:	eb 5b       	subi	r30, 0xBB	; 187
+      da:	fe 4f       	sbci	r31, 0xFE	; 254
+      dc:	20 81       	ld	r18, Z
+      de:	31 81       	ldd	r19, Z+1	; 0x01
+      e0:	22 0f       	add	r18, r18
+      e2:	33 1f       	adc	r19, r19
+      e4:	30 6e       	ori	r19, 0xE0	; 224
+      e6:	89 2f       	mov	r24, r25
+      e8:	90 e0       	ldi	r25, 0x00	; 0
+      ea:	02 c0       	rjmp	.+4      	; 0xf0 <chk_buttons+0x22>
+      ec:	95 95       	asr	r25
+      ee:	87 95       	ror	r24
+      f0:	4a 95       	dec	r20
+      f2:	e2 f7       	brpl	.-8      	; 0xec <chk_buttons+0x1e>
+      f4:	81 70       	andi	r24, 0x01	; 1
+      f6:	99 27       	eor	r25, r25
+      f8:	28 2b       	or	r18, r24
+      fa:	39 2b       	or	r19, r25
+      fc:	31 83       	std	Z+1, r19	; 0x01
+      fe:	20 83       	st	Z, r18
+     100:	81 e0       	ldi	r24, 0x01	; 1
+     102:	21 15       	cp	r18, r1
+     104:	30 4f       	sbci	r19, 0xF0	; 240
+     106:	09 f0       	breq	.+2      	; 0x10a <chk_buttons+0x3c>
+     108:	80 e0       	ldi	r24, 0x00	; 0
+//Check if button is pressed
+if (states[button] == 0xF000) {return TRUE;} 
+return FALSE;
+}
+     10a:	08 95       	ret
+
+0000010c <process_EN>:
+ *
+ * once the state machine completes all 4 cycles then it means the knob has been shifted once
+ * encoder function for the left and right knobs 
+ * Handles all cases of any rotation of the encoders
+ **********************************************************************/
+int process_EN(void){
+     10c:	cf 93       	push	r28
+//Breaking up the raw data from the encoder into a and b pins
+
+uint8_t new_A = ((raw_encoder_val & 0x01) ==0) ? 0:1;
+     10e:	90 91 69 01 	lds	r25, 0x0169	; 0x800169 <raw_encoder_val>
+     112:	91 70       	andi	r25, 0x01	; 1
+uint8_t new_B = ((raw_encoder_val & 0x02) ==0) ? 0:1;
+     114:	80 91 69 01 	lds	r24, 0x0169	; 0x800169 <raw_encoder_val>
+     118:	41 e0       	ldi	r20, 0x01	; 1
+     11a:	c8 2f       	mov	r28, r24
+     11c:	c2 70       	andi	r28, 0x02	; 2
+     11e:	81 ff       	sbrs	r24, 1
+     120:	40 e0       	ldi	r20, 0x00	; 0
+
+//process the right encoder
+uint8_t new_C = ((raw_encoder_val & 0x04) ==0) ? 0:1;
+     122:	80 91 69 01 	lds	r24, 0x0169	; 0x800169 <raw_encoder_val>
+     126:	84 70       	andi	r24, 0x04	; 4
+uint8_t new_D = ((raw_encoder_val & 0x08) ==0) ? 0:1;
+     128:	20 91 69 01 	lds	r18, 0x0169	; 0x800169 <raw_encoder_val>
+     12c:	31 e0       	ldi	r19, 0x01	; 1
+     12e:	52 2f       	mov	r21, r18
+     130:	58 70       	andi	r21, 0x08	; 8
+     132:	23 ff       	sbrs	r18, 3
+     134:	30 e0       	ldi	r19, 0x00	; 0
+int en_val = 0;
+
+en_val = -1; // default return value , no change
+
+// process the right encoder inputs and determine the position movement
+if (( new_C != old_C ) || ( new_D != old_D )){ // if change occurred
+     136:	e1 e0       	ldi	r30, 0x01	; 1
+     138:	f0 e0       	ldi	r31, 0x00	; 0
+     13a:	81 11       	cpse	r24, r1
+     13c:	02 c0       	rjmp	.+4      	; 0x142 <process_EN+0x36>
+     13e:	e0 e0       	ldi	r30, 0x00	; 0
+     140:	f0 e0       	ldi	r31, 0x00	; 0
+     142:	60 91 5c 01 	lds	r22, 0x015C	; 0x80015c <old_C>
+     146:	70 91 5d 01 	lds	r23, 0x015D	; 0x80015d <old_C+0x1>
+     14a:	23 2f       	mov	r18, r19
+     14c:	30 e0       	ldi	r19, 0x00	; 0
+     14e:	e6 17       	cp	r30, r22
+     150:	f7 07       	cpc	r31, r23
+     152:	09 f4       	brne	.+2      	; 0x156 <process_EN+0x4a>
+     154:	72 c0       	rjmp	.+228    	; 0x23a <process_EN+0x12e>
+
+if (( new_C == 0) && ( new_D == 0)) { // once the state has been moved either right or left from current state
+	if ( old_C == 1){ r_counter++;}
+     156:	60 91 5c 01 	lds	r22, 0x015C	; 0x80015c <old_C>
+     15a:	70 91 5d 01 	lds	r23, 0x015D	; 0x80015d <old_C+0x1>
+en_val = -1; // default return value , no change
+
+// process the right encoder inputs and determine the position movement
+if (( new_C != old_C ) || ( new_D != old_D )){ // if change occurred
+
+if (( new_C == 0) && ( new_D == 0)) { // once the state has been moved either right or left from current state
+     15e:	81 11       	cpse	r24, r1
+     160:	11 c0       	rjmp	.+34     	; 0x184 <process_EN+0x78>
+     162:	55 23       	and	r21, r21
+     164:	89 f0       	breq	.+34     	; 0x188 <process_EN+0x7c>
+	if ( old_C == 1){ r_counter++;}
+	else { r_counter--;}
+}
+else if (( new_C == 0) && ( new_D == 1)) { // update state if it has been moved from position from left to right 
+	if ( old_C == 0){ r_counter++;}
+     166:	67 2b       	or	r22, r23
+     168:	91 f4       	brne	.+36     	; 0x18e <process_EN+0x82>
+
+// process the right encoder inputs and determine the position movement
+if (( new_C != old_C ) || ( new_D != old_D )){ // if change occurred
+
+if (( new_C == 0) && ( new_D == 0)) { // once the state has been moved either right or left from current state
+	if ( old_C == 1){ r_counter++;}
+     16a:	60 91 28 01 	lds	r22, 0x0128	; 0x800128 <__data_end>
+     16e:	70 91 29 01 	lds	r23, 0x0129	; 0x800129 <__data_end+0x1>
+     172:	6f 5f       	subi	r22, 0xFF	; 255
+     174:	7f 4f       	sbci	r23, 0xFF	; 255
+     176:	70 93 29 01 	sts	0x0129, r23	; 0x800129 <__data_end+0x1>
+     17a:	60 93 28 01 	sts	0x0128, r22	; 0x800128 <__data_end>
+uint8_t new_C = ((raw_encoder_val & 0x04) ==0) ? 0:1;
+uint8_t new_D = ((raw_encoder_val & 0x08) ==0) ? 0:1;
+
+int en_val = 0;
+
+en_val = -1; // default return value , no change
+     17e:	af ef       	ldi	r26, 0xFF	; 255
+     180:	bf ef       	ldi	r27, 0xFF	; 255
+     182:	11 c0       	rjmp	.+34     	; 0x1a6 <process_EN+0x9a>
+else if (( new_C == 0) && ( new_D == 1)) { // update state if it has been moved from position from left to right 
+	if ( old_C == 0){ r_counter++;}
+	else { r_counter--;}
+}
+
+else if (( new_C == 1) && ( new_D == 1)) {// detent position
+     184:	51 11       	cpse	r21, r1
+     186:	71 c0       	rjmp	.+226    	; 0x26a <process_EN+0x15e>
+
+// process the right encoder inputs and determine the position movement
+if (( new_C != old_C ) || ( new_D != old_D )){ // if change occurred
+
+if (( new_C == 0) && ( new_D == 0)) { // once the state has been moved either right or left from current state
+	if ( old_C == 1){ r_counter++;}
+     188:	61 30       	cpi	r22, 0x01	; 1
+     18a:	71 05       	cpc	r23, r1
+     18c:	71 f3       	breq	.-36     	; 0x16a <process_EN+0x5e>
+	else { r_counter--;}
+     18e:	60 91 28 01 	lds	r22, 0x0128	; 0x800128 <__data_end>
+     192:	70 91 29 01 	lds	r23, 0x0129	; 0x800129 <__data_end+0x1>
+     196:	61 50       	subi	r22, 0x01	; 1
+     198:	71 09       	sbc	r23, r1
+     19a:	70 93 29 01 	sts	0x0129, r23	; 0x800129 <__data_end+0x1>
+     19e:	60 93 28 01 	sts	0x0128, r22	; 0x800128 <__data_end>
+uint8_t new_C = ((raw_encoder_val & 0x04) ==0) ? 0:1;
+uint8_t new_D = ((raw_encoder_val & 0x08) ==0) ? 0:1;
+
+int en_val = 0;
+
+en_val = -1; // default return value , no change
+     1a2:	af ef       	ldi	r26, 0xFF	; 255
+     1a4:	bf ef       	ldi	r27, 0xFF	; 255
+}
+else if (( new_C == 1) && ( new_D == 0)) {
+	if ( old_C == 1) { r_counter++;}
+	else { r_counter--;}
+}
+	old_C = new_C ; // save what are now old values
+     1a6:	f0 93 5d 01 	sts	0x015D, r31	; 0x80015d <old_C+0x1>
+     1aa:	e0 93 5c 01 	sts	0x015C, r30	; 0x80015c <old_C>
+	old_D = new_D ;
+     1ae:	30 93 61 01 	sts	0x0161, r19	; 0x800161 <old_D+0x1>
+     1b2:	20 93 60 01 	sts	0x0160, r18	; 0x800160 <old_D>
+
+	} // if change occurred
+
+
+// process the left encoder inputs and determine the position movement
+if (( new_A != old_A ) || ( new_B != old_B )){ // if change occurred
+     1b6:	29 2f       	mov	r18, r25
+     1b8:	30 e0       	ldi	r19, 0x00	; 0
+     1ba:	60 91 57 01 	lds	r22, 0x0157	; 0x800157 <old_A>
+     1be:	70 91 58 01 	lds	r23, 0x0158	; 0x800158 <old_A+0x1>
+     1c2:	50 e0       	ldi	r21, 0x00	; 0
+     1c4:	26 17       	cp	r18, r22
+     1c6:	37 07       	cpc	r19, r23
+     1c8:	81 f1       	breq	.+96     	; 0x22a <process_EN+0x11e>
+
+if (( new_A == 0) && ( new_B == 0)) { // once the state has been moved either right or left from current state
+     1ca:	99 23       	and	r25, r25
+     1cc:	e1 f0       	breq	.+56     	; 0x206 <process_EN+0xfa>
+	else { state_counter--;}
+}
+
+else if (( new_A == 1) && ( new_B == 1)) {// detent position
+	
+	if ( old_A == 0){ if( state_counter == 3){ en_val =0;}} // one direction. Increment 
+     1ce:	80 91 57 01 	lds	r24, 0x0157	; 0x800157 <old_A>
+     1d2:	90 91 58 01 	lds	r25, 0x0158	; 0x800158 <old_A+0x1>
+else if (( new_A == 0) && ( new_B == 1)) { // update state if it has been moved from position from left to right 
+	if ( old_A == 0){ state_counter++;}
+	else { state_counter--;}
+}
+
+else if (( new_A == 1) && ( new_B == 1)) {// detent position
+     1d6:	c1 11       	cpse	r28, r1
+     1d8:	3b c0       	rjmp	.+118    	; 0x250 <process_EN+0x144>
+	else {if( state_counter == -3){ en_val =1;}} // or the other. Decrement
+	
+	state_counter = 0; // count is always reset in detent position
+}
+else if (( new_A == 1) && ( new_B == 0)) {
+	if ( old_A == 1) { state_counter++;}
+     1da:	01 97       	sbiw	r24, 0x01	; 1
+     1dc:	e1 f0       	breq	.+56     	; 0x216 <process_EN+0x10a>
+	else { state_counter--;}
+     1de:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <state_counter>
+     1e2:	90 91 2b 01 	lds	r25, 0x012B	; 0x80012b <state_counter+0x1>
+     1e6:	01 97       	sbiw	r24, 0x01	; 1
+     1e8:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <state_counter+0x1>
+     1ec:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <state_counter>
+}
+	old_A = new_A ; // save what are now old values
+     1f0:	30 93 58 01 	sts	0x0158, r19	; 0x800158 <old_A+0x1>
+     1f4:	20 93 57 01 	sts	0x0157, r18	; 0x800157 <old_A>
+	old_B = new_B ;
+     1f8:	50 93 5a 01 	sts	0x015A, r21	; 0x80015a <old_B+0x1>
+     1fc:	40 93 59 01 	sts	0x0159, r20	; 0x800159 <old_B>
+	} // if change occurred
+
+
+return ( en_val ); // return encoder state
+
+}
+     200:	cd 01       	movw	r24, r26
+     202:	cf 91       	pop	r28
+     204:	08 95       	ret
+
+// process the left encoder inputs and determine the position movement
+if (( new_A != old_A ) || ( new_B != old_B )){ // if change occurred
+
+if (( new_A == 0) && ( new_B == 0)) { // once the state has been moved either right or left from current state
+	if ( old_A == 1){ state_counter++;}
+     206:	80 91 57 01 	lds	r24, 0x0157	; 0x800157 <old_A>
+     20a:	90 91 58 01 	lds	r25, 0x0158	; 0x800158 <old_A+0x1>
+
+
+// process the left encoder inputs and determine the position movement
+if (( new_A != old_A ) || ( new_B != old_B )){ // if change occurred
+
+if (( new_A == 0) && ( new_B == 0)) { // once the state has been moved either right or left from current state
+     20e:	cc 23       	and	r28, r28
+     210:	21 f3       	breq	.-56     	; 0x1da <process_EN+0xce>
+	if ( old_A == 1){ state_counter++;}
+	else { state_counter--;}
+}
+else if (( new_A == 0) && ( new_B == 1)) { // update state if it has been moved from position from left to right 
+	if ( old_A == 0){ state_counter++;}
+     212:	89 2b       	or	r24, r25
+     214:	21 f7       	brne	.-56     	; 0x1de <process_EN+0xd2>
+	else {if( state_counter == -3){ en_val =1;}} // or the other. Decrement
+	
+	state_counter = 0; // count is always reset in detent position
+}
+else if (( new_A == 1) && ( new_B == 0)) {
+	if ( old_A == 1) { state_counter++;}
+     216:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <state_counter>
+     21a:	90 91 2b 01 	lds	r25, 0x012B	; 0x80012b <state_counter+0x1>
+     21e:	01 96       	adiw	r24, 0x01	; 1
+     220:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <state_counter+0x1>
+     224:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <state_counter>
+     228:	e3 cf       	rjmp	.-58     	; 0x1f0 <process_EN+0xe4>
+
+	} // if change occurred
+
+
+// process the left encoder inputs and determine the position movement
+if (( new_A != old_A ) || ( new_B != old_B )){ // if change occurred
+     22a:	60 91 59 01 	lds	r22, 0x0159	; 0x800159 <old_B>
+     22e:	70 91 5a 01 	lds	r23, 0x015A	; 0x80015a <old_B+0x1>
+     232:	46 17       	cp	r20, r22
+     234:	57 07       	cpc	r21, r23
+     236:	49 f6       	brne	.-110    	; 0x1ca <process_EN+0xbe>
+     238:	e3 cf       	rjmp	.-58     	; 0x200 <process_EN+0xf4>
+int en_val = 0;
+
+en_val = -1; // default return value , no change
+
+// process the right encoder inputs and determine the position movement
+if (( new_C != old_C ) || ( new_D != old_D )){ // if change occurred
+     23a:	60 91 60 01 	lds	r22, 0x0160	; 0x800160 <old_D>
+     23e:	70 91 61 01 	lds	r23, 0x0161	; 0x800161 <old_D+0x1>
+     242:	26 17       	cp	r18, r22
+     244:	37 07       	cpc	r19, r23
+     246:	09 f0       	breq	.+2      	; 0x24a <process_EN+0x13e>
+     248:	86 cf       	rjmp	.-244    	; 0x156 <process_EN+0x4a>
+uint8_t new_C = ((raw_encoder_val & 0x04) ==0) ? 0:1;
+uint8_t new_D = ((raw_encoder_val & 0x08) ==0) ? 0:1;
+
+int en_val = 0;
+
+en_val = -1; // default return value , no change
+     24a:	af ef       	ldi	r26, 0xFF	; 255
+     24c:	bf ef       	ldi	r27, 0xFF	; 255
+     24e:	b3 cf       	rjmp	.-154    	; 0x1b6 <process_EN+0xaa>
+	else { state_counter--;}
+}
+
+else if (( new_A == 1) && ( new_B == 1)) {// detent position
+	
+	if ( old_A == 0){ if( state_counter == 3){ en_val =0;}} // one direction. Increment 
+     250:	89 2b       	or	r24, r25
+     252:	d9 f4       	brne	.+54     	; 0x28a <process_EN+0x17e>
+     254:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <state_counter>
+     258:	90 91 2b 01 	lds	r25, 0x012B	; 0x80012b <state_counter+0x1>
+     25c:	03 97       	sbiw	r24, 0x03	; 3
+     25e:	41 f1       	breq	.+80     	; 0x2b0 <process_EN+0x1a4>
+
+	else {if( state_counter == -3){ en_val =1;}} // or the other. Decrement
+	
+	state_counter = 0; // count is always reset in detent position
+     260:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <state_counter+0x1>
+     264:	10 92 2a 01 	sts	0x012A, r1	; 0x80012a <state_counter>
+     268:	c3 cf       	rjmp	.-122    	; 0x1f0 <process_EN+0xe4>
+	else { r_counter--;}
+}
+
+else if (( new_C == 1) && ( new_D == 1)) {// detent position
+	
+	if ( old_C == 0){ if( r_counter == 3){ en_val =2;}} // one direction. Increment 
+     26a:	67 2b       	or	r22, r23
+     26c:	b9 f4       	brne	.+46     	; 0x29c <process_EN+0x190>
+     26e:	60 91 28 01 	lds	r22, 0x0128	; 0x800128 <__data_end>
+     272:	70 91 29 01 	lds	r23, 0x0129	; 0x800129 <__data_end+0x1>
+     276:	63 30       	cpi	r22, 0x03	; 3
+     278:	71 05       	cpc	r23, r1
+     27a:	e9 f0       	breq	.+58     	; 0x2b6 <process_EN+0x1aa>
+uint8_t new_C = ((raw_encoder_val & 0x04) ==0) ? 0:1;
+uint8_t new_D = ((raw_encoder_val & 0x08) ==0) ? 0:1;
+
+int en_val = 0;
+
+en_val = -1; // default return value , no change
+     27c:	af ef       	ldi	r26, 0xFF	; 255
+     27e:	bf ef       	ldi	r27, 0xFF	; 255
+	
+	if ( old_C == 0){ if( r_counter == 3){ en_val =2;}} // one direction. Increment 
+
+	else {if( r_counter == -3){ en_val =3;}} // or the other. Decrement
+	
+	r_counter = 0; // count is always reset in detent position
+     280:	10 92 29 01 	sts	0x0129, r1	; 0x800129 <__data_end+0x1>
+     284:	10 92 28 01 	sts	0x0128, r1	; 0x800128 <__data_end>
+     288:	8e cf       	rjmp	.-228    	; 0x1a6 <process_EN+0x9a>
+
+else if (( new_A == 1) && ( new_B == 1)) {// detent position
+	
+	if ( old_A == 0){ if( state_counter == 3){ en_val =0;}} // one direction. Increment 
+
+	else {if( state_counter == -3){ en_val =1;}} // or the other. Decrement
+     28a:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <state_counter>
+     28e:	90 91 2b 01 	lds	r25, 0x012B	; 0x80012b <state_counter+0x1>
+     292:	03 96       	adiw	r24, 0x03	; 3
+     294:	29 f7       	brne	.-54     	; 0x260 <process_EN+0x154>
+     296:	a1 e0       	ldi	r26, 0x01	; 1
+     298:	b0 e0       	ldi	r27, 0x00	; 0
+     29a:	e2 cf       	rjmp	.-60     	; 0x260 <process_EN+0x154>
+
+else if (( new_C == 1) && ( new_D == 1)) {// detent position
+	
+	if ( old_C == 0){ if( r_counter == 3){ en_val =2;}} // one direction. Increment 
+
+	else {if( r_counter == -3){ en_val =3;}} // or the other. Decrement
+     29c:	60 91 28 01 	lds	r22, 0x0128	; 0x800128 <__data_end>
+     2a0:	70 91 29 01 	lds	r23, 0x0129	; 0x800129 <__data_end+0x1>
+     2a4:	6d 3f       	cpi	r22, 0xFD	; 253
+     2a6:	7f 4f       	sbci	r23, 0xFF	; 255
+     2a8:	49 f7       	brne	.-46     	; 0x27c <process_EN+0x170>
+     2aa:	a3 e0       	ldi	r26, 0x03	; 3
+     2ac:	b0 e0       	ldi	r27, 0x00	; 0
+     2ae:	e8 cf       	rjmp	.-48     	; 0x280 <process_EN+0x174>
+	else { state_counter--;}
+}
+
+else if (( new_A == 1) && ( new_B == 1)) {// detent position
+	
+	if ( old_A == 0){ if( state_counter == 3){ en_val =0;}} // one direction. Increment 
+     2b0:	a0 e0       	ldi	r26, 0x00	; 0
+     2b2:	b0 e0       	ldi	r27, 0x00	; 0
+     2b4:	d5 cf       	rjmp	.-86     	; 0x260 <process_EN+0x154>
+	else { r_counter--;}
+}
+
+else if (( new_C == 1) && ( new_D == 1)) {// detent position
+	
+	if ( old_C == 0){ if( r_counter == 3){ en_val =2;}} // one direction. Increment 
+     2b6:	a2 e0       	ldi	r26, 0x02	; 2
+     2b8:	b0 e0       	ldi	r27, 0x00	; 0
+     2ba:	e2 cf       	rjmp	.-60     	; 0x280 <process_EN+0x174>
+
+000002bc <update_EN>:
+ *				update_encoder
+ ********************************************************************/
+
+void update_EN(int val_rot){
+//changes the real time without affecting alarm time
+	if(val_rot == 1){ time += (100*incr_time);} //if rotating to the right for left encoder then increment 
+     2bc:	81 30       	cpi	r24, 0x01	; 1
+     2be:	91 05       	cpc	r25, r1
+     2c0:	61 f1       	breq	.+88     	; 0x31a <update_EN+0x5e>
+	else if(val_rot ==0){time -= (100*incr_time);}//if rotating to the left for left encoder then decrement
+     2c2:	00 97       	sbiw	r24, 0x00	; 0
+     2c4:	31 f0       	breq	.+12     	; 0x2d2 <update_EN+0x16>
+	else if(val_rot == 2){time -= incr_time;} // if rotating to the left for right encoder then decrement
+     2c6:	82 30       	cpi	r24, 0x02	; 2
+     2c8:	91 05       	cpc	r25, r1
+     2ca:	e1 f1       	breq	.+120    	; 0x344 <update_EN+0x88>
+	else if(val_rot == 3){time += incr_time;}// if rotatiing to the right for right encoder then increment
+     2cc:	03 97       	sbiw	r24, 0x03	; 3
+     2ce:	b1 f0       	breq	.+44     	; 0x2fc <update_EN+0x40>
+     2d0:	08 95       	ret
+ ********************************************************************/
+
+void update_EN(int val_rot){
+//changes the real time without affecting alarm time
+	if(val_rot == 1){ time += (100*incr_time);} //if rotating to the right for left encoder then increment 
+	else if(val_rot ==0){time -= (100*incr_time);}//if rotating to the left for left encoder then decrement
+     2d2:	40 91 32 01 	lds	r20, 0x0132	; 0x800132 <incr_time>
+     2d6:	50 91 33 01 	lds	r21, 0x0133	; 0x800133 <incr_time+0x1>
+     2da:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     2de:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     2e2:	64 e6       	ldi	r22, 0x64	; 100
+     2e4:	64 9f       	mul	r22, r20
+     2e6:	90 01       	movw	r18, r0
+     2e8:	65 9f       	mul	r22, r21
+     2ea:	30 0d       	add	r19, r0
+     2ec:	11 24       	eor	r1, r1
+     2ee:	82 1b       	sub	r24, r18
+     2f0:	93 0b       	sbc	r25, r19
+     2f2:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     2f6:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+     2fa:	08 95       	ret
+	else if(val_rot == 2){time -= incr_time;} // if rotating to the left for right encoder then decrement
+	else if(val_rot == 3){time += incr_time;}// if rotatiing to the right for right encoder then increment
+     2fc:	20 91 32 01 	lds	r18, 0x0132	; 0x800132 <incr_time>
+     300:	30 91 33 01 	lds	r19, 0x0133	; 0x800133 <incr_time+0x1>
+     304:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     308:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     30c:	82 0f       	add	r24, r18
+     30e:	93 1f       	adc	r25, r19
+     310:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     314:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+     318:	08 95       	ret
+ *				update_encoder
+ ********************************************************************/
+
+void update_EN(int val_rot){
+//changes the real time without affecting alarm time
+	if(val_rot == 1){ time += (100*incr_time);} //if rotating to the right for left encoder then increment 
+     31a:	40 91 32 01 	lds	r20, 0x0132	; 0x800132 <incr_time>
+     31e:	50 91 33 01 	lds	r21, 0x0133	; 0x800133 <incr_time+0x1>
+     322:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     326:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     32a:	64 e6       	ldi	r22, 0x64	; 100
+     32c:	64 9f       	mul	r22, r20
+     32e:	90 01       	movw	r18, r0
+     330:	65 9f       	mul	r22, r21
+     332:	30 0d       	add	r19, r0
+     334:	11 24       	eor	r1, r1
+     336:	82 0f       	add	r24, r18
+     338:	93 1f       	adc	r25, r19
+     33a:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     33e:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+     342:	08 95       	ret
+	else if(val_rot ==0){time -= (100*incr_time);}//if rotating to the left for left encoder then decrement
+	else if(val_rot == 2){time -= incr_time;} // if rotating to the left for right encoder then decrement
+     344:	20 91 32 01 	lds	r18, 0x0132	; 0x800132 <incr_time>
+     348:	30 91 33 01 	lds	r19, 0x0133	; 0x800133 <incr_time+0x1>
+     34c:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     350:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     354:	82 1b       	sub	r24, r18
+     356:	93 0b       	sbc	r25, r19
+     358:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     35c:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+     360:	08 95       	ret
+
+00000362 <read_SPI>:
+ *				read_SPI
+ ********************************************************************/
+void read_SPI(void){
+
+//shift clock register
+PORTE &= ~(1 << PE6);//falling edge
+     362:	1e 98       	cbi	0x03, 6	; 3
+PORTE |= (1 << PE6); //rising edge
+     364:	1e 9a       	sbi	0x03, 6	; 3
+SPDR = 0x20; //send junk data to read in from SPI
+     366:	80 e2       	ldi	r24, 0x20	; 32
+     368:	8f b9       	out	0x0f, r24	; 15
+	while(bit_is_clear(SPSR,SPIF)){} // read data in
+     36a:	77 9b       	sbis	0x0e, 7	; 14
+     36c:	fe cf       	rjmp	.-4      	; 0x36a <read_SPI+0x8>
+raw_encoder_val = SPDR;//save the data
+     36e:	8f b1       	in	r24, 0x0f	; 15
+     370:	80 93 69 01 	sts	0x0169, r24	; 0x800169 <raw_encoder_val>
+     374:	08 95       	ret
+
+00000376 <write_SPI>:
+/********************************************************************
+ *				write_SPI
+ ********************************************************************/
+void write_SPI(uint8_t value){
+
+SPDR = value; // take in which mode it is currently on and display it 
+     376:	8f b9       	out	0x0f, r24	; 15
+	while (bit_is_clear(SPSR,SPIF)) {} //wait till data is sent out
+     378:	77 9b       	sbis	0x0e, 7	; 14
+     37a:	fe cf       	rjmp	.-4      	; 0x378 <write_SPI+0x2>
+PORTD |= (1 << PD2); //SEND data to bargraph, rising edge
+     37c:	92 9a       	sbi	0x12, 2	; 18
+PORTD &= ~(1<<PD2); // falling edge
+     37e:	92 98       	cbi	0x12, 2	; 18
+     380:	08 95       	ret
+
+00000382 <__vector_12>:
+}
+
+
+//oscilator tone
+ISR(TIMER1_COMPA_vect){
+     382:	1f 92       	push	r1
+     384:	0f 92       	push	r0
+     386:	0f b6       	in	r0, 0x3f	; 63
+     388:	0f 92       	push	r0
+     38a:	11 24       	eor	r1, r1
+     38c:	8f 93       	push	r24
+     38e:	9f 93       	push	r25
+
+
+	DDRE |= 1 << PE3; // PE1 will output for volume
+     390:	13 9a       	sbi	0x02, 3	; 2
+	PORTC ^= 1 << PC0; // PC0 will toggle tone
+     392:	95 b3       	in	r25, 0x15	; 21
+     394:	81 e0       	ldi	r24, 0x01	; 1
+     396:	89 27       	eor	r24, r25
+     398:	85 bb       	out	0x15, r24	; 21
+}
+     39a:	9f 91       	pop	r25
+     39c:	8f 91       	pop	r24
+     39e:	0f 90       	pop	r0
+     3a0:	0f be       	out	0x3f, r0	; 63
+     3a2:	0f 90       	pop	r0
+     3a4:	1f 90       	pop	r1
+     3a6:	18 95       	reti
+
+000003a8 <__vector_9>:
+
+
+//dimming for LED display 
+ISR( TIMER2_COMP_vect){
+     3a8:	1f 92       	push	r1
+     3aa:	0f 92       	push	r0
+     3ac:	0f b6       	in	r0, 0x3f	; 63
+     3ae:	0f 92       	push	r0
+     3b0:	11 24       	eor	r1, r1
+     3b2:	8f 93       	push	r24
+	
+//	if(adc_data > 70){OCR2 = 10;} // dim the light if it is bright
+//	else{OCR2 = 200;} // brighten the light otherwise
+	OCR2 = adc_data;
+     3b4:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <adc_data>
+     3b8:	83 bd       	out	0x23, r24	; 35
+}
+     3ba:	8f 91       	pop	r24
+     3bc:	0f 90       	pop	r0
+     3be:	0f be       	out	0x3f, r0	; 63
+     3c0:	0f 90       	pop	r0
+     3c2:	1f 90       	pop	r1
+     3c4:	18 95       	reti
+
+000003c6 <alarm_compare>:
+
+/********************************************************************
+ *				alarm_compare
+ *******************************************************************/
+void alarm_compare(void){
+	if(( mode != 0x08 && mode != 0x40)){
+     3c6:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <mode>
+     3ca:	88 30       	cpi	r24, 0x08	; 8
+     3cc:	79 f0       	breq	.+30     	; 0x3ec <alarm_compare+0x26>
+     3ce:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <mode>
+     3d2:	80 34       	cpi	r24, 0x40	; 64
+     3d4:	59 f0       	breq	.+22     	; 0x3ec <alarm_compare+0x26>
+		
+		if((alarm_time == time) && (tone == TRUE)){
+     3d6:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     3da:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     3de:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     3e2:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     3e6:	28 17       	cp	r18, r24
+     3e8:	39 07       	cpc	r19, r25
+     3ea:	09 f0       	breq	.+2      	; 0x3ee <alarm_compare+0x28>
+     3ec:	08 95       	ret
+     3ee:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <tone>
+     3f2:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <tone+0x1>
+     3f6:	01 97       	sbiw	r24, 0x01	; 1
+     3f8:	c9 f7       	brne	.-14     	; 0x3ec <alarm_compare+0x26>
+		OCR3A = 5;
+     3fa:	85 e0       	ldi	r24, 0x05	; 5
+     3fc:	90 e0       	ldi	r25, 0x00	; 0
+     3fe:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+     402:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		TCCR1B |= 1 << CS10;
+     406:	8e b5       	in	r24, 0x2e	; 46
+     408:	81 60       	ori	r24, 0x01	; 1
+     40a:	8e bd       	out	0x2e, r24	; 46
+     40c:	08 95       	ret
+
+0000040e <alarm_bound_24>:
+     40e:	08 95       	ret
+
+00000410 <alarm_bound_12>:
+ *				alarm_bound_12
+ * used to bound the alarm with respect to the time setting when setting
+ * the alarm with the encoders.
+ ********************************************************************/
+void alarm_bound_12(void){
+int hours = alarm_time/100;  // convert integer time into hours
+     410:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+     414:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+     418:	64 e6       	ldi	r22, 0x64	; 100
+     41a:	70 e0       	ldi	r23, 0x00	; 0
+     41c:	0e 94 6d 0b 	call	0x16da	; 0x16da <__divmodhi4>
+int minutes = alarm_time - (hours*100); // convert the integer time into minutes
+     420:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+     424:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+     428:	4c e9       	ldi	r20, 0x9C	; 156
+     42a:	46 03       	mulsu	r20, r22
+     42c:	90 01       	movw	r18, r0
+     42e:	47 9f       	mul	r20, r23
+     430:	30 0d       	add	r19, r0
+     432:	11 24       	eor	r1, r1
+     434:	82 0f       	add	r24, r18
+     436:	93 1f       	adc	r25, r19
+
+if(minutes == 99){alarm_time -= 40;alarm_time+=100;} // decrement hours; ex (200 -> 159)
+     438:	83 36       	cpi	r24, 0x63	; 99
+     43a:	91 05       	cpc	r25, r1
+     43c:	09 f4       	brne	.+2      	; 0x440 <alarm_bound_12+0x30>
+     43e:	40 c0       	rjmp	.+128    	; 0x4c0 <alarm_bound_12+0xb0>
+
+//bound the minutes from 0 to 60
+if (minutes == 60){
+     440:	8c 33       	cpi	r24, 0x3C	; 60
+     442:	91 05       	cpc	r25, r1
+     444:	41 f1       	breq	.+80     	; 0x496 <alarm_bound_12+0x86>
+}
+
+
+// bound the minutes from 60 to 0
+//bound the hours from 12 to 1 and 1 to 12
+if(hours > 12){alarm_time = 100;alarm_time += minutes;}
+     446:	6d 30       	cpi	r22, 0x0D	; 13
+     448:	71 05       	cpc	r23, r1
+     44a:	8c f0       	brlt	.+34     	; 0x46e <alarm_bound_12+0x5e>
+     44c:	24 e6       	ldi	r18, 0x64	; 100
+     44e:	30 e0       	ldi	r19, 0x00	; 0
+     450:	30 93 15 01 	sts	0x0115, r19	; 0x800115 <alarm_time+0x1>
+     454:	20 93 14 01 	sts	0x0114, r18	; 0x800114 <alarm_time>
+     458:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     45c:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     460:	82 0f       	add	r24, r18
+     462:	93 1f       	adc	r25, r19
+     464:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <alarm_time+0x1>
+     468:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <alarm_time>
+     46c:	08 95       	ret
+if(hours < 1){alarm_time = 1200;alarm_time += minutes;}
+     46e:	16 16       	cp	r1, r22
+     470:	17 06       	cpc	r1, r23
+     472:	84 f0       	brlt	.+32     	; 0x494 <alarm_bound_12+0x84>
+     474:	20 eb       	ldi	r18, 0xB0	; 176
+     476:	34 e0       	ldi	r19, 0x04	; 4
+     478:	30 93 15 01 	sts	0x0115, r19	; 0x800115 <alarm_time+0x1>
+     47c:	20 93 14 01 	sts	0x0114, r18	; 0x800114 <alarm_time>
+     480:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     484:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     488:	82 0f       	add	r24, r18
+     48a:	93 1f       	adc	r25, r19
+     48c:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <alarm_time+0x1>
+     490:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <alarm_time>
+     494:	08 95       	ret
+
+if(minutes == 99){alarm_time -= 40;alarm_time+=100;} // decrement hours; ex (200 -> 159)
+
+//bound the minutes from 0 to 60
+if (minutes == 60){
+	  alarm_time += 40;
+     496:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     49a:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     49e:	28 5d       	subi	r18, 0xD8	; 216
+     4a0:	3f 4f       	sbci	r19, 0xFF	; 255
+     4a2:	30 93 15 01 	sts	0x0115, r19	; 0x800115 <alarm_time+0x1>
+     4a6:	20 93 14 01 	sts	0x0114, r18	; 0x800114 <alarm_time>
+	  alarm_time -= 100;
+     4aa:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     4ae:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     4b2:	24 56       	subi	r18, 0x64	; 100
+     4b4:	31 09       	sbc	r19, r1
+     4b6:	30 93 15 01 	sts	0x0115, r19	; 0x800115 <alarm_time+0x1>
+     4ba:	20 93 14 01 	sts	0x0114, r18	; 0x800114 <alarm_time>
+     4be:	c3 cf       	rjmp	.-122    	; 0x446 <alarm_bound_12+0x36>
+ ********************************************************************/
+void alarm_bound_12(void){
+int hours = alarm_time/100;  // convert integer time into hours
+int minutes = alarm_time - (hours*100); // convert the integer time into minutes
+
+if(minutes == 99){alarm_time -= 40;alarm_time+=100;} // decrement hours; ex (200 -> 159)
+     4c0:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     4c4:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     4c8:	28 52       	subi	r18, 0x28	; 40
+     4ca:	31 09       	sbc	r19, r1
+     4cc:	30 93 15 01 	sts	0x0115, r19	; 0x800115 <alarm_time+0x1>
+     4d0:	20 93 14 01 	sts	0x0114, r18	; 0x800114 <alarm_time>
+     4d4:	20 91 14 01 	lds	r18, 0x0114	; 0x800114 <alarm_time>
+     4d8:	30 91 15 01 	lds	r19, 0x0115	; 0x800115 <alarm_time+0x1>
+     4dc:	2c 59       	subi	r18, 0x9C	; 156
+     4de:	3f 4f       	sbci	r19, 0xFF	; 255
+     4e0:	30 93 15 01 	sts	0x0115, r19	; 0x800115 <alarm_time+0x1>
+     4e4:	20 93 14 01 	sts	0x0114, r18	; 0x800114 <alarm_time>
+     4e8:	ae cf       	rjmp	.-164    	; 0x446 <alarm_bound_12+0x36>
+
+000004ea <time_bound_24>:
+/********************************************************************
+ *				time_bound_24
+ * used to bound the correct time when wanting to change the real time 
+ * with encoders
+ ********************************************************************/
+void time_bound_24(void){
+     4ea:	08 95       	ret
+
+000004ec <time_bound_12>:
+ *				time_bound_12
+ * used to bound the correct time when wanting to change the real time 
+ * with encoders
+ ********************************************************************/
+void time_bound_12(void){
+int hours = time/100;  // convert integer time into hours
+     4ec:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     4f0:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     4f4:	64 e6       	ldi	r22, 0x64	; 100
+     4f6:	70 e0       	ldi	r23, 0x00	; 0
+     4f8:	0e 94 6d 0b 	call	0x16da	; 0x16da <__divmodhi4>
+int minutes = time - (hours*100); // convert the integer time into minutes
+     4fc:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     500:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     504:	4c e9       	ldi	r20, 0x9C	; 156
+     506:	46 03       	mulsu	r20, r22
+     508:	90 01       	movw	r18, r0
+     50a:	47 9f       	mul	r20, r23
+     50c:	30 0d       	add	r19, r0
+     50e:	11 24       	eor	r1, r1
+     510:	82 0f       	add	r24, r18
+     512:	93 1f       	adc	r25, r19
+
+if(minutes == 99){
+     514:	83 36       	cpi	r24, 0x63	; 99
+     516:	91 05       	cpc	r25, r1
+     518:	09 f4       	brne	.+2      	; 0x51c <time_bound_12+0x30>
+     51a:	40 c0       	rjmp	.+128    	; 0x59c <time_bound_12+0xb0>
+	time -= 40;
+	if(time == 59){time +=1200;} //FIX THE 100 TO 1259 BUG
+	else{time+=100;}
+} // decrement hours; ex (200 -> 159)
+//bound the minutes from 0 to 60
+if (minutes == 60){
+     51c:	8c 33       	cpi	r24, 0x3C	; 60
+     51e:	91 05       	cpc	r25, r1
+     520:	41 f1       	breq	.+80     	; 0x572 <time_bound_12+0x86>
+
+// bound the minutes from 60 to 0
+
+//bound the hours from 12 to 1 and 1 to 12
+
+if(hours > 12){time = 100;time += minutes;}
+     522:	6d 30       	cpi	r22, 0x0D	; 13
+     524:	71 05       	cpc	r23, r1
+     526:	8c f0       	brlt	.+34     	; 0x54a <time_bound_12+0x5e>
+     528:	24 e6       	ldi	r18, 0x64	; 100
+     52a:	30 e0       	ldi	r19, 0x00	; 0
+     52c:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     530:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+     534:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     538:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     53c:	82 0f       	add	r24, r18
+     53e:	93 1f       	adc	r25, r19
+     540:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     544:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+     548:	08 95       	ret
+if(hours < 1){time = 1200;time += minutes;}
+     54a:	16 16       	cp	r1, r22
+     54c:	17 06       	cpc	r1, r23
+     54e:	84 f0       	brlt	.+32     	; 0x570 <time_bound_12+0x84>
+     550:	20 eb       	ldi	r18, 0xB0	; 176
+     552:	34 e0       	ldi	r19, 0x04	; 4
+     554:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     558:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+     55c:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     560:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     564:	82 0f       	add	r24, r18
+     566:	93 1f       	adc	r25, r19
+     568:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     56c:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+     570:	08 95       	ret
+	if(time == 59){time +=1200;} //FIX THE 100 TO 1259 BUG
+	else{time+=100;}
+} // decrement hours; ex (200 -> 159)
+//bound the minutes from 0 to 60
+if (minutes == 60){
+	  time += 40;
+     572:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     576:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     57a:	28 5d       	subi	r18, 0xD8	; 216
+     57c:	3f 4f       	sbci	r19, 0xFF	; 255
+     57e:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     582:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+	  time -= 100;
+     586:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     58a:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     58e:	24 56       	subi	r18, 0x64	; 100
+     590:	31 09       	sbc	r19, r1
+     592:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     596:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+     59a:	c3 cf       	rjmp	.-122    	; 0x522 <time_bound_12+0x36>
+void time_bound_12(void){
+int hours = time/100;  // convert integer time into hours
+int minutes = time - (hours*100); // convert the integer time into minutes
+
+if(minutes == 99){
+	time -= 40;
+     59c:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     5a0:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     5a4:	28 52       	subi	r18, 0x28	; 40
+     5a6:	31 09       	sbc	r19, r1
+     5a8:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     5ac:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+	if(time == 59){time +=1200;} //FIX THE 100 TO 1259 BUG
+     5b0:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     5b4:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     5b8:	2b 33       	cpi	r18, 0x3B	; 59
+     5ba:	31 05       	cpc	r19, r1
+     5bc:	59 f0       	breq	.+22     	; 0x5d4 <time_bound_12+0xe8>
+	else{time+=100;}
+     5be:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     5c2:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     5c6:	2c 59       	subi	r18, 0x9C	; 156
+     5c8:	3f 4f       	sbci	r19, 0xFF	; 255
+     5ca:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     5ce:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+     5d2:	a7 cf       	rjmp	.-178    	; 0x522 <time_bound_12+0x36>
+int hours = time/100;  // convert integer time into hours
+int minutes = time - (hours*100); // convert the integer time into minutes
+
+if(minutes == 99){
+	time -= 40;
+	if(time == 59){time +=1200;} //FIX THE 100 TO 1259 BUG
+     5d4:	20 91 16 01 	lds	r18, 0x0116	; 0x800116 <time>
+     5d8:	30 91 17 01 	lds	r19, 0x0117	; 0x800117 <time+0x1>
+     5dc:	20 55       	subi	r18, 0x50	; 80
+     5de:	3b 4f       	sbci	r19, 0xFB	; 251
+     5e0:	30 93 17 01 	sts	0x0117, r19	; 0x800117 <time+0x1>
+     5e4:	20 93 16 01 	sts	0x0116, r18	; 0x800116 <time>
+     5e8:	9c cf       	rjmp	.-200    	; 0x522 <time_bound_12+0x36>
+
+000005ea <time_tracker_12>:
+if(hours < 1){time = 1200;time += minutes;}
+}
+/***************************************************************
+/				time_tracker_12
+****************************************************************/
+void time_tracker_12(void){
+     5ea:	1f 93       	push	r17
+int hours = time/100;
+     5ec:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     5f0:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     5f4:	64 e6       	ldi	r22, 0x64	; 100
+     5f6:	70 e0       	ldi	r23, 0x00	; 0
+     5f8:	0e 94 6d 0b 	call	0x16da	; 0x16da <__divmodhi4>
+     5fc:	9b 01       	movw	r18, r22
+int minutes = time - (hours*100);
+     5fe:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     602:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     606:	1c e9       	ldi	r17, 0x9C	; 156
+     608:	16 03       	mulsu	r17, r22
+     60a:	a0 01       	movw	r20, r0
+     60c:	17 9f       	mul	r17, r23
+     60e:	50 0d       	add	r21, r0
+     610:	11 24       	eor	r1, r1
+     612:	84 0f       	add	r24, r20
+     614:	95 1f       	adc	r25, r21
+	//if 60 seconds has been reached then increase the minutes by one
+	if(seconds > 59){
+     616:	40 91 34 01 	lds	r20, 0x0134	; 0x800134 <seconds>
+     61a:	50 91 35 01 	lds	r21, 0x0135	; 0x800135 <seconds+0x1>
+     61e:	4c 33       	cpi	r20, 0x3C	; 60
+     620:	51 05       	cpc	r21, r1
+     622:	74 f0       	brlt	.+28     	; 0x640 <time_tracker_12+0x56>
+		time++; // increment minutes 
+     624:	40 91 16 01 	lds	r20, 0x0116	; 0x800116 <time>
+     628:	50 91 17 01 	lds	r21, 0x0117	; 0x800117 <time+0x1>
+     62c:	4f 5f       	subi	r20, 0xFF	; 255
+     62e:	5f 4f       	sbci	r21, 0xFF	; 255
+     630:	50 93 17 01 	sts	0x0117, r21	; 0x800117 <time+0x1>
+     634:	40 93 16 01 	sts	0x0116, r20	; 0x800116 <time>
+		seconds = 0; // reset seconds
+     638:	10 92 35 01 	sts	0x0135, r1	; 0x800135 <seconds+0x1>
+     63c:	10 92 34 01 	sts	0x0134, r1	; 0x800134 <seconds>
+	}
+		//increment hours if 60 minutes has passed
+	if(minutes > 59){ 
+     640:	cc 97       	sbiw	r24, 0x3c	; 60
+     642:	64 f0       	brlt	.+24     	; 0x65c <time_tracker_12+0x72>
+	time += 40; // increment the time ex (160 -> 200)
+     644:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+     648:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+     64c:	88 96       	adiw	r24, 0x28	; 40
+     64e:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     652:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+	hours++;
+     656:	9b 01       	movw	r18, r22
+     658:	2f 5f       	subi	r18, 0xFF	; 255
+     65a:	3f 4f       	sbci	r19, 0xFF	; 255
+	}
+	
+	if(hours > 12){ time = 100;} // reset hours to 1 o'clock
+     65c:	2d 30       	cpi	r18, 0x0D	; 13
+     65e:	31 05       	cpc	r19, r1
+     660:	34 f0       	brlt	.+12     	; 0x66e <time_tracker_12+0x84>
+     662:	84 e6       	ldi	r24, 0x64	; 100
+     664:	90 e0       	ldi	r25, 0x00	; 0
+     666:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <time+0x1>
+     66a:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <time>
+//bound the hours from 12 to 1 and 1 to 12
+
+if(hours > 12){time = 100;}
+if(hours < 1){time = 1200;}
+*/
+}
+     66e:	1f 91       	pop	r17
+     670:	08 95       	ret
+
+00000672 <time_tracker_24>:
+/***************************************************************
+/				time_tracker_24
+****************************************************************/
+void time_tracker_24(int sec, int min){
+     672:	08 95       	ret
+
+00000674 <update_EN_alarm>:
+/********************************************************************
+ *				update_encoder_alarm
+ ********************************************************************/
+void update_EN_alarm(int val_rot){
+//changes the alarm time without affecting real time
+	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
+     674:	81 30       	cpi	r24, 0x01	; 1
+     676:	91 05       	cpc	r25, r1
+     678:	61 f1       	breq	.+88     	; 0x6d2 <update_EN_alarm+0x5e>
+	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
+     67a:	00 97       	sbiw	r24, 0x00	; 0
+     67c:	31 f0       	breq	.+12     	; 0x68a <update_EN_alarm+0x16>
+	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
+     67e:	82 30       	cpi	r24, 0x02	; 2
+     680:	91 05       	cpc	r25, r1
+     682:	e1 f1       	breq	.+120    	; 0x6fc <update_EN_alarm+0x88>
+	else if(val_rot == 3){alarm_time += incr_alarm;}// if rotatiing to the right for right encoder then increment
+     684:	03 97       	sbiw	r24, 0x03	; 3
+     686:	b1 f0       	breq	.+44     	; 0x6b4 <update_EN_alarm+0x40>
+     688:	08 95       	ret
+ *				update_encoder_alarm
+ ********************************************************************/
+void update_EN_alarm(int val_rot){
+//changes the alarm time without affecting real time
+	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
+	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
+     68a:	40 91 30 01 	lds	r20, 0x0130	; 0x800130 <incr_alarm>
+     68e:	50 91 31 01 	lds	r21, 0x0131	; 0x800131 <incr_alarm+0x1>
+     692:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+     696:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+     69a:	64 e6       	ldi	r22, 0x64	; 100
+     69c:	64 9f       	mul	r22, r20
+     69e:	90 01       	movw	r18, r0
+     6a0:	65 9f       	mul	r22, r21
+     6a2:	30 0d       	add	r19, r0
+     6a4:	11 24       	eor	r1, r1
+     6a6:	82 1b       	sub	r24, r18
+     6a8:	93 0b       	sbc	r25, r19
+     6aa:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <alarm_time+0x1>
+     6ae:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <alarm_time>
+     6b2:	08 95       	ret
+	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
+	else if(val_rot == 3){alarm_time += incr_alarm;}// if rotatiing to the right for right encoder then increment
+     6b4:	20 91 30 01 	lds	r18, 0x0130	; 0x800130 <incr_alarm>
+     6b8:	30 91 31 01 	lds	r19, 0x0131	; 0x800131 <incr_alarm+0x1>
+     6bc:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+     6c0:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+     6c4:	82 0f       	add	r24, r18
+     6c6:	93 1f       	adc	r25, r19
+     6c8:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <alarm_time+0x1>
+     6cc:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <alarm_time>
+     6d0:	08 95       	ret
+/********************************************************************
+ *				update_encoder_alarm
+ ********************************************************************/
+void update_EN_alarm(int val_rot){
+//changes the alarm time without affecting real time
+	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
+     6d2:	40 91 30 01 	lds	r20, 0x0130	; 0x800130 <incr_alarm>
+     6d6:	50 91 31 01 	lds	r21, 0x0131	; 0x800131 <incr_alarm+0x1>
+     6da:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+     6de:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+     6e2:	64 e6       	ldi	r22, 0x64	; 100
+     6e4:	64 9f       	mul	r22, r20
+     6e6:	90 01       	movw	r18, r0
+     6e8:	65 9f       	mul	r22, r21
+     6ea:	30 0d       	add	r19, r0
+     6ec:	11 24       	eor	r1, r1
+     6ee:	82 0f       	add	r24, r18
+     6f0:	93 1f       	adc	r25, r19
+     6f2:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <alarm_time+0x1>
+     6f6:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <alarm_time>
+     6fa:	08 95       	ret
+	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
+	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
+     6fc:	20 91 30 01 	lds	r18, 0x0130	; 0x800130 <incr_alarm>
+     700:	30 91 31 01 	lds	r19, 0x0131	; 0x800131 <incr_alarm+0x1>
+     704:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+     708:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+     70c:	82 1b       	sub	r24, r18
+     70e:	93 0b       	sbc	r25, r19
+     710:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <alarm_time+0x1>
+     714:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <alarm_time>
+     718:	08 95       	ret
+
+0000071a <__vector_15>:
+//	else{OCR2 = 200;} // brighten the light otherwise
+	OCR2 = adc_data;
+}
+
+// TIMER0 overflowIS
+ISR( TIMER0_COMP_vect ) {
+     71a:	1f 92       	push	r1
+     71c:	0f 92       	push	r0
+     71e:	0f b6       	in	r0, 0x3f	; 63
+     720:	0f 92       	push	r0
+     722:	11 24       	eor	r1, r1
+     724:	0b b6       	in	r0, 0x3b	; 59
+     726:	0f 92       	push	r0
+     728:	cf 92       	push	r12
+     72a:	df 92       	push	r13
+     72c:	ef 92       	push	r14
+     72e:	ff 92       	push	r15
+     730:	0f 93       	push	r16
+     732:	1f 93       	push	r17
+     734:	2f 93       	push	r18
+     736:	3f 93       	push	r19
+     738:	4f 93       	push	r20
+     73a:	5f 93       	push	r21
+     73c:	6f 93       	push	r22
+     73e:	7f 93       	push	r23
+     740:	8f 93       	push	r24
+     742:	9f 93       	push	r25
+     744:	af 93       	push	r26
+     746:	bf 93       	push	r27
+     748:	cf 93       	push	r28
+     74a:	df 93       	push	r29
+     74c:	ef 93       	push	r30
+     74e:	ff 93       	push	r31
+
+//save the states of PORTA and PORTB
+saveA = PORTA;
+     750:	8b b3       	in	r24, 0x1b	; 27
+     752:	80 93 56 01 	sts	0x0156, r24	; 0x800156 <saveA>
+saveB = PORTB;
+     756:	88 b3       	in	r24, 0x18	; 24
+     758:	80 93 5b 01 	sts	0x015B, r24	; 0x80015b <saveB>
+
+alarm_compare();
+     75c:	0e 94 e3 01 	call	0x3c6	; 0x3c6 <alarm_compare>
+
+static uint16_t timer = 0;  //hold value of count between interrupts
+timer++;  //extend counter
+     760:	00 91 43 01 	lds	r16, 0x0143	; 0x800143 <timer.1993>
+     764:	10 91 44 01 	lds	r17, 0x0144	; 0x800144 <timer.1993+0x1>
+     768:	0f 5f       	subi	r16, 0xFF	; 255
+     76a:	1f 4f       	sbci	r17, 0xFF	; 255
+     76c:	10 93 44 01 	sts	0x0144, r17	; 0x800144 <timer.1993+0x1>
+     770:	00 93 43 01 	sts	0x0143, r16	; 0x800143 <timer.1993>
+//if((timer% 64) == 0){ // turn off for half a second 
+//	segment_data[2] = 0x07; //turn off colon
+//} 
+float colon = timer/2;
+
+if(colon == 256){
+     774:	b8 01       	movw	r22, r16
+     776:	76 95       	lsr	r23
+     778:	67 95       	ror	r22
+     77a:	80 e0       	ldi	r24, 0x00	; 0
+     77c:	90 e0       	ldi	r25, 0x00	; 0
+     77e:	0e 94 ea 0b 	call	0x17d4	; 0x17d4 <__floatunsisf>
+     782:	20 e0       	ldi	r18, 0x00	; 0
+     784:	30 e0       	ldi	r19, 0x00	; 0
+     786:	40 e8       	ldi	r20, 0x80	; 128
+     788:	53 e4       	ldi	r21, 0x43	; 67
+     78a:	0e 94 e5 0b 	call	0x17ca	; 0x17ca <__cmpsf2>
+     78e:	81 11       	cpse	r24, r1
+     790:	03 c0       	rjmp	.+6      	; 0x798 <__vector_15+0x7e>
+segment_data[2] = 0x07;
+     792:	87 e0       	ldi	r24, 0x07	; 7
+     794:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <segment_data+0x2>
+}
+
+if((timer% 512) == 0){
+     798:	11 70       	andi	r17, 0x01	; 1
+     79a:	01 2b       	or	r16, r17
+     79c:	89 f4       	brne	.+34     	; 0x7c0 <__vector_15+0xa6>
+	segment_data[2] = 0x0C; //turn on colon
+     79e:	8c e0       	ldi	r24, 0x0C	; 12
+     7a0:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <segment_data+0x2>
+ 	seconds+= seconds_holder;
+     7a4:	20 91 12 01 	lds	r18, 0x0112	; 0x800112 <seconds_holder>
+     7a8:	30 91 13 01 	lds	r19, 0x0113	; 0x800113 <seconds_holder+0x1>
+     7ac:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <seconds>
+     7b0:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <seconds+0x1>
+     7b4:	82 0f       	add	r24, r18
+     7b6:	93 1f       	adc	r25, r19
+     7b8:	90 93 35 01 	sts	0x0135, r25	; 0x800135 <seconds+0x1>
+     7bc:	80 93 34 01 	sts	0x0134, r24	; 0x800134 <seconds>
+} // test, FASTER
+
+
+
+PORTB = 0x50;  //enable tristate buffer for pushbutton switches
+     7c0:	80 e5       	ldi	r24, 0x50	; 80
+     7c2:	88 bb       	out	0x18, r24	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     7c4:	8f e8       	ldi	r24, 0x8F	; 143
+     7c6:	91 e0       	ldi	r25, 0x01	; 1
+     7c8:	01 97       	sbiw	r24, 0x01	; 1
+     7ca:	f1 f7       	brne	.-4      	; 0x7c8 <__vector_15+0xae>
+     7cc:	00 c0       	rjmp	.+0      	; 0x7ce <__vector_15+0xb4>
+     7ce:	00 00       	nop
+//*******************************************************************************
+uint8_t chk_buttons(int button) {
+static uint16_t states[8] = {0}; // an array to store the states of all buttons on the button board
+
+// states[0] corresponds to S1 on the board and states[7] corresponds to S8
+states[button] = (states[button]<<1 | (! bit_is_clear(PINA, button)) | 0xE000); //first extract the bit that corresponds to the button
+     7d0:	29 b3       	in	r18, 0x19	; 25
+     7d2:	80 91 45 01 	lds	r24, 0x0145	; 0x800145 <states.1953>
+     7d6:	90 91 46 01 	lds	r25, 0x0146	; 0x800146 <states.1953+0x1>
+     7da:	88 0f       	add	r24, r24
+     7dc:	99 1f       	adc	r25, r25
+     7de:	90 6e       	ori	r25, 0xE0	; 224
+     7e0:	20 fb       	bst	r18, 0
+     7e2:	cc 24       	eor	r12, r12
+     7e4:	c0 f8       	bld	r12, 0
+     7e6:	d1 2c       	mov	r13, r1
+     7e8:	c8 2a       	or	r12, r24
+     7ea:	d9 2a       	or	r13, r25
+     7ec:	d0 92 46 01 	sts	0x0146, r13	; 0x800146 <states.1953+0x1>
+     7f0:	c0 92 45 01 	sts	0x0145, r12	; 0x800145 <states.1953>
+//Check if button is pressed
+if (states[button] == 0xF000) {return TRUE;} 
+     7f4:	c1 14       	cp	r12, r1
+     7f6:	90 ef       	ldi	r25, 0xF0	; 240
+     7f8:	d9 06       	cpc	r13, r25
+     7fa:	31 f4       	brne	.+12     	; 0x808 <__vector_15+0xee>
+
+PORTB = 0x50;  //enable tristate buffer for pushbutton switches
+_delay_ms(.1);//need a delay to active buffer
+
+
+if(chk_buttons(0)){mode ^= 1<<6;}//sets alarm
+     7fc:	90 91 2f 01 	lds	r25, 0x012F	; 0x80012f <mode>
+     800:	80 e4       	ldi	r24, 0x40	; 64
+     802:	89 27       	eor	r24, r25
+     804:	80 93 2f 01 	sts	0x012F, r24	; 0x80012f <mode>
+//*******************************************************************************
+uint8_t chk_buttons(int button) {
+static uint16_t states[8] = {0}; // an array to store the states of all buttons on the button board
+
+// states[0] corresponds to S1 on the board and states[7] corresponds to S8
+states[button] = (states[button]<<1 | (! bit_is_clear(PINA, button)) | 0xE000); //first extract the bit that corresponds to the button
+     808:	29 b3       	in	r18, 0x19	; 25
+     80a:	80 91 4b 01 	lds	r24, 0x014B	; 0x80014b <states.1953+0x6>
+     80e:	90 91 4c 01 	lds	r25, 0x014C	; 0x80014c <states.1953+0x7>
+     812:	88 0f       	add	r24, r24
+     814:	99 1f       	adc	r25, r25
+     816:	90 6e       	ori	r25, 0xE0	; 224
+     818:	23 fb       	bst	r18, 3
+     81a:	ee 24       	eor	r14, r14
+     81c:	e0 f8       	bld	r14, 0
+     81e:	f1 2c       	mov	r15, r1
+     820:	8e 29       	or	r24, r14
+     822:	9f 29       	or	r25, r15
+     824:	90 93 4c 01 	sts	0x014C, r25	; 0x80014c <states.1953+0x7>
+     828:	80 93 4b 01 	sts	0x014B, r24	; 0x80014b <states.1953+0x6>
+//Check if button is pressed
+if (states[button] == 0xF000) {return TRUE;} 
+     82c:	81 15       	cp	r24, r1
+     82e:	90 4f       	sbci	r25, 0xF0	; 240
+     830:	31 f4       	brne	.+12     	; 0x83e <__vector_15+0x124>
+_delay_ms(.1);//need a delay to active buffer
+
+
+if(chk_buttons(0)){mode ^= 1<<6;}//sets alarm
+
+if (chk_buttons(3)){mode ^= 1 << 2;}//snooze alarm
+     832:	90 91 2f 01 	lds	r25, 0x012F	; 0x80012f <mode>
+     836:	84 e0       	ldi	r24, 0x04	; 4
+     838:	89 27       	eor	r24, r25
+     83a:	80 93 2f 01 	sts	0x012F, r24	; 0x80012f <mode>
+//*******************************************************************************
+uint8_t chk_buttons(int button) {
+static uint16_t states[8] = {0}; // an array to store the states of all buttons on the button board
+
+// states[0] corresponds to S1 on the board and states[7] corresponds to S8
+states[button] = (states[button]<<1 | (! bit_is_clear(PINA, button)) | 0xE000); //first extract the bit that corresponds to the button
+     83e:	29 b3       	in	r18, 0x19	; 25
+     840:	80 91 49 01 	lds	r24, 0x0149	; 0x800149 <states.1953+0x4>
+     844:	90 91 4a 01 	lds	r25, 0x014A	; 0x80014a <states.1953+0x5>
+     848:	88 0f       	add	r24, r24
+     84a:	99 1f       	adc	r25, r25
+     84c:	90 6e       	ori	r25, 0xE0	; 224
+     84e:	22 fb       	bst	r18, 2
+     850:	22 27       	eor	r18, r18
+     852:	20 f9       	bld	r18, 0
+     854:	c2 2f       	mov	r28, r18
+     856:	20 e0       	ldi	r18, 0x00	; 0
+     858:	d2 2f       	mov	r29, r18
+     85a:	8c 2b       	or	r24, r28
+     85c:	9d 2b       	or	r25, r29
+     85e:	90 93 4a 01 	sts	0x014A, r25	; 0x80014a <states.1953+0x5>
+     862:	80 93 49 01 	sts	0x0149, r24	; 0x800149 <states.1953+0x4>
+//Check if button is pressed
+if (states[button] == 0xF000) {return TRUE;} 
+     866:	81 15       	cp	r24, r1
+     868:	90 4f       	sbci	r25, 0xF0	; 240
+     86a:	31 f4       	brne	.+12     	; 0x878 <__vector_15+0x15e>
+
+
+if(chk_buttons(0)){mode ^= 1<<6;}//sets alarm
+
+if (chk_buttons(3)){mode ^= 1 << 2;}//snooze alarm
+if (chk_buttons(2)){mode ^= 1 << 5;}//disable alarm
+     86c:	90 91 2f 01 	lds	r25, 0x012F	; 0x80012f <mode>
+     870:	80 e2       	ldi	r24, 0x20	; 32
+     872:	89 27       	eor	r24, r25
+     874:	80 93 2f 01 	sts	0x012F, r24	; 0x80012f <mode>
+//*******************************************************************************
+uint8_t chk_buttons(int button) {
+static uint16_t states[8] = {0}; // an array to store the states of all buttons on the button board
+
+// states[0] corresponds to S1 on the board and states[7] corresponds to S8
+states[button] = (states[button]<<1 | (! bit_is_clear(PINA, button)) | 0xE000); //first extract the bit that corresponds to the button
+     878:	99 b3       	in	r25, 0x19	; 25
+     87a:	20 91 53 01 	lds	r18, 0x0153	; 0x800153 <states.1953+0xe>
+     87e:	30 91 54 01 	lds	r19, 0x0154	; 0x800154 <states.1953+0xf>
+     882:	22 0f       	add	r18, r18
+     884:	33 1f       	adc	r19, r19
+     886:	30 6e       	ori	r19, 0xE0	; 224
+     888:	89 2f       	mov	r24, r25
+     88a:	90 e0       	ldi	r25, 0x00	; 0
+     88c:	88 0f       	add	r24, r24
+     88e:	89 2f       	mov	r24, r25
+     890:	88 1f       	adc	r24, r24
+     892:	99 0b       	sbc	r25, r25
+     894:	82 2b       	or	r24, r18
+     896:	93 2b       	or	r25, r19
+     898:	90 93 54 01 	sts	0x0154, r25	; 0x800154 <states.1953+0xf>
+     89c:	80 93 53 01 	sts	0x0153, r24	; 0x800153 <states.1953+0xe>
+//Check if button is pressed
+if (states[button] == 0xF000) {return TRUE;} 
+     8a0:	81 15       	cp	r24, r1
+     8a2:	90 4f       	sbci	r25, 0xF0	; 240
+     8a4:	31 f4       	brne	.+12     	; 0x8b2 <__vector_15+0x198>
+
+if(chk_buttons(0)){mode ^= 1<<6;}//sets alarm
+
+if (chk_buttons(3)){mode ^= 1 << 2;}//snooze alarm
+if (chk_buttons(2)){mode ^= 1 << 5;}//disable alarm
+if (chk_buttons(7)){mode ^= 1 << 3;} //sets time
+     8a6:	90 91 2f 01 	lds	r25, 0x012F	; 0x80012f <mode>
+     8aa:	88 e0       	ldi	r24, 0x08	; 8
+     8ac:	89 27       	eor	r24, r25
+     8ae:	80 93 2f 01 	sts	0x012F, r24	; 0x80012f <mode>
+	
+PORTB = 0x70;//disable tristate
+     8b2:	80 e7       	ldi	r24, 0x70	; 112
+     8b4:	88 bb       	out	0x18, r24	; 24
+ *				read_SPI
+ ********************************************************************/
+void read_SPI(void){
+
+//shift clock register
+PORTE &= ~(1 << PE6);//falling edge
+     8b6:	1e 98       	cbi	0x03, 6	; 3
+PORTE |= (1 << PE6); //rising edge
+     8b8:	1e 9a       	sbi	0x03, 6	; 3
+SPDR = 0x20; //send junk data to read in from SPI
+     8ba:	80 e2       	ldi	r24, 0x20	; 32
+     8bc:	8f b9       	out	0x0f, r24	; 15
+	while(bit_is_clear(SPSR,SPIF)){} // read data in
+     8be:	77 9b       	sbis	0x0e, 7	; 14
+     8c0:	fe cf       	rjmp	.-4      	; 0x8be <__vector_15+0x1a4>
+raw_encoder_val = SPDR;//save the data
+     8c2:	8f b1       	in	r24, 0x0f	; 15
+     8c4:	80 93 69 01 	sts	0x0169, r24	; 0x800169 <raw_encoder_val>
+	
+PORTB = 0x70;//disable tristate
+
+
+read_SPI();		//read in from the SPI
+read = process_EN(); 	// decrypt the data from the SPI and determine the encoder movement
+     8c8:	0e 94 86 00 	call	0x10c	; 0x10c <process_EN>
+     8cc:	90 93 2d 01 	sts	0x012D, r25	; 0x80012d <read+0x1>
+     8d0:	80 93 2c 01 	sts	0x012C, r24	; 0x80012c <read>
+update_EN(read);	// increase the time with the encoder movement 
+     8d4:	80 91 2c 01 	lds	r24, 0x012C	; 0x80012c <read>
+     8d8:	90 91 2d 01 	lds	r25, 0x012D	; 0x80012d <read+0x1>
+     8dc:	0e 94 5e 01 	call	0x2bc	; 0x2bc <update_EN>
+update_EN_alarm(read);	// increase the alarm_time with the encoder movement
+     8e0:	80 91 2c 01 	lds	r24, 0x012C	; 0x80012c <read>
+     8e4:	90 91 2d 01 	lds	r25, 0x012D	; 0x80012d <read+0x1>
+     8e8:	0e 94 3a 03 	call	0x674	; 0x674 <update_EN_alarm>
+
+write_SPI(mode); 	// write to the bar graph
+     8ec:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <mode>
+/********************************************************************
+ *				write_SPI
+ ********************************************************************/
+void write_SPI(uint8_t value){
+
+SPDR = value; // take in which mode it is currently on and display it 
+     8f0:	8f b9       	out	0x0f, r24	; 15
+	while (bit_is_clear(SPSR,SPIF)) {} //wait till data is sent out
+     8f2:	77 9b       	sbis	0x0e, 7	; 14
+     8f4:	fe cf       	rjmp	.-4      	; 0x8f2 <__vector_15+0x1d8>
+PORTD |= (1 << PD2); //SEND data to bargraph, rising edge
+     8f6:	92 9a       	sbi	0x12, 2	; 18
+PORTD &= ~(1<<PD2); // falling edge
+     8f8:	92 98       	cbi	0x12, 2	; 18
+update_EN_alarm(read);	// increase the alarm_time with the encoder movement
+
+write_SPI(mode); 	// write to the bar graph
+
+//restore the state when leaving the ISR
+PORTA = saveA;
+     8fa:	80 91 56 01 	lds	r24, 0x0156	; 0x800156 <saveA>
+     8fe:	8b bb       	out	0x1b, r24	; 27
+PORTB = saveB;
+     900:	80 91 5b 01 	lds	r24, 0x015B	; 0x80015b <saveB>
+     904:	88 bb       	out	0x18, r24	; 24
+
+DDRA = 0xFF; 		//set PORTA to all outputs
+     906:	8f ef       	ldi	r24, 0xFF	; 255
+     908:	8a bb       	out	0x1a, r24	; 26
+
+
+}//end of ISR Timer0
+     90a:	ff 91       	pop	r31
+     90c:	ef 91       	pop	r30
+     90e:	df 91       	pop	r29
+     910:	cf 91       	pop	r28
+     912:	bf 91       	pop	r27
+     914:	af 91       	pop	r26
+     916:	9f 91       	pop	r25
+     918:	8f 91       	pop	r24
+     91a:	7f 91       	pop	r23
+     91c:	6f 91       	pop	r22
+     91e:	5f 91       	pop	r21
+     920:	4f 91       	pop	r20
+     922:	3f 91       	pop	r19
+     924:	2f 91       	pop	r18
+     926:	1f 91       	pop	r17
+     928:	0f 91       	pop	r16
+     92a:	ff 90       	pop	r15
+     92c:	ef 90       	pop	r14
+     92e:	df 90       	pop	r13
+     930:	cf 90       	pop	r12
+     932:	0f 90       	pop	r0
+     934:	0b be       	out	0x3b, r0	; 59
+     936:	0f 90       	pop	r0
+     938:	0f be       	out	0x3f, r0	; 63
+     93a:	0f 90       	pop	r0
+     93c:	1f 90       	pop	r1
+     93e:	18 95       	reti
+
+00000940 <digit_display>:
+ *				digit_display
+ **********************************************************************/
+void digit_display(void){
+int index;
+
+PORTB = 0x00;
+     940:	18 ba       	out	0x18, r1	; 24
+     942:	ed e0       	ldi	r30, 0x0D	; 13
+     944:	f1 e0       	ldi	r31, 0x01	; 1
+
+	for(index = 0; index < 5; index++){
+		PORTA = segment_data[index]; //send 7 segment code to LED segments
+     946:	81 91       	ld	r24, Z+
+     948:	8b bb       	out	0x1b, r24	; 27
+     94a:	8f e6       	ldi	r24, 0x6F	; 111
+     94c:	97 e1       	ldi	r25, 0x17	; 23
+     94e:	01 97       	sbiw	r24, 0x01	; 1
+     950:	f1 f7       	brne	.-4      	; 0x94e <digit_display+0xe>
+     952:	00 c0       	rjmp	.+0      	; 0x954 <digit_display+0x14>
+     954:	00 00       	nop
+		_delay_ms(1.5);
+		PORTB += 0x10; // within 4 digits for the hex value
+     956:	88 b3       	in	r24, 0x18	; 24
+     958:	80 5f       	subi	r24, 0xF0	; 240
+     95a:	88 bb       	out	0x18, r24	; 24
+void digit_display(void){
+int index;
+
+PORTB = 0x00;
+
+	for(index = 0; index < 5; index++){
+     95c:	91 e0       	ldi	r25, 0x01	; 1
+     95e:	e2 31       	cpi	r30, 0x12	; 18
+     960:	f9 07       	cpc	r31, r25
+     962:	89 f7       	brne	.-30     	; 0x946 <digit_display+0x6>
+		PORTA = segment_data[index]; //send 7 segment code to LED segments
+		_delay_ms(1.5);
+		PORTB += 0x10; // within 4 digits for the hex value
+	}
+}
+     964:	08 95       	ret
+
+00000966 <spi_init>:
+
+/**********************************************************************
+ *				spi_init
+ **********************************************************************/
+void spi_init(void){
+DDRB |= ( (1 << PB2) | ( 1<< PB1) | (1<<PB0) ); //mosi and serial clock
+     966:	87 b3       	in	r24, 0x17	; 23
+     968:	87 60       	ori	r24, 0x07	; 7
+     96a:	87 bb       	out	0x17, r24	; 23
+SPCR |= ( (1 << MSTR) | (1 << SPE) ); //master mode, SPI enabled, clk low on idle, leading edge sample
+     96c:	8d b1       	in	r24, 0x0d	; 13
+     96e:	80 65       	ori	r24, 0x50	; 80
+     970:	8d b9       	out	0x0d, r24	; 13
+SPSR |= 1 << SPI2X;
+     972:	70 9a       	sbi	0x0e, 0	; 14
+
+DDRB |= 0xF0; // set PORTB 4-7 bits as outputs
+     974:	87 b3       	in	r24, 0x17	; 23
+     976:	80 6f       	ori	r24, 0xF0	; 240
+     978:	87 bb       	out	0x17, r24	; 23
+DDRA = 0x03; // set PORTA 6-7 bits as inputs
+     97a:	83 e0       	ldi	r24, 0x03	; 3
+     97c:	8a bb       	out	0x1a, r24	; 26
+DDRD = (1 << PD2); // set PD2 as output
+     97e:	84 e0       	ldi	r24, 0x04	; 4
+     980:	81 bb       	out	0x11, r24	; 17
+DDRE = 0xFF;// set PORTE to all outputs
+     982:	8f ef       	ldi	r24, 0xFF	; 255
+     984:	82 b9       	out	0x02, r24	; 2
+     986:	08 95       	ret
+
+00000988 <volume_init>:
+
+/**********************************************************************
+ *				volume_init
+ **********************************************************************/
+void volume_init(void){
+TCCR3A = (1 << COM3A1 | (1 << WGM31) ); //normal operation w/ OC3A is disconnected
+     988:	82 e8       	ldi	r24, 0x82	; 130
+     98a:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <__TEXT_REGION_LENGTH__+0x7e008b>
+TCCR3B |= (  (1 << CS30) | ( 1 << WGM32) | (1 << WGM33) ); //fast pwm 
+     98e:	ea e8       	ldi	r30, 0x8A	; 138
+     990:	f0 e0       	ldi	r31, 0x00	; 0
+     992:	80 81       	ld	r24, Z
+     994:	89 61       	ori	r24, 0x19	; 25
+     996:	80 83       	st	Z, r24
+ICR3 = 10; // Set overflow top 
+     998:	8a e0       	ldi	r24, 0x0A	; 10
+     99a:	90 e0       	ldi	r25, 0x00	; 0
+     99c:	90 93 81 00 	sts	0x0081, r25	; 0x800081 <__TEXT_REGION_LENGTH__+0x7e0081>
+     9a0:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__TEXT_REGION_LENGTH__+0x7e0080>
+OCR3A = 0; // set compare match
+     9a4:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+     9a8:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+     9ac:	08 95       	ret
+
+000009ae <tone_init>:
+
+/**********************************************************************
+ *				tone_init
+ **********************************************************************/
+void tone_init(void){
+DDRC = 0xFF; // set all of PORTC as outputs
+     9ae:	8f ef       	ldi	r24, 0xFF	; 255
+     9b0:	84 bb       	out	0x14, r24	; 20
+TCCR1A = 0x00; // normal operation w/ OC1A is disconnected
+     9b2:	1f bc       	out	0x2f, r1	; 47
+TIMSK |= 1 << OCIE1A; //output compare enable for timercounter1A
+     9b4:	87 b7       	in	r24, 0x37	; 55
+     9b6:	80 61       	ori	r24, 0x10	; 16
+     9b8:	87 bf       	out	0x37, r24	; 55
+OCR1A = 3999; // 4kHz and triggers ISR
+     9ba:	8f e9       	ldi	r24, 0x9F	; 159
+     9bc:	9f e0       	ldi	r25, 0x0F	; 15
+     9be:	9b bd       	out	0x2b, r25	; 43
+     9c0:	8a bd       	out	0x2a, r24	; 42
+//clk is not set
+TCCR1B |= (1 << WGM12); // CTC mode, clear with OCR and no prescaling
+     9c2:	8e b5       	in	r24, 0x2e	; 46
+     9c4:	88 60       	ori	r24, 0x08	; 8
+     9c6:	8e bd       	out	0x2e, r24	; 46
+     9c8:	08 95       	ret
+
+000009ca <clock_init>:
+
+/**********************************************************************
+ *				clock_init
+ **********************************************************************/
+void clock_init(void){
+ASSR   |=  1<<AS0; //ext osc TOSC in 32kHz 
+     9ca:	80 b7       	in	r24, 0x30	; 48
+     9cc:	88 60       	ori	r24, 0x08	; 8
+     9ce:	80 bf       	out	0x30, r24	; 48
+TIMSK |= 1 << OCIE0; //interrupt flag on compare register 
+     9d0:	87 b7       	in	r24, 0x37	; 55
+     9d2:	82 60       	ori	r24, 0x02	; 2
+     9d4:	87 bf       	out	0x37, r24	; 55
+TCCR0 |= ((1 << WGM01) | (1 << CS00)); //CTC mode, with clk/no pre-scaling
+     9d6:	83 b7       	in	r24, 0x33	; 51
+     9d8:	89 60       	ori	r24, 0x09	; 9
+     9da:	83 bf       	out	0x33, r24	; 51
+OCR0 = 127; // Set top 
+     9dc:	8f e7       	ldi	r24, 0x7F	; 127
+     9de:	81 bf       	out	0x31, r24	; 49
+     9e0:	08 95       	ret
+
+000009e2 <dimming_init>:
+
+/**********************************************************************
+ *				dimming_init
+ **********************************************************************/
+void dimming_init(void){
+TCCR2 |= (1 << WGM21) | ( 1 << WGM20) | (1 << COM21) | ( 1 << CS20); // no prescale, clear on OC2 match, fast pwm mode
+     9e2:	85 b5       	in	r24, 0x25	; 37
+     9e4:	89 66       	ori	r24, 0x69	; 105
+     9e6:	85 bd       	out	0x25, r24	; 37
+TIMSK |= (1 << OCIE2); // Compare match interrupt enable timer/counter0
+     9e8:	87 b7       	in	r24, 0x37	; 55
+     9ea:	80 68       	ori	r24, 0x80	; 128
+     9ec:	87 bf       	out	0x37, r24	; 55
+TCNT2 = 0; //set count at 0
+     9ee:	14 bc       	out	0x24, r1	; 36
+     9f0:	08 95       	ret
+
+000009f2 <ADC_init>:
+
+/**********************************************************************
+ *				ADC_init
+ **********************************************************************/
+void ADC_init(void){
+DDRF  &= ~(_BV(DDF7)); //make port F bit 7 the ADC input  
+     9f2:	e1 e6       	ldi	r30, 0x61	; 97
+     9f4:	f0 e0       	ldi	r31, 0x00	; 0
+     9f6:	80 81       	ld	r24, Z
+     9f8:	8f 77       	andi	r24, 0x7F	; 127
+     9fa:	80 83       	st	Z, r24
+PORTF &= ~(_BV(PF7));  //port F bit 7 pullups must be off
+     9fc:	e2 e6       	ldi	r30, 0x62	; 98
+     9fe:	f0 e0       	ldi	r31, 0x00	; 0
+     a00:	80 81       	ld	r24, Z
+     a02:	8f 77       	andi	r24, 0x7F	; 127
+     a04:	80 83       	st	Z, r24
+	
+ADMUX = (1 << REFS0) | (1 << ADLAR) | 0x07; // reference to AVCC(5v), left adjusted (only reading  8bit), and channel 7
+     a06:	87 e6       	ldi	r24, 0x67	; 103
+     a08:	87 b9       	out	0x07, r24	; 7
+//ADC enabled, single conversion, division factor is 128
+ADCSRA = (1 << ADEN) | (1 << ADPS2) | ( 1 << ADPS1) | ( 1 << ADPS0) ; 
+     a0a:	87 e8       	ldi	r24, 0x87	; 135
+     a0c:	86 b9       	out	0x06, r24	; 6
+     a0e:	08 95       	ret
+
+00000a10 <segsum>:
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+void segsum(uint16_t sum) {
+     a10:	cf 93       	push	r28
+     a12:	df 93       	push	r29
+     a14:	ac 01       	movw	r20, r24
+//initialzing the local variables of the function
+int digit_index = 0;
+int temp = 0;
+int i;
+
+if(sum == 0){segment_data[digit_index] = dec_to_7seg[0];};
+     a16:	00 97       	sbiw	r24, 0x00	; 0
+     a18:	b1 f4       	brne	.+44     	; 0xa46 <segsum+0x36>
+     a1a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     a1e:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <segment_data>
+                if(digit_index == 2){digit_index++;};
+                segment_data[digit_index] = dec_to_7seg[temp]; //use the digit to store the hexidecimal value to seg array
+                sum = sum/10; // continue to the next digit
+                digit_index++; // increase the digit index
+        }
+        segment_data[2] = dec_to_7seg[11]; //replace the colon with a blank colon
+     a22:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <__DATA_REGION_ORIGIN__+0xb>
+     a26:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <segment_data+0x2>
+     a2a:	e0 e0       	ldi	r30, 0x00	; 0
+     a2c:	f0 e0       	ldi	r31, 0x00	; 0
+     a2e:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <__DATA_REGION_ORIGIN__+0xa>
+     a32:	e3 5f       	subi	r30, 0xF3	; 243
+     a34:	fe 4f       	sbci	r31, 0xFE	; 254
+
+//need to turn off the rest of the digits
+	if (digit_index < 5) //if there are less digits than segment numbers
+	{
+        	for (i = digit_index; i < 5; i++){segment_data[i] = dec_to_7seg[10];} //blank them out
+     a36:	81 93       	st	Z+, r24
+     a38:	31 e0       	ldi	r19, 0x01	; 1
+     a3a:	e2 31       	cpi	r30, 0x12	; 18
+     a3c:	f3 07       	cpc	r31, r19
+     a3e:	d9 f7       	brne	.-10     	; 0xa36 <segsum+0x26>
+	}
+}
+     a40:	df 91       	pop	r29
+     a42:	cf 91       	pop	r28
+     a44:	08 95       	ret
+int i;
+
+if(sum == 0){segment_data[digit_index] = dec_to_7seg[0];};
+
+        while(sum > 0){
+                temp = sum % 10; // isolate to a single digit
+     a46:	9c 01       	movw	r18, r24
+     a48:	ad ec       	ldi	r26, 0xCD	; 205
+     a4a:	bc ec       	ldi	r27, 0xCC	; 204
+     a4c:	0e 94 a0 0b 	call	0x1740	; 0x1740 <__umulhisi3>
+     a50:	96 95       	lsr	r25
+     a52:	87 95       	ror	r24
+     a54:	96 95       	lsr	r25
+     a56:	87 95       	ror	r24
+     a58:	96 95       	lsr	r25
+     a5a:	87 95       	ror	r24
+     a5c:	9c 01       	movw	r18, r24
+     a5e:	22 0f       	add	r18, r18
+     a60:	33 1f       	adc	r19, r19
+     a62:	88 0f       	add	r24, r24
+     a64:	99 1f       	adc	r25, r25
+     a66:	88 0f       	add	r24, r24
+     a68:	99 1f       	adc	r25, r25
+     a6a:	88 0f       	add	r24, r24
+     a6c:	99 1f       	adc	r25, r25
+     a6e:	82 0f       	add	r24, r18
+     a70:	93 1f       	adc	r25, r19
+     a72:	9a 01       	movw	r18, r20
+     a74:	28 1b       	sub	r18, r24
+     a76:	39 0b       	sbc	r19, r25
+     a78:	c9 01       	movw	r24, r18
+     a7a:	e0 e0       	ldi	r30, 0x00	; 0
+     a7c:	f0 e0       	ldi	r31, 0x00	; 0
+                if(digit_index == 2){digit_index++;};
+                segment_data[digit_index] = dec_to_7seg[temp]; //use the digit to store the hexidecimal value to seg array
+     a7e:	df 01       	movw	r26, r30
+     a80:	a3 5f       	subi	r26, 0xF3	; 243
+     a82:	be 4f       	sbci	r27, 0xFE	; 254
+     a84:	ec 01       	movw	r28, r24
+     a86:	c0 50       	subi	r28, 0x00	; 0
+     a88:	df 4f       	sbci	r29, 0xFF	; 255
+     a8a:	88 81       	ld	r24, Y
+     a8c:	8c 93       	st	X, r24
+                sum = sum/10; // continue to the next digit
+     a8e:	9a 01       	movw	r18, r20
+     a90:	ad ec       	ldi	r26, 0xCD	; 205
+     a92:	bc ec       	ldi	r27, 0xCC	; 204
+     a94:	0e 94 a0 0b 	call	0x1740	; 0x1740 <__umulhisi3>
+     a98:	ac 01       	movw	r20, r24
+     a9a:	56 95       	lsr	r21
+     a9c:	47 95       	ror	r20
+     a9e:	56 95       	lsr	r21
+     aa0:	47 95       	ror	r20
+     aa2:	56 95       	lsr	r21
+     aa4:	47 95       	ror	r20
+                digit_index++; // increase the digit index
+     aa6:	31 96       	adiw	r30, 0x01	; 1
+int temp = 0;
+int i;
+
+if(sum == 0){segment_data[digit_index] = dec_to_7seg[0];};
+
+        while(sum > 0){
+     aa8:	41 15       	cp	r20, r1
+     aaa:	51 05       	cpc	r21, r1
+     aac:	01 f1       	breq	.+64     	; 0xaee <segsum+0xde>
+                temp = sum % 10; // isolate to a single digit
+     aae:	9a 01       	movw	r18, r20
+     ab0:	ad ec       	ldi	r26, 0xCD	; 205
+     ab2:	bc ec       	ldi	r27, 0xCC	; 204
+     ab4:	0e 94 a0 0b 	call	0x1740	; 0x1740 <__umulhisi3>
+     ab8:	96 95       	lsr	r25
+     aba:	87 95       	ror	r24
+     abc:	96 95       	lsr	r25
+     abe:	87 95       	ror	r24
+     ac0:	96 95       	lsr	r25
+     ac2:	87 95       	ror	r24
+     ac4:	9c 01       	movw	r18, r24
+     ac6:	22 0f       	add	r18, r18
+     ac8:	33 1f       	adc	r19, r19
+     aca:	88 0f       	add	r24, r24
+     acc:	99 1f       	adc	r25, r25
+     ace:	88 0f       	add	r24, r24
+     ad0:	99 1f       	adc	r25, r25
+     ad2:	88 0f       	add	r24, r24
+     ad4:	99 1f       	adc	r25, r25
+     ad6:	82 0f       	add	r24, r18
+     ad8:	93 1f       	adc	r25, r19
+     ada:	9a 01       	movw	r18, r20
+     adc:	28 1b       	sub	r18, r24
+     ade:	39 0b       	sbc	r19, r25
+     ae0:	c9 01       	movw	r24, r18
+                if(digit_index == 2){digit_index++;};
+     ae2:	e2 30       	cpi	r30, 0x02	; 2
+     ae4:	f1 05       	cpc	r31, r1
+     ae6:	59 f6       	brne	.-106    	; 0xa7e <segsum+0x6e>
+     ae8:	e3 e0       	ldi	r30, 0x03	; 3
+     aea:	f0 e0       	ldi	r31, 0x00	; 0
+     aec:	c8 cf       	rjmp	.-112    	; 0xa7e <segsum+0x6e>
+                segment_data[digit_index] = dec_to_7seg[temp]; //use the digit to store the hexidecimal value to seg array
+                sum = sum/10; // continue to the next digit
+                digit_index++; // increase the digit index
+        }
+        segment_data[2] = dec_to_7seg[11]; //replace the colon with a blank colon
+     aee:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <__DATA_REGION_ORIGIN__+0xb>
+     af2:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <segment_data+0x2>
+
+//need to turn off the rest of the digits
+	if (digit_index < 5) //if there are less digits than segment numbers
+     af6:	e5 30       	cpi	r30, 0x05	; 5
+     af8:	f1 05       	cpc	r31, r1
+     afa:	0c f4       	brge	.+2      	; 0xafe <segsum+0xee>
+     afc:	98 cf       	rjmp	.-208    	; 0xa2e <segsum+0x1e>
+	{
+        	for (i = digit_index; i < 5; i++){segment_data[i] = dec_to_7seg[10];} //blank them out
+	}
+}
+     afe:	df 91       	pop	r29
+     b00:	cf 91       	pop	r28
+     b02:	08 95       	ret
+
+00000b04 <send_lcd>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     b04:	91 e0       	ldi	r25, 0x01	; 1
+     b06:	81 11       	cpse	r24, r1
+     b08:	01 c0       	rjmp	.+2      	; 0xb0c <send_lcd+0x8>
+     b0a:	90 e0       	ldi	r25, 0x00	; 0
+     b0c:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     b0e:	77 9b       	sbis	0x0e, 7	; 14
+     b10:	fe cf       	rjmp	.-4      	; 0xb0e <send_lcd+0xa>
+  SPDR = byte;                        //send payload
+     b12:	6f b9       	out	0x0f, r22	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     b14:	77 9b       	sbis	0x0e, 7	; 14
+     b16:	fe cf       	rjmp	.-4      	; 0xb14 <send_lcd+0x10>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     b18:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b1c:	88 60       	ori	r24, 0x08	; 8
+     b1e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b22:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b26:	87 7f       	andi	r24, 0xF7	; 247
+     b28:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     b2c:	8f e9       	ldi	r24, 0x9F	; 159
+     b2e:	9f e0       	ldi	r25, 0x0F	; 15
+     b30:	01 97       	sbiw	r24, 0x01	; 1
+     b32:	f1 f7       	brne	.-4      	; 0xb30 <send_lcd+0x2c>
+     b34:	00 c0       	rjmp	.+0      	; 0xb36 <send_lcd+0x32>
+     b36:	00 00       	nop
+     b38:	08 95       	ret
+
+00000b3a <refresh_lcd>:
+
+void refresh_lcd(char lcd_string_array[]) {
+
+    static uint8_t index=0;           // index into string array 
+
+    SPDR = 0x01; //set SR for data
+     b3a:	21 e0       	ldi	r18, 0x01	; 1
+     b3c:	2f b9       	out	0x0f, r18	; 15
+    while (!(SPSR & 0x80)) {}       //wait for SPI transfer to complete
+     b3e:	77 9b       	sbis	0x0e, 7	; 14
+     b40:	fe cf       	rjmp	.-4      	; 0xb3e <refresh_lcd+0x4>
+    SPDR = lcd_string_array[index];
+     b42:	20 91 55 01 	lds	r18, 0x0155	; 0x800155 <index.2091>
+     b46:	fc 01       	movw	r30, r24
+     b48:	e2 0f       	add	r30, r18
+     b4a:	f1 1d       	adc	r31, r1
+     b4c:	80 81       	ld	r24, Z
+     b4e:	8f b9       	out	0x0f, r24	; 15
+    while (!(SPSR & 0x80)) {}       //wait for SPI transfer to complete
+     b50:	77 9b       	sbis	0x0e, 7	; 14
+     b52:	fe cf       	rjmp	.-4      	; 0xb50 <refresh_lcd+0x16>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     b54:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b58:	88 60       	ori	r24, 0x08	; 8
+     b5a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b5e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b62:	87 7f       	andi	r24, 0xF7	; 247
+     b64:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    SPDR = 0x01; //set SR for data
+    while (!(SPSR & 0x80)) {}       //wait for SPI transfer to complete
+    SPDR = lcd_string_array[index];
+    while (!(SPSR & 0x80)) {}       //wait for SPI transfer to complete
+    strobe_lcd();                   //write into LCD
+    index++;                        //increment to next character
+     b68:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <index.2091>
+     b6c:	8f 5f       	subi	r24, 0xFF	; 255
+     b6e:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <index.2091>
+    if(index == 16) {_delay_us(40); home_line2();}           //on to 2nd line, 1st position 
+     b72:	80 31       	cpi	r24, 0x10	; 16
+     b74:	09 f1       	breq	.+66     	; 0xbb8 <refresh_lcd+0x7e>
+    if(index == 32) {_delay_us(40); cursor_home(); index=0;} //back to 1st line, 1st position
+     b76:	80 32       	cpi	r24, 0x20	; 32
+     b78:	09 f0       	breq	.+2      	; 0xb7c <refresh_lcd+0x42>
+     b7a:	08 95       	ret
+     b7c:	95 ed       	ldi	r25, 0xD5	; 213
+     b7e:	9a 95       	dec	r25
+     b80:	f1 f7       	brne	.-4      	; 0xb7e <refresh_lcd+0x44>
+     b82:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     b84:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     b86:	77 9b       	sbis	0x0e, 7	; 14
+     b88:	fe cf       	rjmp	.-4      	; 0xb86 <refresh_lcd+0x4c>
+  SPDR = byte;                        //send payload
+     b8a:	82 e0       	ldi	r24, 0x02	; 2
+     b8c:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     b8e:	77 9b       	sbis	0x0e, 7	; 14
+     b90:	fe cf       	rjmp	.-4      	; 0xb8e <refresh_lcd+0x54>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     b92:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b96:	88 60       	ori	r24, 0x08	; 8
+     b98:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     b9c:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     ba0:	87 7f       	andi	r24, 0xF7	; 247
+     ba2:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     ba6:	8f e9       	ldi	r24, 0x9F	; 159
+     ba8:	9f e0       	ldi	r25, 0x0F	; 15
+     baa:	01 97       	sbiw	r24, 0x01	; 1
+     bac:	f1 f7       	brne	.-4      	; 0xbaa <refresh_lcd+0x70>
+     bae:	00 c0       	rjmp	.+0      	; 0xbb0 <refresh_lcd+0x76>
+     bb0:	00 00       	nop
+    SPDR = lcd_string_array[index];
+    while (!(SPSR & 0x80)) {}       //wait for SPI transfer to complete
+    strobe_lcd();                   //write into LCD
+    index++;                        //increment to next character
+    if(index == 16) {_delay_us(40); home_line2();}           //on to 2nd line, 1st position 
+    if(index == 32) {_delay_us(40); cursor_home(); index=0;} //back to 1st line, 1st position
+     bb2:	10 92 55 01 	sts	0x0155, r1	; 0x800155 <index.2091>
+     bb6:	08 95       	ret
+     bb8:	85 ed       	ldi	r24, 0xD5	; 213
+     bba:	8a 95       	dec	r24
+     bbc:	f1 f7       	brne	.-4      	; 0xbba <refresh_lcd+0x80>
+     bbe:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     bc0:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     bc2:	77 9b       	sbis	0x0e, 7	; 14
+     bc4:	fe cf       	rjmp	.-4      	; 0xbc2 <refresh_lcd+0x88>
+  SPDR = byte;                        //send payload
+     bc6:	80 ec       	ldi	r24, 0xC0	; 192
+     bc8:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     bca:	77 9b       	sbis	0x0e, 7	; 14
+     bcc:	fe cf       	rjmp	.-4      	; 0xbca <refresh_lcd+0x90>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     bce:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     bd2:	88 60       	ori	r24, 0x08	; 8
+     bd4:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     bd8:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     bdc:	87 7f       	andi	r24, 0xF7	; 247
+     bde:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     be2:	8f e9       	ldi	r24, 0x9F	; 159
+     be4:	9f e0       	ldi	r25, 0x0F	; 15
+     be6:	01 97       	sbiw	r24, 0x01	; 1
+     be8:	f1 f7       	brne	.-4      	; 0xbe6 <refresh_lcd+0xac>
+     bea:	00 c0       	rjmp	.+0      	; 0xbec <refresh_lcd+0xb2>
+     bec:	00 00       	nop
+     bee:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <index.2091>
+     bf2:	c1 cf       	rjmp	.-126    	; 0xb76 <refresh_lcd+0x3c>
+
+00000bf4 <set_custom_character>:
+//address, such as send_lcd(CHAR_BYTE, 0x01, 1) or it can be insteretd into a string 
+//via a forward slash escape as in string2lcd("this is my music note \1")
+
+void set_custom_character(uint8_t data[], uint8_t address){
+    uint8_t i;
+    send_lcd(CMD_BYTE, 0x40 + (address << 3), 1000);  //only needs 40uS!
+     bf4:	66 0f       	add	r22, r22
+     bf6:	66 0f       	add	r22, r22
+     bf8:	66 0f       	add	r22, r22
+     bfa:	60 5c       	subi	r22, 0xC0	; 192
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     bfc:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     bfe:	77 9b       	sbis	0x0e, 7	; 14
+     c00:	fe cf       	rjmp	.-4      	; 0xbfe <set_custom_character+0xa>
+  SPDR = byte;                        //send payload
+     c02:	6f b9       	out	0x0f, r22	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     c04:	77 9b       	sbis	0x0e, 7	; 14
+     c06:	fe cf       	rjmp	.-4      	; 0xc04 <set_custom_character+0x10>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     c08:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c0c:	28 60       	ori	r18, 0x08	; 8
+     c0e:	20 93 62 00 	sts	0x0062, r18	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c12:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c16:	27 7f       	andi	r18, 0xF7	; 247
+     c18:	20 93 62 00 	sts	0x0062, r18	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c1c:	af e9       	ldi	r26, 0x9F	; 159
+     c1e:	bf e0       	ldi	r27, 0x0F	; 15
+     c20:	11 97       	sbiw	r26, 0x01	; 1
+     c22:	f1 f7       	brne	.-4      	; 0xc20 <set_custom_character+0x2c>
+     c24:	00 c0       	rjmp	.+0      	; 0xc26 <set_custom_character+0x32>
+     c26:	00 00       	nop
+     c28:	fc 01       	movw	r30, r24
+     c2a:	9c 01       	movw	r18, r24
+     c2c:	28 5f       	subi	r18, 0xF8	; 248
+     c2e:	3f 4f       	sbci	r19, 0xFF	; 255
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     c30:	91 e0       	ldi	r25, 0x01	; 1
+//via a forward slash escape as in string2lcd("this is my music note \1")
+
+void set_custom_character(uint8_t data[], uint8_t address){
+    uint8_t i;
+    send_lcd(CMD_BYTE, 0x40 + (address << 3), 1000);  //only needs 40uS!
+    for(i=0; i<8; i++){send_lcd(CHAR_BYTE, data[i], 100);}
+     c32:	81 91       	ld	r24, Z+
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     c34:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     c36:	77 9b       	sbis	0x0e, 7	; 14
+     c38:	fe cf       	rjmp	.-4      	; 0xc36 <set_custom_character+0x42>
+  SPDR = byte;                        //send payload
+     c3a:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     c3c:	77 9b       	sbis	0x0e, 7	; 14
+     c3e:	fe cf       	rjmp	.-4      	; 0xc3c <set_custom_character+0x48>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     c40:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c44:	88 60       	ori	r24, 0x08	; 8
+     c46:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c4a:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c4e:	87 7f       	andi	r24, 0xF7	; 247
+     c50:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c54:	af e9       	ldi	r26, 0x9F	; 159
+     c56:	bf e0       	ldi	r27, 0x0F	; 15
+     c58:	11 97       	sbiw	r26, 0x01	; 1
+     c5a:	f1 f7       	brne	.-4      	; 0xc58 <set_custom_character+0x64>
+     c5c:	00 c0       	rjmp	.+0      	; 0xc5e <set_custom_character+0x6a>
+     c5e:	00 00       	nop
+//via a forward slash escape as in string2lcd("this is my music note \1")
+
+void set_custom_character(uint8_t data[], uint8_t address){
+    uint8_t i;
+    send_lcd(CMD_BYTE, 0x40 + (address << 3), 1000);  //only needs 40uS!
+    for(i=0; i<8; i++){send_lcd(CHAR_BYTE, data[i], 100);}
+     c60:	e2 17       	cp	r30, r18
+     c62:	f3 07       	cpc	r31, r19
+     c64:	31 f7       	brne	.-52     	; 0xc32 <set_custom_character+0x3e>
+}
+     c66:	08 95       	ret
+
+00000c68 <set_cursor>:
+//                          set_cursor 
+//
+//Sets the cursor to an arbitrary potition on the screen, row is either 1 or 2
+//col is a number form 0-15, counting from left to right
+void set_cursor(uint8_t row, uint8_t col){
+    send_lcd(CMD_BYTE, 0x80 + col + ((row-1)*0x40), 1000);
+     c68:	90 e4       	ldi	r25, 0x40	; 64
+     c6a:	89 9f       	mul	r24, r25
+     c6c:	60 0d       	add	r22, r0
+     c6e:	11 24       	eor	r1, r1
+     c70:	60 5c       	subi	r22, 0xC0	; 192
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     c72:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     c74:	77 9b       	sbis	0x0e, 7	; 14
+     c76:	fe cf       	rjmp	.-4      	; 0xc74 <set_cursor+0xc>
+  SPDR = byte;                        //send payload
+     c78:	6f b9       	out	0x0f, r22	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     c7a:	77 9b       	sbis	0x0e, 7	; 14
+     c7c:	fe cf       	rjmp	.-4      	; 0xc7a <set_cursor+0x12>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     c7e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c82:	88 60       	ori	r24, 0x08	; 8
+     c84:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c88:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c8c:	87 7f       	andi	r24, 0xF7	; 247
+     c8e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     c92:	8f e9       	ldi	r24, 0x9F	; 159
+     c94:	9f e0       	ldi	r25, 0x0F	; 15
+     c96:	01 97       	sbiw	r24, 0x01	; 1
+     c98:	f1 f7       	brne	.-4      	; 0xc96 <set_cursor+0x2e>
+     c9a:	00 c0       	rjmp	.+0      	; 0xc9c <set_cursor+0x34>
+     c9c:	00 00       	nop
+     c9e:	08 95       	ret
+
+00000ca0 <uint2lcd>:
+//not displayed.  
+//TODO: optimize by removing the mod operators
+//TODO: does not display the number zero!  (FIXED 8.30.2014)
+//
+void uint2lcd(uint8_t number){
+    if  (number == 0)  {send_lcd(CHAR_BYTE, 0x30                , 100); }
+     ca0:	81 11       	cpse	r24, r1
+     ca2:	19 c0       	rjmp	.+50     	; 0xcd6 <uint2lcd+0x36>
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     ca4:	81 e0       	ldi	r24, 0x01	; 1
+     ca6:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     ca8:	77 9b       	sbis	0x0e, 7	; 14
+     caa:	fe cf       	rjmp	.-4      	; 0xca8 <uint2lcd+0x8>
+  SPDR = byte;                        //send payload
+     cac:	80 e3       	ldi	r24, 0x30	; 48
+     cae:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     cb0:	77 9b       	sbis	0x0e, 7	; 14
+     cb2:	fe cf       	rjmp	.-4      	; 0xcb0 <uint2lcd+0x10>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     cb4:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     cb8:	88 60       	ori	r24, 0x08	; 8
+     cba:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     cbe:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     cc2:	87 7f       	andi	r24, 0xF7	; 247
+     cc4:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     cc8:	8f e9       	ldi	r24, 0x9F	; 159
+     cca:	9f e0       	ldi	r25, 0x0F	; 15
+     ccc:	01 97       	sbiw	r24, 0x01	; 1
+     cce:	f1 f7       	brne	.-4      	; 0xccc <uint2lcd+0x2c>
+     cd0:	00 c0       	rjmp	.+0      	; 0xcd2 <uint2lcd+0x32>
+     cd2:	00 00       	nop
+     cd4:	08 95       	ret
+//TODO: does not display the number zero!  (FIXED 8.30.2014)
+//
+void uint2lcd(uint8_t number){
+    if  (number == 0)  {send_lcd(CHAR_BYTE, 0x30                , 100); }
+    else{
+      if(number >= 100){send_lcd(CHAR_BYTE, 0x30+number/100     , 100); }
+     cd6:	84 36       	cpi	r24, 0x64	; 100
+     cd8:	b0 f4       	brcc	.+44     	; 0xd06 <uint2lcd+0x66>
+      if(number >= 10) {send_lcd(CHAR_BYTE, 0x30+(number%100)/10, 100); }
+     cda:	8a 30       	cpi	r24, 0x0A	; 10
+     cdc:	90 f5       	brcc	.+100    	; 0xd42 <uint2lcd+0xa2>
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     cde:	91 e0       	ldi	r25, 0x01	; 1
+     ce0:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     ce2:	77 9b       	sbis	0x0e, 7	; 14
+     ce4:	fe cf       	rjmp	.-4      	; 0xce2 <uint2lcd+0x42>
+void uint2lcd(uint8_t number){
+    if  (number == 0)  {send_lcd(CHAR_BYTE, 0x30                , 100); }
+    else{
+      if(number >= 100){send_lcd(CHAR_BYTE, 0x30+number/100     , 100); }
+      if(number >= 10) {send_lcd(CHAR_BYTE, 0x30+(number%100)/10, 100); }
+      if(number >= 1)  {send_lcd(CHAR_BYTE, 0x30+(number%10)    , 100); }
+     ce6:	9d ec       	ldi	r25, 0xCD	; 205
+     ce8:	89 9f       	mul	r24, r25
+     cea:	91 2d       	mov	r25, r1
+     cec:	11 24       	eor	r1, r1
+     cee:	96 95       	lsr	r25
+     cf0:	96 95       	lsr	r25
+     cf2:	96 95       	lsr	r25
+     cf4:	fa e0       	ldi	r31, 0x0A	; 10
+     cf6:	9f 9f       	mul	r25, r31
+     cf8:	80 19       	sub	r24, r0
+     cfa:	11 24       	eor	r1, r1
+     cfc:	80 5d       	subi	r24, 0xD0	; 208
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+  SPDR = byte;                        //send payload
+     cfe:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     d00:	77 9b       	sbis	0x0e, 7	; 14
+     d02:	fe cf       	rjmp	.-4      	; 0xd00 <uint2lcd+0x60>
+     d04:	d7 cf       	rjmp	.-82     	; 0xcb4 <uint2lcd+0x14>
+//TODO: does not display the number zero!  (FIXED 8.30.2014)
+//
+void uint2lcd(uint8_t number){
+    if  (number == 0)  {send_lcd(CHAR_BYTE, 0x30                , 100); }
+    else{
+      if(number >= 100){send_lcd(CHAR_BYTE, 0x30+number/100     , 100); }
+     d06:	99 e2       	ldi	r25, 0x29	; 41
+     d08:	89 9f       	mul	r24, r25
+     d0a:	91 2d       	mov	r25, r1
+     d0c:	11 24       	eor	r1, r1
+     d0e:	92 95       	swap	r25
+     d10:	9f 70       	andi	r25, 0x0F	; 15
+     d12:	90 5d       	subi	r25, 0xD0	; 208
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     d14:	21 e0       	ldi	r18, 0x01	; 1
+     d16:	2f b9       	out	0x0f, r18	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     d18:	77 9b       	sbis	0x0e, 7	; 14
+     d1a:	fe cf       	rjmp	.-4      	; 0xd18 <uint2lcd+0x78>
+  SPDR = byte;                        //send payload
+     d1c:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     d1e:	77 9b       	sbis	0x0e, 7	; 14
+     d20:	fe cf       	rjmp	.-4      	; 0xd1e <uint2lcd+0x7e>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     d22:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d26:	98 60       	ori	r25, 0x08	; 8
+     d28:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d2c:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d30:	97 7f       	andi	r25, 0xF7	; 247
+     d32:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d36:	ef e9       	ldi	r30, 0x9F	; 159
+     d38:	ff e0       	ldi	r31, 0x0F	; 15
+     d3a:	31 97       	sbiw	r30, 0x01	; 1
+     d3c:	f1 f7       	brne	.-4      	; 0xd3a <uint2lcd+0x9a>
+     d3e:	00 c0       	rjmp	.+0      	; 0xd40 <uint2lcd+0xa0>
+     d40:	00 00       	nop
+//
+void uint2lcd(uint8_t number){
+    if  (number == 0)  {send_lcd(CHAR_BYTE, 0x30                , 100); }
+    else{
+      if(number >= 100){send_lcd(CHAR_BYTE, 0x30+number/100     , 100); }
+      if(number >= 10) {send_lcd(CHAR_BYTE, 0x30+(number%100)/10, 100); }
+     d42:	99 e2       	ldi	r25, 0x29	; 41
+     d44:	89 9f       	mul	r24, r25
+     d46:	91 2d       	mov	r25, r1
+     d48:	11 24       	eor	r1, r1
+     d4a:	92 95       	swap	r25
+     d4c:	9f 70       	andi	r25, 0x0F	; 15
+     d4e:	28 2f       	mov	r18, r24
+     d50:	f4 e6       	ldi	r31, 0x64	; 100
+     d52:	9f 9f       	mul	r25, r31
+     d54:	20 19       	sub	r18, r0
+     d56:	11 24       	eor	r1, r1
+     d58:	92 2f       	mov	r25, r18
+     d5a:	2d ec       	ldi	r18, 0xCD	; 205
+     d5c:	92 9f       	mul	r25, r18
+     d5e:	91 2d       	mov	r25, r1
+     d60:	11 24       	eor	r1, r1
+     d62:	96 95       	lsr	r25
+     d64:	96 95       	lsr	r25
+     d66:	96 95       	lsr	r25
+     d68:	90 5d       	subi	r25, 0xD0	; 208
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     d6a:	21 e0       	ldi	r18, 0x01	; 1
+     d6c:	2f b9       	out	0x0f, r18	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     d6e:	77 9b       	sbis	0x0e, 7	; 14
+     d70:	fe cf       	rjmp	.-4      	; 0xd6e <uint2lcd+0xce>
+  SPDR = byte;                        //send payload
+     d72:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     d74:	77 9b       	sbis	0x0e, 7	; 14
+     d76:	fe cf       	rjmp	.-4      	; 0xd74 <uint2lcd+0xd4>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     d78:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d7c:	98 60       	ori	r25, 0x08	; 8
+     d7e:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d82:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d86:	97 7f       	andi	r25, 0xF7	; 247
+     d88:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     d8c:	ef e9       	ldi	r30, 0x9F	; 159
+     d8e:	ff e0       	ldi	r31, 0x0F	; 15
+     d90:	31 97       	sbiw	r30, 0x01	; 1
+     d92:	f1 f7       	brne	.-4      	; 0xd90 <uint2lcd+0xf0>
+     d94:	00 c0       	rjmp	.+0      	; 0xd96 <uint2lcd+0xf6>
+     d96:	00 00       	nop
+     d98:	a2 cf       	rjmp	.-188    	; 0xcde <uint2lcd+0x3e>
+
+00000d9a <int2lcd>:
+//
+//Takes a 8bit signed and displays it in base ten on the LCD. Leading 0's are 
+//not displayed.
+//
+void int2lcd(int8_t number){
+    if(number < 0){send_lcd(CHAR_BYTE, '-', 100); uint2lcd(~number+1);}    //take 2's complement of number and display
+     d9a:	87 ff       	sbrs	r24, 7
+    else                                    {uint2lcd(number);}
+     d9c:	0c 94 50 06 	jmp	0xca0	; 0xca0 <uint2lcd>
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     da0:	91 e0       	ldi	r25, 0x01	; 1
+     da2:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     da4:	77 9b       	sbis	0x0e, 7	; 14
+     da6:	fe cf       	rjmp	.-4      	; 0xda4 <int2lcd+0xa>
+  SPDR = byte;                        //send payload
+     da8:	9d e2       	ldi	r25, 0x2D	; 45
+     daa:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     dac:	77 9b       	sbis	0x0e, 7	; 14
+     dae:	fe cf       	rjmp	.-4      	; 0xdac <int2lcd+0x12>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     db0:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     db4:	98 60       	ori	r25, 0x08	; 8
+     db6:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     dba:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     dbe:	97 7f       	andi	r25, 0xF7	; 247
+     dc0:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     dc4:	ef e9       	ldi	r30, 0x9F	; 159
+     dc6:	ff e0       	ldi	r31, 0x0F	; 15
+     dc8:	31 97       	sbiw	r30, 0x01	; 1
+     dca:	f1 f7       	brne	.-4      	; 0xdc8 <int2lcd+0x2e>
+     dcc:	00 c0       	rjmp	.+0      	; 0xdce <int2lcd+0x34>
+     dce:	00 00       	nop
+//
+//Takes a 8bit signed and displays it in base ten on the LCD. Leading 0's are 
+//not displayed.
+//
+void int2lcd(int8_t number){
+    if(number < 0){send_lcd(CHAR_BYTE, '-', 100); uint2lcd(~number+1);}    //take 2's complement of number and display
+     dd0:	81 95       	neg	r24
+     dd2:	0c 94 50 06 	jmp	0xca0	; 0xca0 <uint2lcd>
+
+00000dd6 <cursor_on>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     dd6:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     dd8:	77 9b       	sbis	0x0e, 7	; 14
+     dda:	fe cf       	rjmp	.-4      	; 0xdd8 <cursor_on+0x2>
+  SPDR = byte;                        //send payload
+     ddc:	8e e0       	ldi	r24, 0x0E	; 14
+     dde:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     de0:	77 9b       	sbis	0x0e, 7	; 14
+     de2:	fe cf       	rjmp	.-4      	; 0xde0 <cursor_on+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     de4:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     de8:	88 60       	ori	r24, 0x08	; 8
+     dea:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     dee:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     df2:	87 7f       	andi	r24, 0xF7	; 247
+     df4:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     df8:	8f e9       	ldi	r24, 0x9F	; 159
+     dfa:	9f e0       	ldi	r25, 0x0F	; 15
+     dfc:	01 97       	sbiw	r24, 0x01	; 1
+     dfe:	f1 f7       	brne	.-4      	; 0xdfc <cursor_on+0x26>
+     e00:	00 c0       	rjmp	.+0      	; 0xe02 <cursor_on+0x2c>
+     e02:	00 00       	nop
+     e04:	08 95       	ret
+
+00000e06 <cursor_off>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     e06:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     e08:	77 9b       	sbis	0x0e, 7	; 14
+     e0a:	fe cf       	rjmp	.-4      	; 0xe08 <cursor_off+0x2>
+  SPDR = byte;                        //send payload
+     e0c:	8c e0       	ldi	r24, 0x0C	; 12
+     e0e:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     e10:	77 9b       	sbis	0x0e, 7	; 14
+     e12:	fe cf       	rjmp	.-4      	; 0xe10 <cursor_off+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     e14:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e18:	88 60       	ori	r24, 0x08	; 8
+     e1a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e1e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e22:	87 7f       	andi	r24, 0xF7	; 247
+     e24:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e28:	8f e9       	ldi	r24, 0x9F	; 159
+     e2a:	9f e0       	ldi	r25, 0x0F	; 15
+     e2c:	01 97       	sbiw	r24, 0x01	; 1
+     e2e:	f1 f7       	brne	.-4      	; 0xe2c <cursor_off+0x26>
+     e30:	00 c0       	rjmp	.+0      	; 0xe32 <cursor_off+0x2c>
+     e32:	00 00       	nop
+     e34:	08 95       	ret
+
+00000e36 <shift_right>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     e36:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     e38:	77 9b       	sbis	0x0e, 7	; 14
+     e3a:	fe cf       	rjmp	.-4      	; 0xe38 <shift_right+0x2>
+  SPDR = byte;                        //send payload
+     e3c:	8e e1       	ldi	r24, 0x1E	; 30
+     e3e:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     e40:	77 9b       	sbis	0x0e, 7	; 14
+     e42:	fe cf       	rjmp	.-4      	; 0xe40 <shift_right+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     e44:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e48:	88 60       	ori	r24, 0x08	; 8
+     e4a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e4e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e52:	87 7f       	andi	r24, 0xF7	; 247
+     e54:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e58:	8f e9       	ldi	r24, 0x9F	; 159
+     e5a:	9f e0       	ldi	r25, 0x0F	; 15
+     e5c:	01 97       	sbiw	r24, 0x01	; 1
+     e5e:	f1 f7       	brne	.-4      	; 0xe5c <shift_right+0x26>
+     e60:	00 c0       	rjmp	.+0      	; 0xe62 <shift_right+0x2c>
+     e62:	00 00       	nop
+     e64:	08 95       	ret
+
+00000e66 <shift_left>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     e66:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     e68:	77 9b       	sbis	0x0e, 7	; 14
+     e6a:	fe cf       	rjmp	.-4      	; 0xe68 <shift_left+0x2>
+  SPDR = byte;                        //send payload
+     e6c:	88 e1       	ldi	r24, 0x18	; 24
+     e6e:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     e70:	77 9b       	sbis	0x0e, 7	; 14
+     e72:	fe cf       	rjmp	.-4      	; 0xe70 <shift_left+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     e74:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e78:	88 60       	ori	r24, 0x08	; 8
+     e7a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e7e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e82:	87 7f       	andi	r24, 0xF7	; 247
+     e84:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     e88:	8f e9       	ldi	r24, 0x9F	; 159
+     e8a:	9f e0       	ldi	r25, 0x0F	; 15
+     e8c:	01 97       	sbiw	r24, 0x01	; 1
+     e8e:	f1 f7       	brne	.-4      	; 0xe8c <shift_left+0x26>
+     e90:	00 c0       	rjmp	.+0      	; 0xe92 <shift_left+0x2c>
+     e92:	00 00       	nop
+     e94:	08 95       	ret
+
+00000e96 <strobe_lcd>:
+     e96:	e2 e6       	ldi	r30, 0x62	; 98
+     e98:	f0 e0       	ldi	r31, 0x00	; 0
+     e9a:	80 81       	ld	r24, Z
+     e9c:	88 60       	ori	r24, 0x08	; 8
+     e9e:	80 83       	st	Z, r24
+     ea0:	80 81       	ld	r24, Z
+     ea2:	87 7f       	andi	r24, 0xF7	; 247
+     ea4:	80 83       	st	Z, r24
+     ea6:	08 95       	ret
+
+00000ea8 <clear_display>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     ea8:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     eaa:	77 9b       	sbis	0x0e, 7	; 14
+     eac:	fe cf       	rjmp	.-4      	; 0xeaa <clear_display+0x2>
+  SPDR = byte;                        //send payload
+     eae:	81 e0       	ldi	r24, 0x01	; 1
+     eb0:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     eb2:	77 9b       	sbis	0x0e, 7	; 14
+     eb4:	fe cf       	rjmp	.-4      	; 0xeb2 <clear_display+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     eb6:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     eba:	88 60       	ori	r24, 0x08	; 8
+     ebc:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     ec0:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     ec4:	87 7f       	andi	r24, 0xF7	; 247
+     ec6:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     eca:	8f e9       	ldi	r24, 0x9F	; 159
+     ecc:	9f e0       	ldi	r25, 0x0F	; 15
+     ece:	01 97       	sbiw	r24, 0x01	; 1
+     ed0:	f1 f7       	brne	.-4      	; 0xece <clear_display+0x26>
+     ed2:	00 c0       	rjmp	.+0      	; 0xed4 <clear_display+0x2c>
+     ed4:	00 00       	nop
+     ed6:	08 95       	ret
+
+00000ed8 <cursor_home>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     ed8:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     eda:	77 9b       	sbis	0x0e, 7	; 14
+     edc:	fe cf       	rjmp	.-4      	; 0xeda <cursor_home+0x2>
+  SPDR = byte;                        //send payload
+     ede:	82 e0       	ldi	r24, 0x02	; 2
+     ee0:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     ee2:	77 9b       	sbis	0x0e, 7	; 14
+     ee4:	fe cf       	rjmp	.-4      	; 0xee2 <cursor_home+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     ee6:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     eea:	88 60       	ori	r24, 0x08	; 8
+     eec:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     ef0:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     ef4:	87 7f       	andi	r24, 0xF7	; 247
+     ef6:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     efa:	8f e9       	ldi	r24, 0x9F	; 159
+     efc:	9f e0       	ldi	r25, 0x0F	; 15
+     efe:	01 97       	sbiw	r24, 0x01	; 1
+     f00:	f1 f7       	brne	.-4      	; 0xefe <cursor_home+0x26>
+     f02:	00 c0       	rjmp	.+0      	; 0xf04 <cursor_home+0x2c>
+     f04:	00 00       	nop
+     f06:	08 95       	ret
+
+00000f08 <home_line2>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     f08:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     f0a:	77 9b       	sbis	0x0e, 7	; 14
+     f0c:	fe cf       	rjmp	.-4      	; 0xf0a <home_line2+0x2>
+  SPDR = byte;                        //send payload
+     f0e:	80 ec       	ldi	r24, 0xC0	; 192
+     f10:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     f12:	77 9b       	sbis	0x0e, 7	; 14
+     f14:	fe cf       	rjmp	.-4      	; 0xf12 <home_line2+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     f16:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f1a:	88 60       	ori	r24, 0x08	; 8
+     f1c:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f20:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f24:	87 7f       	andi	r24, 0xF7	; 247
+     f26:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f2a:	8f e9       	ldi	r24, 0x9F	; 159
+     f2c:	9f e0       	ldi	r25, 0x0F	; 15
+     f2e:	01 97       	sbiw	r24, 0x01	; 1
+     f30:	f1 f7       	brne	.-4      	; 0xf2e <home_line2+0x26>
+     f32:	00 c0       	rjmp	.+0      	; 0xf34 <home_line2+0x2c>
+     f34:	00 00       	nop
+     f36:	08 95       	ret
+
+00000f38 <fill_spaces>:
+ 
+//-----------------------------------------------------------------------------
+//                          fill_spaces   
+//
+//Fill an entire line with spaces.
+void fill_spaces(void){
+     f38:	90 e1       	ldi	r25, 0x10	; 16
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     f3a:	31 e0       	ldi	r19, 0x01	; 1
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+  SPDR = byte;                        //send payload
+     f3c:	20 e2       	ldi	r18, 0x20	; 32
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     f3e:	3f b9       	out	0x0f, r19	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     f40:	77 9b       	sbis	0x0e, 7	; 14
+     f42:	fe cf       	rjmp	.-4      	; 0xf40 <fill_spaces+0x8>
+  SPDR = byte;                        //send payload
+     f44:	2f b9       	out	0x0f, r18	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     f46:	77 9b       	sbis	0x0e, 7	; 14
+     f48:	fe cf       	rjmp	.-4      	; 0xf46 <fill_spaces+0xe>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     f4a:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f4e:	88 60       	ori	r24, 0x08	; 8
+     f50:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f54:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f58:	87 7f       	andi	r24, 0xF7	; 247
+     f5a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f5e:	ef e9       	ldi	r30, 0x9F	; 159
+     f60:	ff e0       	ldi	r31, 0x0F	; 15
+     f62:	31 97       	sbiw	r30, 0x01	; 1
+     f64:	f1 f7       	brne	.-4      	; 0xf62 <fill_spaces+0x2a>
+     f66:	00 c0       	rjmp	.+0      	; 0xf68 <fill_spaces+0x30>
+     f68:	00 00       	nop
+     f6a:	91 50       	subi	r25, 0x01	; 1
+//                          fill_spaces   
+//
+//Fill an entire line with spaces.
+void fill_spaces(void){
+	uint8_t i;
+	for (i=0; i<=(NUM_LCD_CHARS-1); i++){
+     f6c:	41 f7       	brne	.-48     	; 0xf3e <fill_spaces+0x6>
+		send_lcd(CHAR_BYTE, ' ',100); //100us wait between characters
+	}
+}  
+     f6e:	08 95       	ret
+
+00000f70 <char2lcd>:
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     f70:	91 e0       	ldi	r25, 0x01	; 1
+     f72:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     f74:	77 9b       	sbis	0x0e, 7	; 14
+     f76:	fe cf       	rjmp	.-4      	; 0xf74 <char2lcd+0x4>
+  SPDR = byte;                        //send payload
+     f78:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     f7a:	77 9b       	sbis	0x0e, 7	; 14
+     f7c:	fe cf       	rjmp	.-4      	; 0xf7a <char2lcd+0xa>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     f7e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f82:	88 60       	ori	r24, 0x08	; 8
+     f84:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f88:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f8c:	87 7f       	andi	r24, 0xF7	; 247
+     f8e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     f92:	8f e9       	ldi	r24, 0x9F	; 159
+     f94:	9f e0       	ldi	r25, 0x0F	; 15
+     f96:	01 97       	sbiw	r24, 0x01	; 1
+     f98:	f1 f7       	brne	.-4      	; 0xf96 <char2lcd+0x26>
+     f9a:	00 c0       	rjmp	.+0      	; 0xf9c <char2lcd+0x2c>
+     f9c:	00 00       	nop
+     f9e:	08 95       	ret
+
+00000fa0 <string2lcd>:
+
+//----------------------------------------------------------------------------
+//                            string2lcd
+//                            
+//Send a ascii string to the LCD.
+void string2lcd(char *lcd_str){ 
+     fa0:	fc 01       	movw	r30, r24
+  uint8_t i;
+  for (i=0; i<=(strlen(lcd_str)-1); i++){send_lcd(CHAR_BYTE, lcd_str[i], 100);}                  
+     fa2:	40 e0       	ldi	r20, 0x00	; 0
+     fa4:	50 e0       	ldi	r21, 0x00	; 0
+     fa6:	60 e0       	ldi	r22, 0x00	; 0
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     fa8:	71 e0       	ldi	r23, 0x01	; 1
+//                            string2lcd
+//                            
+//Send a ascii string to the LCD.
+void string2lcd(char *lcd_str){ 
+  uint8_t i;
+  for (i=0; i<=(strlen(lcd_str)-1); i++){send_lcd(CHAR_BYTE, lcd_str[i], 100);}                  
+     faa:	df 01       	movw	r26, r30
+     fac:	a4 0f       	add	r26, r20
+     fae:	b5 1f       	adc	r27, r21
+     fb0:	8c 91       	ld	r24, X
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+     fb2:	7f b9       	out	0x0f, r23	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     fb4:	77 9b       	sbis	0x0e, 7	; 14
+     fb6:	fe cf       	rjmp	.-4      	; 0xfb4 <string2lcd+0x14>
+  SPDR = byte;                        //send payload
+     fb8:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+     fba:	77 9b       	sbis	0x0e, 7	; 14
+     fbc:	fe cf       	rjmp	.-4      	; 0xfba <string2lcd+0x1a>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+     fbe:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     fc2:	98 60       	ori	r25, 0x08	; 8
+     fc4:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     fc8:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     fcc:	97 7f       	andi	r25, 0xF7	; 247
+     fce:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+     fd2:	8f e9       	ldi	r24, 0x9F	; 159
+     fd4:	9f e0       	ldi	r25, 0x0F	; 15
+     fd6:	01 97       	sbiw	r24, 0x01	; 1
+     fd8:	f1 f7       	brne	.-4      	; 0xfd6 <string2lcd+0x36>
+     fda:	00 c0       	rjmp	.+0      	; 0xfdc <string2lcd+0x3c>
+     fdc:	00 00       	nop
+//                            string2lcd
+//                            
+//Send a ascii string to the LCD.
+void string2lcd(char *lcd_str){ 
+  uint8_t i;
+  for (i=0; i<=(strlen(lcd_str)-1); i++){send_lcd(CHAR_BYTE, lcd_str[i], 100);}                  
+     fde:	6f 5f       	subi	r22, 0xFF	; 255
+     fe0:	46 2f       	mov	r20, r22
+     fe2:	50 e0       	ldi	r21, 0x00	; 0
+     fe4:	df 01       	movw	r26, r30
+     fe6:	0d 90       	ld	r0, X+
+     fe8:	00 20       	and	r0, r0
+     fea:	e9 f7       	brne	.-6      	; 0xfe6 <string2lcd+0x46>
+     fec:	9d 01       	movw	r18, r26
+     fee:	2e 1b       	sub	r18, r30
+     ff0:	3f 0b       	sbc	r19, r31
+     ff2:	22 50       	subi	r18, 0x02	; 2
+     ff4:	31 09       	sbc	r19, r1
+     ff6:	24 17       	cp	r18, r20
+     ff8:	35 07       	cpc	r19, r21
+     ffa:	b8 f6       	brcc	.-82     	; 0xfaa <string2lcd+0xa>
+} 
+     ffc:	08 95       	ret
+
+00000ffe <lcd_init>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     ffe:	8f ef       	ldi	r24, 0xFF	; 255
+    1000:	99 ef       	ldi	r25, 0xF9	; 249
+    1002:	01 97       	sbiw	r24, 0x01	; 1
+    1004:	f1 f7       	brne	.-4      	; 0x1002 <lcd_init+0x4>
+    1006:	00 c0       	rjmp	.+0      	; 0x1008 <lcd_init+0xa>
+    1008:	00 00       	nop
+//
+void lcd_init(void){
+  _delay_ms(16);      //power up delay
+#if SPI_MODE==1       //assumption is that the SPI port is intialized
+  //TODO: kludge alert! should not be here.
+  DDRF=0x08;          //port F bit 3 is enable for LCD in SPI mode
+    100a:	88 e0       	ldi	r24, 0x08	; 8
+    100c:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <__TEXT_REGION_LENGTH__+0x7e0061>
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    1010:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1012:	77 9b       	sbis	0x0e, 7	; 14
+    1014:	fe cf       	rjmp	.-4      	; 0x1012 <lcd_init+0x14>
+  SPDR = byte;                        //send payload
+    1016:	80 e3       	ldi	r24, 0x30	; 48
+    1018:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    101a:	77 9b       	sbis	0x0e, 7	; 14
+    101c:	fe cf       	rjmp	.-4      	; 0x101a <lcd_init+0x1c>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    101e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1022:	88 60       	ori	r24, 0x08	; 8
+    1024:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1028:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    102c:	87 7f       	andi	r24, 0xF7	; 247
+    102e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    1032:	8f e9       	ldi	r24, 0x9F	; 159
+    1034:	9f e0       	ldi	r25, 0x0F	; 15
+    1036:	01 97       	sbiw	r24, 0x01	; 1
+    1038:	f1 f7       	brne	.-4      	; 0x1036 <lcd_init+0x38>
+    103a:	00 c0       	rjmp	.+0      	; 0x103c <lcd_init+0x3e>
+    103c:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    103e:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1040:	77 9b       	sbis	0x0e, 7	; 14
+    1042:	fe cf       	rjmp	.-4      	; 0x1040 <lcd_init+0x42>
+  SPDR = byte;                        //send payload
+    1044:	80 e3       	ldi	r24, 0x30	; 48
+    1046:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1048:	77 9b       	sbis	0x0e, 7	; 14
+    104a:	fe cf       	rjmp	.-4      	; 0x1048 <lcd_init+0x4a>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    104c:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1050:	88 60       	ori	r24, 0x08	; 8
+    1052:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1056:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    105a:	87 7f       	andi	r24, 0xF7	; 247
+    105c:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1060:	8f e9       	ldi	r24, 0x9F	; 159
+    1062:	9f e0       	ldi	r25, 0x0F	; 15
+    1064:	01 97       	sbiw	r24, 0x01	; 1
+    1066:	f1 f7       	brne	.-4      	; 0x1064 <lcd_init+0x66>
+    1068:	00 c0       	rjmp	.+0      	; 0x106a <lcd_init+0x6c>
+    106a:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    106c:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    106e:	77 9b       	sbis	0x0e, 7	; 14
+    1070:	fe cf       	rjmp	.-4      	; 0x106e <lcd_init+0x70>
+  SPDR = byte;                        //send payload
+    1072:	80 e3       	ldi	r24, 0x30	; 48
+    1074:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1076:	77 9b       	sbis	0x0e, 7	; 14
+    1078:	fe cf       	rjmp	.-4      	; 0x1076 <lcd_init+0x78>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    107a:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    107e:	88 60       	ori	r24, 0x08	; 8
+    1080:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1084:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1088:	87 7f       	andi	r24, 0xF7	; 247
+    108a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    108e:	8f e9       	ldi	r24, 0x9F	; 159
+    1090:	9f e0       	ldi	r25, 0x0F	; 15
+    1092:	01 97       	sbiw	r24, 0x01	; 1
+    1094:	f1 f7       	brne	.-4      	; 0x1092 <lcd_init+0x94>
+    1096:	00 c0       	rjmp	.+0      	; 0x1098 <lcd_init+0x9a>
+    1098:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    109a:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    109c:	77 9b       	sbis	0x0e, 7	; 14
+    109e:	fe cf       	rjmp	.-4      	; 0x109c <lcd_init+0x9e>
+  SPDR = byte;                        //send payload
+    10a0:	88 e3       	ldi	r24, 0x38	; 56
+    10a2:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    10a4:	77 9b       	sbis	0x0e, 7	; 14
+    10a6:	fe cf       	rjmp	.-4      	; 0x10a4 <lcd_init+0xa6>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    10a8:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10ac:	88 60       	ori	r24, 0x08	; 8
+    10ae:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10b2:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10b6:	87 7f       	andi	r24, 0xF7	; 247
+    10b8:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10bc:	8f e9       	ldi	r24, 0x9F	; 159
+    10be:	9f e0       	ldi	r25, 0x0F	; 15
+    10c0:	01 97       	sbiw	r24, 0x01	; 1
+    10c2:	f1 f7       	brne	.-4      	; 0x10c0 <lcd_init+0xc2>
+    10c4:	00 c0       	rjmp	.+0      	; 0x10c6 <lcd_init+0xc8>
+    10c6:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    10c8:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    10ca:	77 9b       	sbis	0x0e, 7	; 14
+    10cc:	fe cf       	rjmp	.-4      	; 0x10ca <lcd_init+0xcc>
+  SPDR = byte;                        //send payload
+    10ce:	88 e0       	ldi	r24, 0x08	; 8
+    10d0:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    10d2:	77 9b       	sbis	0x0e, 7	; 14
+    10d4:	fe cf       	rjmp	.-4      	; 0x10d2 <lcd_init+0xd4>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    10d6:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10da:	88 60       	ori	r24, 0x08	; 8
+    10dc:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10e0:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10e4:	87 7f       	andi	r24, 0xF7	; 247
+    10e6:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    10ea:	8f e9       	ldi	r24, 0x9F	; 159
+    10ec:	9f e0       	ldi	r25, 0x0F	; 15
+    10ee:	01 97       	sbiw	r24, 0x01	; 1
+    10f0:	f1 f7       	brne	.-4      	; 0x10ee <lcd_init+0xf0>
+    10f2:	00 c0       	rjmp	.+0      	; 0x10f4 <lcd_init+0xf6>
+    10f4:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    10f6:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    10f8:	77 9b       	sbis	0x0e, 7	; 14
+    10fa:	fe cf       	rjmp	.-4      	; 0x10f8 <lcd_init+0xfa>
+  SPDR = byte;                        //send payload
+    10fc:	81 e0       	ldi	r24, 0x01	; 1
+    10fe:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1100:	77 9b       	sbis	0x0e, 7	; 14
+    1102:	fe cf       	rjmp	.-4      	; 0x1100 <__stack+0x1>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    1104:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1108:	88 60       	ori	r24, 0x08	; 8
+    110a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    110e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1112:	87 7f       	andi	r24, 0xF7	; 247
+    1114:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1118:	8f e9       	ldi	r24, 0x9F	; 159
+    111a:	9f e0       	ldi	r25, 0x0F	; 15
+    111c:	01 97       	sbiw	r24, 0x01	; 1
+    111e:	f1 f7       	brne	.-4      	; 0x111c <__stack+0x1d>
+    1120:	00 c0       	rjmp	.+0      	; 0x1122 <__stack+0x23>
+    1122:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    1124:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1126:	77 9b       	sbis	0x0e, 7	; 14
+    1128:	fe cf       	rjmp	.-4      	; 0x1126 <__stack+0x27>
+  SPDR = byte;                        //send payload
+    112a:	86 e0       	ldi	r24, 0x06	; 6
+    112c:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    112e:	77 9b       	sbis	0x0e, 7	; 14
+    1130:	fe cf       	rjmp	.-4      	; 0x112e <__stack+0x2f>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    1132:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1136:	88 60       	ori	r24, 0x08	; 8
+    1138:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    113c:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1140:	87 7f       	andi	r24, 0xF7	; 247
+    1142:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1146:	8f e9       	ldi	r24, 0x9F	; 159
+    1148:	9f e0       	ldi	r25, 0x0F	; 15
+    114a:	01 97       	sbiw	r24, 0x01	; 1
+    114c:	f1 f7       	brne	.-4      	; 0x114a <__stack+0x4b>
+    114e:	00 c0       	rjmp	.+0      	; 0x1150 <__stack+0x51>
+    1150:	00 00       	nop
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    1152:	1f b8       	out	0x0f, r1	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    1154:	77 9b       	sbis	0x0e, 7	; 14
+    1156:	fe cf       	rjmp	.-4      	; 0x1154 <__stack+0x55>
+  SPDR = byte;                        //send payload
+    1158:	8c e0       	ldi	r24, 0x0C	; 12
+    115a:	8f b9       	out	0x0f, r24	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    115c:	77 9b       	sbis	0x0e, 7	; 14
+    115e:	fe cf       	rjmp	.-4      	; 0x115c <__stack+0x5d>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    1160:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1164:	88 60       	ori	r24, 0x08	; 8
+    1166:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    116a:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    116e:	87 7f       	andi	r24, 0xF7	; 247
+    1170:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1174:	8f e9       	ldi	r24, 0x9F	; 159
+    1176:	9f e0       	ldi	r25, 0x0F	; 15
+    1178:	01 97       	sbiw	r24, 0x01	; 1
+    117a:	f1 f7       	brne	.-4      	; 0x1178 <__stack+0x79>
+    117c:	00 c0       	rjmp	.+0      	; 0x117e <__stack+0x7f>
+    117e:	00 00       	nop
+    1180:	08 95       	ret
+
+00001182 <lcd_int32>:
+void  lcd_int32(int32_t l,          //number to display
+                uint8_t fieldwidth, //width of the field for display
+                uint8_t decpos,     //0 if no decimal point, otherwise
+                uint8_t bSigned,    //non-zero if the number should be treated as signed 
+                uint8_t bZeroFill)  //non-zero if a specified fieldwidth is to be zero filled
+{
+    1182:	4f 92       	push	r4
+    1184:	5f 92       	push	r5
+    1186:	6f 92       	push	r6
+    1188:	7f 92       	push	r7
+    118a:	8f 92       	push	r8
+    118c:	9f 92       	push	r9
+    118e:	af 92       	push	r10
+    1190:	bf 92       	push	r11
+    1192:	cf 92       	push	r12
+    1194:	df 92       	push	r13
+    1196:	ef 92       	push	r14
+    1198:	ff 92       	push	r15
+    119a:	0f 93       	push	r16
+    119c:	1f 93       	push	r17
+    119e:	cf 93       	push	r28
+    11a0:	df 93       	push	r29
+    11a2:	cd b7       	in	r28, 0x3d	; 61
+    11a4:	de b7       	in	r29, 0x3e	; 62
+    11a6:	69 97       	sbiw	r28, 0x19	; 25
+    11a8:	0f b6       	in	r0, 0x3f	; 63
+    11aa:	f8 94       	cli
+    11ac:	de bf       	out	0x3e, r29	; 62
+    11ae:	0f be       	out	0x3f, r0	; 63
+    11b0:	cd bf       	out	0x3d, r28	; 61
+    11b2:	14 2f       	mov	r17, r20
+    11b4:	42 2e       	mov	r4, r18
+    11b6:	5e 2c       	mov	r5, r14
+      char    fillch;
+      ldiv_t  qr;
+
+      qr.quot = l; // initialize the quotient 
+
+      if (bSigned){
+    11b8:	00 23       	and	r16, r16
+    11ba:	79 f0       	breq	.+30     	; 0x11da <lcd_int32+0x58>
+        bSigned = (qr.quot<0);
+    11bc:	6b 01       	movw	r12, r22
+    11be:	7c 01       	movw	r14, r24
+    11c0:	cc 24       	eor	r12, r12
+    11c2:	f7 fc       	sbrc	r15, 7
+    11c4:	c3 94       	inc	r12
+    11c6:	dd 24       	eor	r13, r13
+    11c8:	ee 24       	eor	r14, r14
+    11ca:	ff 24       	eor	r15, r15
+    11cc:	0c 2d       	mov	r16, r12
+        qr.quot = labs(qr.quot);
+    11ce:	6b 01       	movw	r12, r22
+    11d0:	7c 01       	movw	r14, r24
+    11d2:	97 fd       	sbrc	r25, 7
+    11d4:	a5 c0       	rjmp	.+330    	; 0x1320 <lcd_int32+0x19e>
+    11d6:	c7 01       	movw	r24, r14
+    11d8:	b6 01       	movw	r22, r12
+      }
+
+      // convert the digits to the right of the decimal point 
+      if (decpos){
+    11da:	44 20       	and	r4, r4
+    11dc:	09 f4       	brne	.+2      	; 0x11e0 <lcd_int32+0x5e>
+    11de:	98 c0       	rjmp	.+304    	; 0x1310 <lcd_int32+0x18e>
+    11e0:	9e 01       	movw	r18, r28
+    11e2:	2f 5f       	subi	r18, 0xFF	; 255
+    11e4:	3f 4f       	sbci	r19, 0xFF	; 255
+    11e6:	59 01       	movw	r10, r18
+    11e8:	49 01       	movw	r8, r18
+    11ea:	66 24       	eor	r6, r6
+    11ec:	6a 94       	dec	r6
+    11ee:	64 0c       	add	r6, r4
+    11f0:	71 2c       	mov	r7, r1
+    11f2:	3f ef       	ldi	r19, 0xFF	; 255
+    11f4:	63 1a       	sub	r6, r19
+    11f6:	73 0a       	sbc	r7, r19
+    11f8:	6a 0c       	add	r6, r10
+    11fa:	7b 1c       	adc	r7, r11
+        for (; decpos ; decpos--){
+          qr = ldiv(qr.quot, 10);
+    11fc:	2a e0       	ldi	r18, 0x0A	; 10
+    11fe:	30 e0       	ldi	r19, 0x00	; 0
+    1200:	40 e0       	ldi	r20, 0x00	; 0
+    1202:	50 e0       	ldi	r21, 0x00	; 0
+    1204:	0e 94 81 0b 	call	0x1702	; 0x1702 <__divmodsi4>
+    1208:	e6 2f       	mov	r30, r22
+    120a:	2a 8b       	std	Y+18, r18	; 0x12
+    120c:	3b 8b       	std	Y+19, r19	; 0x13
+    120e:	4c 8b       	std	Y+20, r20	; 0x14
+    1210:	5d 8b       	std	Y+21, r21	; 0x15
+    1212:	6a 89       	ldd	r22, Y+18	; 0x12
+    1214:	7b 89       	ldd	r23, Y+19	; 0x13
+    1216:	8c 89       	ldd	r24, Y+20	; 0x14
+    1218:	9d 89       	ldd	r25, Y+21	; 0x15
+          sline[i++] = qr.rem + '0';
+    121a:	20 e3       	ldi	r18, 0x30	; 48
+    121c:	2e 0f       	add	r18, r30
+    121e:	f4 01       	movw	r30, r8
+    1220:	21 93       	st	Z+, r18
+    1222:	4f 01       	movw	r8, r30
+        qr.quot = labs(qr.quot);
+      }
+
+      // convert the digits to the right of the decimal point 
+      if (decpos){
+        for (; decpos ; decpos--){
+    1224:	6e 16       	cp	r6, r30
+    1226:	7f 06       	cpc	r7, r31
+    1228:	49 f7       	brne	.-46     	; 0x11fc <lcd_int32+0x7a>
+          qr = ldiv(qr.quot, 10);
+          sline[i++] = qr.rem + '0';
+        }
+        sline[i++] = '.';
+    122a:	99 24       	eor	r9, r9
+    122c:	93 94       	inc	r9
+    122e:	94 0c       	add	r9, r4
+    1230:	f5 01       	movw	r30, r10
+    1232:	e4 0d       	add	r30, r4
+    1234:	f1 1d       	adc	r31, r1
+    1236:	2e e2       	ldi	r18, 0x2E	; 46
+    1238:	20 83       	st	Z, r18
+      }
+
+      // convert the digits to the left of the decimal point 
+      do{
+          qr = ldiv(qr.quot, 10);
+    123a:	2a e0       	ldi	r18, 0x0A	; 10
+    123c:	30 e0       	ldi	r19, 0x00	; 0
+    123e:	40 e0       	ldi	r20, 0x00	; 0
+    1240:	50 e0       	ldi	r21, 0x00	; 0
+    1242:	0e 94 81 0b 	call	0x1702	; 0x1702 <__divmodsi4>
+    1246:	e6 2f       	mov	r30, r22
+    1248:	2a 8b       	std	Y+18, r18	; 0x12
+    124a:	3b 8b       	std	Y+19, r19	; 0x13
+    124c:	4c 8b       	std	Y+20, r20	; 0x14
+    124e:	5d 8b       	std	Y+21, r21	; 0x15
+    1250:	6e 8b       	std	Y+22, r22	; 0x16
+    1252:	7f 8b       	std	Y+23, r23	; 0x17
+    1254:	88 8f       	std	Y+24, r24	; 0x18
+    1256:	99 8f       	std	Y+25, r25	; 0x19
+    1258:	6a 89       	ldd	r22, Y+18	; 0x12
+    125a:	7b 89       	ldd	r23, Y+19	; 0x13
+    125c:	8c 89       	ldd	r24, Y+20	; 0x14
+    125e:	9d 89       	ldd	r25, Y+21	; 0x15
+          sline[i++] = qr.rem + '0';
+    1260:	31 e0       	ldi	r19, 0x01	; 1
+    1262:	39 0d       	add	r19, r9
+    1264:	d5 01       	movw	r26, r10
+    1266:	a9 0d       	add	r26, r9
+    1268:	b1 1d       	adc	r27, r1
+    126a:	e0 5d       	subi	r30, 0xD0	; 208
+    126c:	ec 93       	st	X, r30
+    126e:	93 2e       	mov	r9, r19
+        }while(qr.quot);
+    1270:	61 15       	cp	r22, r1
+    1272:	71 05       	cpc	r23, r1
+    1274:	81 05       	cpc	r24, r1
+    1276:	91 05       	cpc	r25, r1
+    1278:	01 f7       	brne	.-64     	; 0x123a <lcd_int32+0xb8>
+
+      // fill the whole field if a width was specified
+      if (fieldwidth){
+    127a:	11 23       	and	r17, r17
+    127c:	61 f0       	breq	.+24     	; 0x1296 <lcd_int32+0x114>
+        fillch = bZeroFill? '0': ' '; // determine the fill character
+    127e:	51 10       	cpse	r5, r1
+    1280:	4d c0       	rjmp	.+154    	; 0x131c <lcd_int32+0x19a>
+    1282:	90 e2       	ldi	r25, 0x20	; 32
+        for (; i<fieldwidth ; ){sline[i++] = fillch;}
+    1284:	31 17       	cp	r19, r17
+    1286:	38 f4       	brcc	.+14     	; 0x1296 <lcd_int32+0x114>
+    1288:	f5 01       	movw	r30, r10
+    128a:	e3 0f       	add	r30, r19
+    128c:	f1 1d       	adc	r31, r1
+    128e:	90 83       	st	Z, r25
+    1290:	3f 5f       	subi	r19, 0xFF	; 255
+    1292:	13 13       	cpse	r17, r19
+    1294:	f9 cf       	rjmp	.-14     	; 0x1288 <lcd_int32+0x106>
+      }
+
+      // output the sign, if we need to
+      if (bSigned){sline[i++] = '-';}
+    1296:	00 23       	and	r16, r16
+    1298:	31 f0       	breq	.+12     	; 0x12a6 <lcd_int32+0x124>
+    129a:	f5 01       	movw	r30, r10
+    129c:	e3 0f       	add	r30, r19
+    129e:	f1 1d       	adc	r31, r1
+    12a0:	9d e2       	ldi	r25, 0x2D	; 45
+    12a2:	90 83       	st	Z, r25
+    12a4:	3f 5f       	subi	r19, 0xFF	; 255
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    12a6:	21 e0       	ldi	r18, 0x01	; 1
+
+      // output the sign, if we need to
+      if (bSigned){sline[i++] = '-';}
+
+      // now output the formatted number
+      do{send_lcd(CHAR_BYTE, sline[--i] , 1000);} while(i);
+    12a8:	31 50       	subi	r19, 0x01	; 1
+    12aa:	f5 01       	movw	r30, r10
+    12ac:	e3 0f       	add	r30, r19
+    12ae:	f1 1d       	adc	r31, r1
+    12b0:	90 81       	ld	r25, Z
+//TODO: uint32_t temp_long;
+//TODO: temp_long = F_CPU;
+
+
+#if SPI_MODE==1
+  SPDR = (cmd_or_char)? 0x01 : 0x00;  //send the proper value for intent
+    12b2:	2f b9       	out	0x0f, r18	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    12b4:	77 9b       	sbis	0x0e, 7	; 14
+    12b6:	fe cf       	rjmp	.-4      	; 0x12b4 <lcd_int32+0x132>
+  SPDR = byte;                        //send payload
+    12b8:	9f b9       	out	0x0f, r25	; 15
+  while (bit_is_clear(SPSR,SPIF)){}   //wait till byte is sent out
+    12ba:	77 9b       	sbis	0x0e, 7	; 14
+    12bc:	fe cf       	rjmp	.-4      	; 0x12ba <lcd_int32+0x138>
+//-----------------------------------------------------------------------------
+//                          strobe_lcd  
+//
+void strobe_lcd(void){ 
+#if SPI_MODE==1
+ PORTF |=  0x08; PORTF &= ~0x08; //toggle port F bit 3, LCD strobe trigger
+    12be:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    12c2:	98 60       	ori	r25, 0x08	; 8
+    12c4:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    12c8:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    12cc:	97 7f       	andi	r25, 0xF7	; 247
+    12ce:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    12d2:	8f e9       	ldi	r24, 0x9F	; 159
+    12d4:	9f e0       	ldi	r25, 0x0F	; 15
+    12d6:	01 97       	sbiw	r24, 0x01	; 1
+    12d8:	f1 f7       	brne	.-4      	; 0x12d6 <lcd_int32+0x154>
+    12da:	00 c0       	rjmp	.+0      	; 0x12dc <lcd_int32+0x15a>
+    12dc:	00 00       	nop
+
+      // output the sign, if we need to
+      if (bSigned){sline[i++] = '-';}
+
+      // now output the formatted number
+      do{send_lcd(CHAR_BYTE, sline[--i] , 1000);} while(i);
+    12de:	31 11       	cpse	r19, r1
+    12e0:	e3 cf       	rjmp	.-58     	; 0x12a8 <lcd_int32+0x126>
+
+}
+    12e2:	69 96       	adiw	r28, 0x19	; 25
+    12e4:	0f b6       	in	r0, 0x3f	; 63
+    12e6:	f8 94       	cli
+    12e8:	de bf       	out	0x3e, r29	; 62
+    12ea:	0f be       	out	0x3f, r0	; 63
+    12ec:	cd bf       	out	0x3d, r28	; 61
+    12ee:	df 91       	pop	r29
+    12f0:	cf 91       	pop	r28
+    12f2:	1f 91       	pop	r17
+    12f4:	0f 91       	pop	r16
+    12f6:	ff 90       	pop	r15
+    12f8:	ef 90       	pop	r14
+    12fa:	df 90       	pop	r13
+    12fc:	cf 90       	pop	r12
+    12fe:	bf 90       	pop	r11
+    1300:	af 90       	pop	r10
+    1302:	9f 90       	pop	r9
+    1304:	8f 90       	pop	r8
+    1306:	7f 90       	pop	r7
+    1308:	6f 90       	pop	r6
+    130a:	5f 90       	pop	r5
+    130c:	4f 90       	pop	r4
+    130e:	08 95       	ret
+                uint8_t decpos,     //0 if no decimal point, otherwise
+                uint8_t bSigned,    //non-zero if the number should be treated as signed 
+                uint8_t bZeroFill)  //non-zero if a specified fieldwidth is to be zero filled
+{
+      char    sline[NUM_LCD_CHARS+1];
+      uint8_t i=0;
+    1310:	91 2c       	mov	r9, r1
+    1312:	9e 01       	movw	r18, r28
+    1314:	2f 5f       	subi	r18, 0xFF	; 255
+    1316:	3f 4f       	sbci	r19, 0xFF	; 255
+    1318:	59 01       	movw	r10, r18
+    131a:	8f cf       	rjmp	.-226    	; 0x123a <lcd_int32+0xb8>
+          sline[i++] = qr.rem + '0';
+        }while(qr.quot);
+
+      // fill the whole field if a width was specified
+      if (fieldwidth){
+        fillch = bZeroFill? '0': ' '; // determine the fill character
+    131c:	90 e3       	ldi	r25, 0x30	; 48
+    131e:	b2 cf       	rjmp	.-156    	; 0x1284 <lcd_int32+0x102>
+
+      qr.quot = l; // initialize the quotient 
+
+      if (bSigned){
+        bSigned = (qr.quot<0);
+        qr.quot = labs(qr.quot);
+    1320:	f0 94       	com	r15
+    1322:	e0 94       	com	r14
+    1324:	d0 94       	com	r13
+    1326:	c0 94       	com	r12
+    1328:	c1 1c       	adc	r12, r1
+    132a:	d1 1c       	adc	r13, r1
+    132c:	e1 1c       	adc	r14, r1
+    132e:	f1 1c       	adc	r15, r1
+    1330:	52 cf       	rjmp	.-348    	; 0x11d6 <lcd_int32+0x54>
+
+00001332 <lcd_int16>:
+    1332:	5f 92       	push	r5
+    1334:	6f 92       	push	r6
+    1336:	7f 92       	push	r7
+    1338:	8f 92       	push	r8
+    133a:	9f 92       	push	r9
+    133c:	af 92       	push	r10
+    133e:	bf 92       	push	r11
+    1340:	cf 92       	push	r12
+    1342:	df 92       	push	r13
+    1344:	ef 92       	push	r14
+    1346:	ff 92       	push	r15
+    1348:	0f 93       	push	r16
+    134a:	1f 93       	push	r17
+    134c:	cf 93       	push	r28
+    134e:	df 93       	push	r29
+    1350:	cd b7       	in	r28, 0x3d	; 61
+    1352:	de b7       	in	r29, 0x3e	; 62
+    1354:	61 97       	sbiw	r28, 0x11	; 17
+    1356:	0f b6       	in	r0, 0x3f	; 63
+    1358:	f8 94       	cli
+    135a:	de bf       	out	0x3e, r29	; 62
+    135c:	0f be       	out	0x3f, r0	; 63
+    135e:	cd bf       	out	0x3d, r28	; 61
+    1360:	5c 01       	movw	r10, r24
+    1362:	96 2e       	mov	r9, r22
+    1364:	54 2e       	mov	r5, r20
+    1366:	62 2e       	mov	r6, r18
+    1368:	8b 2c       	mov	r8, r11
+    136a:	88 1c       	adc	r8, r8
+    136c:	88 24       	eor	r8, r8
+    136e:	88 1c       	adc	r8, r8
+    1370:	78 2c       	mov	r7, r8
+    1372:	9c 01       	movw	r18, r24
+    1374:	97 fd       	sbrc	r25, 7
+    1376:	9f c0       	rjmp	.+318    	; 0x14b6 <lcd_int16+0x184>
+    1378:	55 20       	and	r5, r5
+    137a:	09 f4       	brne	.+2      	; 0x137e <lcd_int16+0x4c>
+    137c:	90 c0       	rjmp	.+288    	; 0x149e <lcd_int16+0x16c>
+    137e:	8e 01       	movw	r16, r28
+    1380:	0f 5f       	subi	r16, 0xFF	; 255
+    1382:	1f 4f       	sbci	r17, 0xFF	; 255
+    1384:	78 01       	movw	r14, r16
+    1386:	cc 24       	eor	r12, r12
+    1388:	ca 94       	dec	r12
+    138a:	c5 0c       	add	r12, r5
+    138c:	d1 2c       	mov	r13, r1
+    138e:	8f ef       	ldi	r24, 0xFF	; 255
+    1390:	c8 1a       	sub	r12, r24
+    1392:	d8 0a       	sbc	r13, r24
+    1394:	c0 0e       	add	r12, r16
+    1396:	d1 1e       	adc	r13, r17
+    1398:	6a e0       	ldi	r22, 0x0A	; 10
+    139a:	70 e0       	ldi	r23, 0x00	; 0
+    139c:	c9 01       	movw	r24, r18
+    139e:	0e 94 6d 0b 	call	0x16da	; 0x16da <__divmodhi4>
+    13a2:	46 2f       	mov	r20, r22
+    13a4:	24 2f       	mov	r18, r20
+    13a6:	37 2f       	mov	r19, r23
+    13a8:	80 5d       	subi	r24, 0xD0	; 208
+    13aa:	f7 01       	movw	r30, r14
+    13ac:	81 93       	st	Z+, r24
+    13ae:	7f 01       	movw	r14, r30
+    13b0:	ec 15       	cp	r30, r12
+    13b2:	fd 05       	cpc	r31, r13
+    13b4:	89 f7       	brne	.-30     	; 0x1398 <lcd_int16+0x66>
+    13b6:	ff 24       	eor	r15, r15
+    13b8:	f3 94       	inc	r15
+    13ba:	f5 0c       	add	r15, r5
+    13bc:	f8 01       	movw	r30, r16
+    13be:	e5 0d       	add	r30, r5
+    13c0:	f1 1d       	adc	r31, r1
+    13c2:	8e e2       	ldi	r24, 0x2E	; 46
+    13c4:	80 83       	st	Z, r24
+    13c6:	01 c0       	rjmp	.+2      	; 0x13ca <lcd_int16+0x98>
+    13c8:	f9 2e       	mov	r15, r25
+    13ca:	6a e0       	ldi	r22, 0x0A	; 10
+    13cc:	70 e0       	ldi	r23, 0x00	; 0
+    13ce:	c9 01       	movw	r24, r18
+    13d0:	0e 94 6d 0b 	call	0x16da	; 0x16da <__divmodhi4>
+    13d4:	46 2f       	mov	r20, r22
+    13d6:	24 2f       	mov	r18, r20
+    13d8:	37 2f       	mov	r19, r23
+    13da:	91 e0       	ldi	r25, 0x01	; 1
+    13dc:	9f 0d       	add	r25, r15
+    13de:	f8 01       	movw	r30, r16
+    13e0:	ef 0d       	add	r30, r15
+    13e2:	f1 1d       	adc	r31, r1
+    13e4:	80 5d       	subi	r24, 0xD0	; 208
+    13e6:	80 83       	st	Z, r24
+    13e8:	21 15       	cp	r18, r1
+    13ea:	31 05       	cpc	r19, r1
+    13ec:	69 f7       	brne	.-38     	; 0x13c8 <lcd_int16+0x96>
+    13ee:	61 10       	cpse	r6, r1
+    13f0:	5b c0       	rjmp	.+182    	; 0x14a8 <lcd_int16+0x176>
+    13f2:	b7 fc       	sbrc	r11, 7
+    13f4:	65 c0       	rjmp	.+202    	; 0x14c0 <lcd_int16+0x18e>
+    13f6:	99 20       	and	r9, r9
+    13f8:	b1 f0       	breq	.+44     	; 0x1426 <lcd_int16+0xf4>
+    13fa:	68 2d       	mov	r22, r8
+    13fc:	70 e0       	ldi	r23, 0x00	; 0
+    13fe:	80 e2       	ldi	r24, 0x20	; 32
+    1400:	29 2f       	mov	r18, r25
+    1402:	30 e0       	ldi	r19, 0x00	; 0
+    1404:	49 2d       	mov	r20, r9
+    1406:	50 e0       	ldi	r21, 0x00	; 0
+    1408:	46 1b       	sub	r20, r22
+    140a:	57 0b       	sbc	r21, r23
+    140c:	24 17       	cp	r18, r20
+    140e:	35 07       	cpc	r19, r21
+    1410:	54 f4       	brge	.+20     	; 0x1426 <lcd_int16+0xf4>
+    1412:	9f 5f       	subi	r25, 0xFF	; 255
+    1414:	f8 01       	movw	r30, r16
+    1416:	e2 0f       	add	r30, r18
+    1418:	f3 1f       	adc	r31, r19
+    141a:	80 83       	st	Z, r24
+    141c:	29 2f       	mov	r18, r25
+    141e:	30 e0       	ldi	r19, 0x00	; 0
+    1420:	24 17       	cp	r18, r20
+    1422:	35 07       	cpc	r19, r21
+    1424:	b4 f3       	brlt	.-20     	; 0x1412 <lcd_int16+0xe0>
+    1426:	77 20       	and	r7, r7
+    1428:	31 f0       	breq	.+12     	; 0x1436 <lcd_int16+0x104>
+    142a:	f8 01       	movw	r30, r16
+    142c:	e9 0f       	add	r30, r25
+    142e:	f1 1d       	adc	r31, r1
+    1430:	8d e2       	ldi	r24, 0x2D	; 45
+    1432:	80 83       	st	Z, r24
+    1434:	9f 5f       	subi	r25, 0xFF	; 255
+    1436:	21 e0       	ldi	r18, 0x01	; 1
+    1438:	91 50       	subi	r25, 0x01	; 1
+    143a:	f8 01       	movw	r30, r16
+    143c:	e9 0f       	add	r30, r25
+    143e:	f1 1d       	adc	r31, r1
+    1440:	80 81       	ld	r24, Z
+    1442:	2f b9       	out	0x0f, r18	; 15
+    1444:	77 9b       	sbis	0x0e, 7	; 14
+    1446:	fe cf       	rjmp	.-4      	; 0x1444 <lcd_int16+0x112>
+    1448:	8f b9       	out	0x0f, r24	; 15
+    144a:	77 9b       	sbis	0x0e, 7	; 14
+    144c:	fe cf       	rjmp	.-4      	; 0x144a <lcd_int16+0x118>
+    144e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1452:	88 60       	ori	r24, 0x08	; 8
+    1454:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1458:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    145c:	87 7f       	andi	r24, 0xF7	; 247
+    145e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1462:	ef e9       	ldi	r30, 0x9F	; 159
+    1464:	ff e0       	ldi	r31, 0x0F	; 15
+    1466:	31 97       	sbiw	r30, 0x01	; 1
+    1468:	f1 f7       	brne	.-4      	; 0x1466 <lcd_int16+0x134>
+    146a:	00 c0       	rjmp	.+0      	; 0x146c <lcd_int16+0x13a>
+    146c:	00 00       	nop
+    146e:	91 11       	cpse	r25, r1
+    1470:	e3 cf       	rjmp	.-58     	; 0x1438 <lcd_int16+0x106>
+    1472:	61 96       	adiw	r28, 0x11	; 17
+    1474:	0f b6       	in	r0, 0x3f	; 63
+    1476:	f8 94       	cli
+    1478:	de bf       	out	0x3e, r29	; 62
+    147a:	0f be       	out	0x3f, r0	; 63
+    147c:	cd bf       	out	0x3d, r28	; 61
+    147e:	df 91       	pop	r29
+    1480:	cf 91       	pop	r28
+    1482:	1f 91       	pop	r17
+    1484:	0f 91       	pop	r16
+    1486:	ff 90       	pop	r15
+    1488:	ef 90       	pop	r14
+    148a:	df 90       	pop	r13
+    148c:	cf 90       	pop	r12
+    148e:	bf 90       	pop	r11
+    1490:	af 90       	pop	r10
+    1492:	9f 90       	pop	r9
+    1494:	8f 90       	pop	r8
+    1496:	7f 90       	pop	r7
+    1498:	6f 90       	pop	r6
+    149a:	5f 90       	pop	r5
+    149c:	08 95       	ret
+    149e:	f1 2c       	mov	r15, r1
+    14a0:	8e 01       	movw	r16, r28
+    14a2:	0f 5f       	subi	r16, 0xFF	; 255
+    14a4:	1f 4f       	sbci	r17, 0xFF	; 255
+    14a6:	91 cf       	rjmp	.-222    	; 0x13ca <lcd_int16+0x98>
+    14a8:	99 20       	and	r9, r9
+    14aa:	09 f4       	brne	.+2      	; 0x14ae <lcd_int16+0x17c>
+    14ac:	bc cf       	rjmp	.-136    	; 0x1426 <lcd_int16+0xf4>
+    14ae:	68 2d       	mov	r22, r8
+    14b0:	70 e0       	ldi	r23, 0x00	; 0
+    14b2:	80 e3       	ldi	r24, 0x30	; 48
+    14b4:	a5 cf       	rjmp	.-182    	; 0x1400 <lcd_int16+0xce>
+    14b6:	22 27       	eor	r18, r18
+    14b8:	33 27       	eor	r19, r19
+    14ba:	28 1b       	sub	r18, r24
+    14bc:	39 0b       	sbc	r19, r25
+    14be:	5c cf       	rjmp	.-328    	; 0x1378 <lcd_int16+0x46>
+    14c0:	f3 94       	inc	r15
+    14c2:	f3 94       	inc	r15
+    14c4:	f8 01       	movw	r30, r16
+    14c6:	e9 0f       	add	r30, r25
+    14c8:	f1 1d       	adc	r31, r1
+    14ca:	8d e2       	ldi	r24, 0x2D	; 45
+    14cc:	80 83       	st	Z, r24
+    14ce:	99 20       	and	r9, r9
+    14d0:	59 f0       	breq	.+22     	; 0x14e8 <lcd_int16+0x1b6>
+    14d2:	2f 2d       	mov	r18, r15
+    14d4:	30 e0       	ldi	r19, 0x00	; 0
+    14d6:	49 2d       	mov	r20, r9
+    14d8:	50 e0       	ldi	r21, 0x00	; 0
+    14da:	24 17       	cp	r18, r20
+    14dc:	35 07       	cpc	r19, r21
+    14de:	24 f4       	brge	.+8      	; 0x14e8 <lcd_int16+0x1b6>
+    14e0:	9f 2d       	mov	r25, r15
+    14e2:	71 2c       	mov	r7, r1
+    14e4:	80 e2       	ldi	r24, 0x20	; 32
+    14e6:	95 cf       	rjmp	.-214    	; 0x1412 <lcd_int16+0xe0>
+    14e8:	9f 2d       	mov	r25, r15
+    14ea:	a5 cf       	rjmp	.-182    	; 0x1436 <lcd_int16+0x104>
+
+000014ec <main>:
+
+/**********************************************************************
+ *				spi_init
+ **********************************************************************/
+void spi_init(void){
+DDRB |= ( (1 << PB2) | ( 1<< PB1) | (1<<PB0) ); //mosi and serial clock
+    14ec:	87 b3       	in	r24, 0x17	; 23
+    14ee:	87 60       	ori	r24, 0x07	; 7
+    14f0:	87 bb       	out	0x17, r24	; 23
+SPCR |= ( (1 << MSTR) | (1 << SPE) ); //master mode, SPI enabled, clk low on idle, leading edge sample
+    14f2:	8d b1       	in	r24, 0x0d	; 13
+    14f4:	80 65       	ori	r24, 0x50	; 80
+    14f6:	8d b9       	out	0x0d, r24	; 13
+SPSR |= 1 << SPI2X;
+    14f8:	70 9a       	sbi	0x0e, 0	; 14
+
+DDRB |= 0xF0; // set PORTB 4-7 bits as outputs
+    14fa:	87 b3       	in	r24, 0x17	; 23
+    14fc:	80 6f       	ori	r24, 0xF0	; 240
+    14fe:	87 bb       	out	0x17, r24	; 23
+DDRA = 0x03; // set PORTA 6-7 bits as inputs
+    1500:	83 e0       	ldi	r24, 0x03	; 3
+    1502:	8a bb       	out	0x1a, r24	; 26
+DDRD = (1 << PD2); // set PD2 as output
+    1504:	84 e0       	ldi	r24, 0x04	; 4
+    1506:	81 bb       	out	0x11, r24	; 17
+DDRE = 0xFF;// set PORTE to all outputs
+    1508:	cf ef       	ldi	r28, 0xFF	; 255
+    150a:	c2 b9       	out	0x02, r28	; 2
+//***********************************************************************************
+uint8_t main()
+{
+//DDRE &= ~(1 << PE3);
+spi_init();	//initialize SPI and port configurations
+lcd_init();	//initialize LCD display
+    150c:	0e 94 ff 07 	call	0xffe	; 0xffe <lcd_init>
+clear_display(); //Clean LCD display
+    1510:	0e 94 54 07 	call	0xea8	; 0xea8 <clear_display>
+
+/**********************************************************************
+ *				ADC_init
+ **********************************************************************/
+void ADC_init(void){
+DDRF  &= ~(_BV(DDF7)); //make port F bit 7 the ADC input  
+    1514:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <__TEXT_REGION_LENGTH__+0x7e0061>
+    1518:	8f 77       	andi	r24, 0x7F	; 127
+    151a:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <__TEXT_REGION_LENGTH__+0x7e0061>
+PORTF &= ~(_BV(PF7));  //port F bit 7 pullups must be off
+    151e:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+    1522:	8f 77       	andi	r24, 0x7F	; 127
+    1524:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__TEXT_REGION_LENGTH__+0x7e0062>
+	
+ADMUX = (1 << REFS0) | (1 << ADLAR) | 0x07; // reference to AVCC(5v), left adjusted (only reading  8bit), and channel 7
+    1528:	87 e6       	ldi	r24, 0x67	; 103
+    152a:	87 b9       	out	0x07, r24	; 7
+//ADC enabled, single conversion, division factor is 128
+ADCSRA = (1 << ADEN) | (1 << ADPS2) | ( 1 << ADPS1) | ( 1 << ADPS0) ; 
+    152c:	87 e8       	ldi	r24, 0x87	; 135
+    152e:	86 b9       	out	0x06, r24	; 6
+
+/**********************************************************************
+ *				dimming_init
+ **********************************************************************/
+void dimming_init(void){
+TCCR2 |= (1 << WGM21) | ( 1 << WGM20) | (1 << COM21) | ( 1 << CS20); // no prescale, clear on OC2 match, fast pwm mode
+    1530:	85 b5       	in	r24, 0x25	; 37
+    1532:	89 66       	ori	r24, 0x69	; 105
+    1534:	85 bd       	out	0x25, r24	; 37
+TIMSK |= (1 << OCIE2); // Compare match interrupt enable timer/counter0
+    1536:	87 b7       	in	r24, 0x37	; 55
+    1538:	80 68       	ori	r24, 0x80	; 128
+    153a:	87 bf       	out	0x37, r24	; 55
+TCNT2 = 0; //set count at 0
+    153c:	14 bc       	out	0x24, r1	; 36
+
+/**********************************************************************
+ *				tone_init
+ **********************************************************************/
+void tone_init(void){
+DDRC = 0xFF; // set all of PORTC as outputs
+    153e:	c4 bb       	out	0x14, r28	; 20
+TCCR1A = 0x00; // normal operation w/ OC1A is disconnected
+    1540:	1f bc       	out	0x2f, r1	; 47
+TIMSK |= 1 << OCIE1A; //output compare enable for timercounter1A
+    1542:	87 b7       	in	r24, 0x37	; 55
+    1544:	80 61       	ori	r24, 0x10	; 16
+    1546:	87 bf       	out	0x37, r24	; 55
+OCR1A = 3999; // 4kHz and triggers ISR
+    1548:	8f e9       	ldi	r24, 0x9F	; 159
+    154a:	9f e0       	ldi	r25, 0x0F	; 15
+    154c:	9b bd       	out	0x2b, r25	; 43
+    154e:	8a bd       	out	0x2a, r24	; 42
+//clk is not set
+TCCR1B |= (1 << WGM12); // CTC mode, clear with OCR and no prescaling
+    1550:	8e b5       	in	r24, 0x2e	; 46
+    1552:	88 60       	ori	r24, 0x08	; 8
+    1554:	8e bd       	out	0x2e, r24	; 46
+
+/**********************************************************************
+ *				clock_init
+ **********************************************************************/
+void clock_init(void){
+ASSR   |=  1<<AS0; //ext osc TOSC in 32kHz 
+    1556:	80 b7       	in	r24, 0x30	; 48
+    1558:	88 60       	ori	r24, 0x08	; 8
+    155a:	80 bf       	out	0x30, r24	; 48
+TIMSK |= 1 << OCIE0; //interrupt flag on compare register 
+    155c:	87 b7       	in	r24, 0x37	; 55
+    155e:	82 60       	ori	r24, 0x02	; 2
+    1560:	87 bf       	out	0x37, r24	; 55
+TCCR0 |= ((1 << WGM01) | (1 << CS00)); //CTC mode, with clk/no pre-scaling
+    1562:	83 b7       	in	r24, 0x33	; 51
+    1564:	89 60       	ori	r24, 0x09	; 9
+    1566:	83 bf       	out	0x33, r24	; 51
+OCR0 = 127; // Set top 
+    1568:	8f e7       	ldi	r24, 0x7F	; 127
+    156a:	81 bf       	out	0x31, r24	; 49
+
+/**********************************************************************
+ *				volume_init
+ **********************************************************************/
+void volume_init(void){
+TCCR3A = (1 << COM3A1 | (1 << WGM31) ); //normal operation w/ OC3A is disconnected
+    156c:	82 e8       	ldi	r24, 0x82	; 130
+    156e:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <__TEXT_REGION_LENGTH__+0x7e008b>
+TCCR3B |= (  (1 << CS30) | ( 1 << WGM32) | (1 << WGM33) ); //fast pwm 
+    1572:	80 91 8a 00 	lds	r24, 0x008A	; 0x80008a <__TEXT_REGION_LENGTH__+0x7e008a>
+    1576:	89 61       	ori	r24, 0x19	; 25
+    1578:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7e008a>
+ICR3 = 10; // Set overflow top 
+    157c:	8a e0       	ldi	r24, 0x0A	; 10
+    157e:	90 e0       	ldi	r25, 0x00	; 0
+    1580:	90 93 81 00 	sts	0x0081, r25	; 0x800081 <__TEXT_REGION_LENGTH__+0x7e0081>
+    1584:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__TEXT_REGION_LENGTH__+0x7e0080>
+OCR3A = 0; // set compare match
+    1588:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+    158c:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		TCCR1B &= ~(1 << CS10);	//clear the clock
+		mode &= ~(1 << 5); // set conditions only once so clear the bit
+		break;
+
+	case 0x08: // setting time
+		incr_time = 1;	//increment time
+    1590:	c1 e0       	ldi	r28, 0x01	; 1
+    1592:	d0 e0       	ldi	r29, 0x00	; 0
+
+time_tracker_12(); //keep track of the time in 12 hr format 
+
+
+
+PORTA = 0xFF;  //make PORTA an input port with pullups 	
+    1594:	1f ef       	ldi	r17, 0xFF	; 255
+	}
+
+	//handles decimal point display when alarm is triggered
+	if(alarm){
+		PORTB = 0; // digit 0
+		PORTA = 0x7F; // turn on decimal point
+    1596:	0f e7       	ldi	r16, 0x7F	; 127
+volume_init();	//initialize timer/counter3
+
+
+
+while(1){ // main loop
+ADCSR |= (1<<ADSC); //start writing 
+    1598:	36 9a       	sbi	0x06, 6	; 6
+	while(bit_is_clear(ADCSRA, ADIF)){};
+    159a:	34 9b       	sbis	0x06, 4	; 6
+    159c:	fe cf       	rjmp	.-4      	; 0x159a <main+0xae>
+
+ADCSR |= (1 << ADIF);//clear flag by writing one
+    159e:	34 9a       	sbi	0x06, 4	; 6
+adc_data = ADCH; // store ADC values
+    15a0:	85 b1       	in	r24, 0x05	; 5
+    15a2:	90 e0       	ldi	r25, 0x00	; 0
+    15a4:	90 93 67 01 	sts	0x0167, r25	; 0x800167 <adc_data+0x1>
+    15a8:	80 93 66 01 	sts	0x0166, r24	; 0x800166 <adc_data>
+	
+//write_SPI(mode); // write to the bar graph
+
+switch(mode){
+    15ac:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <mode>
+    15b0:	88 30       	cpi	r24, 0x08	; 8
+    15b2:	09 f4       	brne	.+2      	; 0x15b6 <main+0xca>
+    15b4:	7a c0       	rjmp	.+244    	; 0x16aa <main+0x1be>
+    15b6:	08 f4       	brcc	.+2      	; 0x15ba <main+0xce>
+    15b8:	4e c0       	rjmp	.+156    	; 0x1656 <main+0x16a>
+    15ba:	80 32       	cpi	r24, 0x20	; 32
+    15bc:	09 f4       	brne	.+2      	; 0x15c0 <main+0xd4>
+    15be:	5a c0       	rjmp	.+180    	; 0x1674 <main+0x188>
+    15c0:	80 34       	cpi	r24, 0x40	; 64
+    15c2:	09 f0       	breq	.+2      	; 0x15c6 <main+0xda>
+    15c4:	4a c0       	rjmp	.+148    	; 0x165a <main+0x16e>
+	case 0x40: //Setting alarm
+		alarm = TRUE;	//alarm is on
+    15c6:	d0 93 3f 01 	sts	0x013F, r29	; 0x80013f <alarm+0x1>
+    15ca:	c0 93 3e 01 	sts	0x013E, r28	; 0x80013e <alarm>
+		tone = TRUE;	//turn on tone
+    15ce:	d0 93 39 01 	sts	0x0139, r29	; 0x800139 <tone+0x1>
+    15d2:	c0 93 38 01 	sts	0x0138, r28	; 0x800138 <tone>
+		dp = TRUE;	//turn on decimal point
+    15d6:	d0 93 3d 01 	sts	0x013D, r29	; 0x80013d <dp+0x1>
+    15da:	c0 93 3c 01 	sts	0x013C, r28	; 0x80013c <dp>
+		display = TRUE;	//set to display alarm time
+    15de:	d0 93 37 01 	sts	0x0137, r29	; 0x800137 <display+0x1>
+    15e2:	c0 93 36 01 	sts	0x0136, r28	; 0x800136 <display>
+		incr_alarm = 1;	//increment alarm time
+    15e6:	d0 93 31 01 	sts	0x0131, r29	; 0x800131 <incr_alarm+0x1>
+    15ea:	c0 93 30 01 	sts	0x0130, r28	; 0x800130 <incr_alarm>
+
+//you can set an if statement to change the bounds whether setting == true or false
+		alarm_bound_12(); //bound the time for 12hr mark
+    15ee:	0e 94 08 02 	call	0x410	; 0x410 <alarm_bound_12>
+		incr_time = 0; 	// encoders should not change time when clock is running
+		incr_alarm = 0; // encoders should not change alarm time when clock is running 
+		seconds_holder = 1; // increment seconds 
+}
+
+time_tracker_12(); //keep track of the time in 12 hr format 
+    15f2:	0e 94 f5 02 	call	0x5ea	; 0x5ea <time_tracker_12>
+
+
+
+PORTA = 0xFF;  //make PORTA an input port with pullups 	
+    15f6:	1b bb       	out	0x1b, r17	; 27
+
+if((alarm == TRUE) && (mode == 0x40)){
+    15f8:	80 91 3e 01 	lds	r24, 0x013E	; 0x80013e <alarm>
+    15fc:	90 91 3f 01 	lds	r25, 0x013F	; 0x80013f <alarm+0x1>
+    1600:	01 97       	sbiw	r24, 0x01	; 1
+    1602:	29 f4       	brne	.+10     	; 0x160e <main+0x122>
+    1604:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <mode>
+    1608:	80 34       	cpi	r24, 0x40	; 64
+    160a:	09 f4       	brne	.+2      	; 0x160e <main+0x122>
+    160c:	59 c0       	rjmp	.+178    	; 0x16c0 <main+0x1d4>
+	segsum(alarm_time);
+	string2lcd(lcd_string_array);
+	cursor_home();
+}
+else{segsum(time);}
+    160e:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <time>
+    1612:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <time+0x1>
+    1616:	0e 94 08 05 	call	0xa10	; 0xa10 <segsum>
+
+//DIGIT SHIFTS
+//bound a counter (0-4) to keep track of digit to display ;
+
+PORTB = 0x00;
+    161a:	18 ba       	out	0x18, r1	; 24
+    161c:	ed e0       	ldi	r30, 0x0D	; 13
+    161e:	f1 e0       	ldi	r31, 0x01	; 1
+    1620:	80 e0       	ldi	r24, 0x00	; 0
+
+	for(int index = 0; index < 5; index++){
+		PORTB = index << 4; // within 4 digits for the hex value
+    1622:	98 2f       	mov	r25, r24
+    1624:	92 95       	swap	r25
+    1626:	90 7f       	andi	r25, 0xF0	; 240
+    1628:	98 bb       	out	0x18, r25	; 24
+		PORTA = segment_data[index]; //send 7 segment code to LED segments
+    162a:	91 91       	ld	r25, Z+
+    162c:	9b bb       	out	0x1b, r25	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    162e:	af e9       	ldi	r26, 0x9F	; 159
+    1630:	bf e0       	ldi	r27, 0x0F	; 15
+    1632:	11 97       	sbiw	r26, 0x01	; 1
+    1634:	f1 f7       	brne	.-4      	; 0x1632 <main+0x146>
+    1636:	00 c0       	rjmp	.+0      	; 0x1638 <main+0x14c>
+    1638:	00 00       	nop
+    163a:	8f 5f       	subi	r24, 0xFF	; 255
+//DIGIT SHIFTS
+//bound a counter (0-4) to keep track of digit to display ;
+
+PORTB = 0x00;
+
+	for(int index = 0; index < 5; index++){
+    163c:	85 30       	cpi	r24, 0x05	; 5
+    163e:	89 f7       	brne	.-30     	; 0x1622 <main+0x136>
+		PORTA = segment_data[index]; //send 7 segment code to LED segments
+		_delay_ms(1); // add delay	
+	}
+
+	//handles decimal point display when alarm is triggered
+	if(alarm){
+    1640:	80 91 3e 01 	lds	r24, 0x013E	; 0x80013e <alarm>
+    1644:	90 91 3f 01 	lds	r25, 0x013F	; 0x80013f <alarm+0x1>
+    1648:	89 2b       	or	r24, r25
+    164a:	11 f0       	breq	.+4      	; 0x1650 <main+0x164>
+		PORTB = 0; // digit 0
+    164c:	18 ba       	out	0x18, r1	; 24
+		PORTA = 0x7F; // turn on decimal point
+    164e:	0b bb       	out	0x1b, r16	; 27
+	}
+DDRA = 0xFF;  //make PORTA an output
+    1650:	1a bb       	out	0x1a, r17	; 26
+sei(); // ISR will return here
+    1652:	78 94       	sei
+
+}//while
+    1654:	a1 cf       	rjmp	.-190    	; 0x1598 <main+0xac>
+ADCSR |= (1 << ADIF);//clear flag by writing one
+adc_data = ADCH; // store ADC values
+	
+//write_SPI(mode); // write to the bar graph
+
+switch(mode){
+    1656:	84 30       	cpi	r24, 0x04	; 4
+    1658:	61 f2       	breq	.-104    	; 0x15f2 <main+0x106>
+	//	hr_temp = -1;
+	//	if( (seconds % 10) == 0){hr_temp = holder;} //after 10 seconds has passed then trigger alarm
+		break;
+
+	default:
+		incr_time = 0; 	// encoders should not change time when clock is running
+    165a:	10 92 33 01 	sts	0x0133, r1	; 0x800133 <incr_time+0x1>
+    165e:	10 92 32 01 	sts	0x0132, r1	; 0x800132 <incr_time>
+		incr_alarm = 0; // encoders should not change alarm time when clock is running 
+    1662:	10 92 31 01 	sts	0x0131, r1	; 0x800131 <incr_alarm+0x1>
+    1666:	10 92 30 01 	sts	0x0130, r1	; 0x800130 <incr_alarm>
+		seconds_holder = 1; // increment seconds 
+    166a:	d0 93 13 01 	sts	0x0113, r29	; 0x800113 <seconds_holder+0x1>
+    166e:	c0 93 12 01 	sts	0x0112, r28	; 0x800112 <seconds_holder>
+    1672:	bf cf       	rjmp	.-130    	; 0x15f2 <main+0x106>
+		alarm_bound_12(); //bound the time for 12hr mark
+//		alarm_bound_24(); //bound the time for 24hr mark	
+		break;
+
+	case 0x20: //disable alarm	
+		alarm = FALSE;	//alarm is off
+    1674:	10 92 3f 01 	sts	0x013F, r1	; 0x80013f <alarm+0x1>
+    1678:	10 92 3e 01 	sts	0x013E, r1	; 0x80013e <alarm>
+		dp = FALSE;	//turn off the decimal point
+    167c:	10 92 3d 01 	sts	0x013D, r1	; 0x80013d <dp+0x1>
+    1680:	10 92 3c 01 	sts	0x013C, r1	; 0x80013c <dp>
+		tone = FALSE;	//turn off the tone
+    1684:	10 92 39 01 	sts	0x0139, r1	; 0x800139 <tone+0x1>
+    1688:	10 92 38 01 	sts	0x0138, r1	; 0x800138 <tone>
+		clear_display(); //clear lcd screen
+    168c:	0e 94 54 07 	call	0xea8	; 0xea8 <clear_display>
+		OCR3A = 0;	// clear the compare
+    1690:	10 92 87 00 	sts	0x0087, r1	; 0x800087 <__TEXT_REGION_LENGTH__+0x7e0087>
+    1694:	10 92 86 00 	sts	0x0086, r1	; 0x800086 <__TEXT_REGION_LENGTH__+0x7e0086>
+		TCCR1B &= ~(1 << CS10);	//clear the clock
+    1698:	8e b5       	in	r24, 0x2e	; 46
+    169a:	8e 7f       	andi	r24, 0xFE	; 254
+    169c:	8e bd       	out	0x2e, r24	; 46
+		mode &= ~(1 << 5); // set conditions only once so clear the bit
+    169e:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <mode>
+    16a2:	8f 7d       	andi	r24, 0xDF	; 223
+    16a4:	80 93 2f 01 	sts	0x012F, r24	; 0x80012f <mode>
+		break;
+    16a8:	a4 cf       	rjmp	.-184    	; 0x15f2 <main+0x106>
+
+	case 0x08: // setting time
+		incr_time = 1;	//increment time
+    16aa:	d0 93 33 01 	sts	0x0133, r29	; 0x800133 <incr_time+0x1>
+    16ae:	c0 93 32 01 	sts	0x0132, r28	; 0x800132 <incr_time>
+		seconds_holder = 0;	//seconds is not counting
+    16b2:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <seconds_holder+0x1>
+    16b6:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <seconds_holder>
+		time_bound_12();	//bound the encoders
+    16ba:	0e 94 76 02 	call	0x4ec	; 0x4ec <time_bound_12>
+		break;
+    16be:	99 cf       	rjmp	.-206    	; 0x15f2 <main+0x106>
+
+
+PORTA = 0xFF;  //make PORTA an input port with pullups 	
+
+if((alarm == TRUE) && (mode == 0x40)){
+	segsum(alarm_time);
+    16c0:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <alarm_time>
+    16c4:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <alarm_time+0x1>
+    16c8:	0e 94 08 05 	call	0xa10	; 0xa10 <segsum>
+	string2lcd(lcd_string_array);
+    16cc:	88 e1       	ldi	r24, 0x18	; 24
+    16ce:	91 e0       	ldi	r25, 0x01	; 1
+    16d0:	0e 94 d0 07 	call	0xfa0	; 0xfa0 <string2lcd>
+	cursor_home();
+    16d4:	0e 94 6c 07 	call	0xed8	; 0xed8 <cursor_home>
+    16d8:	a0 cf       	rjmp	.-192    	; 0x161a <main+0x12e>
+
+000016da <__divmodhi4>:
+    16da:	97 fb       	bst	r25, 7
+    16dc:	07 2e       	mov	r0, r23
+    16de:	16 f4       	brtc	.+4      	; 0x16e4 <__divmodhi4+0xa>
+    16e0:	00 94       	com	r0
+    16e2:	07 d0       	rcall	.+14     	; 0x16f2 <__divmodhi4_neg1>
+    16e4:	77 fd       	sbrc	r23, 7
+    16e6:	09 d0       	rcall	.+18     	; 0x16fa <__divmodhi4_neg2>
+    16e8:	0e 94 af 0b 	call	0x175e	; 0x175e <__udivmodhi4>
+    16ec:	07 fc       	sbrc	r0, 7
+    16ee:	05 d0       	rcall	.+10     	; 0x16fa <__divmodhi4_neg2>
+    16f0:	3e f4       	brtc	.+14     	; 0x1700 <__divmodhi4_exit>
+
+000016f2 <__divmodhi4_neg1>:
+    16f2:	90 95       	com	r25
+    16f4:	81 95       	neg	r24
+    16f6:	9f 4f       	sbci	r25, 0xFF	; 255
+    16f8:	08 95       	ret
+
+000016fa <__divmodhi4_neg2>:
+    16fa:	70 95       	com	r23
+    16fc:	61 95       	neg	r22
+    16fe:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00001700 <__divmodhi4_exit>:
+    1700:	08 95       	ret
+
+00001702 <__divmodsi4>:
+    1702:	05 2e       	mov	r0, r21
+    1704:	97 fb       	bst	r25, 7
+    1706:	1e f4       	brtc	.+6      	; 0x170e <__divmodsi4+0xc>
+    1708:	00 94       	com	r0
+    170a:	0e 94 98 0b 	call	0x1730	; 0x1730 <__negsi2>
+    170e:	57 fd       	sbrc	r21, 7
+    1710:	07 d0       	rcall	.+14     	; 0x1720 <__divmodsi4_neg2>
+    1712:	0e 94 c3 0b 	call	0x1786	; 0x1786 <__udivmodsi4>
+    1716:	07 fc       	sbrc	r0, 7
+    1718:	03 d0       	rcall	.+6      	; 0x1720 <__divmodsi4_neg2>
+    171a:	4e f4       	brtc	.+18     	; 0x172e <__divmodsi4_exit>
+    171c:	0c 94 98 0b 	jmp	0x1730	; 0x1730 <__negsi2>
+
+00001720 <__divmodsi4_neg2>:
+    1720:	50 95       	com	r21
+    1722:	40 95       	com	r20
+    1724:	30 95       	com	r19
+    1726:	21 95       	neg	r18
+    1728:	3f 4f       	sbci	r19, 0xFF	; 255
+    172a:	4f 4f       	sbci	r20, 0xFF	; 255
+    172c:	5f 4f       	sbci	r21, 0xFF	; 255
+
+0000172e <__divmodsi4_exit>:
+    172e:	08 95       	ret
+
+00001730 <__negsi2>:
+    1730:	90 95       	com	r25
+    1732:	80 95       	com	r24
+    1734:	70 95       	com	r23
+    1736:	61 95       	neg	r22
+    1738:	7f 4f       	sbci	r23, 0xFF	; 255
+    173a:	8f 4f       	sbci	r24, 0xFF	; 255
+    173c:	9f 4f       	sbci	r25, 0xFF	; 255
+    173e:	08 95       	ret
+
+00001740 <__umulhisi3>:
+    1740:	a2 9f       	mul	r26, r18
+    1742:	b0 01       	movw	r22, r0
+    1744:	b3 9f       	mul	r27, r19
+    1746:	c0 01       	movw	r24, r0
+    1748:	a3 9f       	mul	r26, r19
+    174a:	70 0d       	add	r23, r0
+    174c:	81 1d       	adc	r24, r1
+    174e:	11 24       	eor	r1, r1
+    1750:	91 1d       	adc	r25, r1
+    1752:	b2 9f       	mul	r27, r18
+    1754:	70 0d       	add	r23, r0
+    1756:	81 1d       	adc	r24, r1
+    1758:	11 24       	eor	r1, r1
+    175a:	91 1d       	adc	r25, r1
+    175c:	08 95       	ret
+
+0000175e <__udivmodhi4>:
+    175e:	aa 1b       	sub	r26, r26
+    1760:	bb 1b       	sub	r27, r27
+    1762:	51 e1       	ldi	r21, 0x11	; 17
+    1764:	07 c0       	rjmp	.+14     	; 0x1774 <__udivmodhi4_ep>
+
+00001766 <__udivmodhi4_loop>:
+    1766:	aa 1f       	adc	r26, r26
+    1768:	bb 1f       	adc	r27, r27
+    176a:	a6 17       	cp	r26, r22
+    176c:	b7 07       	cpc	r27, r23
+    176e:	10 f0       	brcs	.+4      	; 0x1774 <__udivmodhi4_ep>
+    1770:	a6 1b       	sub	r26, r22
+    1772:	b7 0b       	sbc	r27, r23
+
+00001774 <__udivmodhi4_ep>:
+    1774:	88 1f       	adc	r24, r24
+    1776:	99 1f       	adc	r25, r25
+    1778:	5a 95       	dec	r21
+    177a:	a9 f7       	brne	.-22     	; 0x1766 <__udivmodhi4_loop>
+    177c:	80 95       	com	r24
+    177e:	90 95       	com	r25
+    1780:	bc 01       	movw	r22, r24
+    1782:	cd 01       	movw	r24, r26
+    1784:	08 95       	ret
+
+00001786 <__udivmodsi4>:
+    1786:	a1 e2       	ldi	r26, 0x21	; 33
+    1788:	1a 2e       	mov	r1, r26
+    178a:	aa 1b       	sub	r26, r26
+    178c:	bb 1b       	sub	r27, r27
+    178e:	fd 01       	movw	r30, r26
+    1790:	0d c0       	rjmp	.+26     	; 0x17ac <__udivmodsi4_ep>
+
+00001792 <__udivmodsi4_loop>:
+    1792:	aa 1f       	adc	r26, r26
+    1794:	bb 1f       	adc	r27, r27
+    1796:	ee 1f       	adc	r30, r30
+    1798:	ff 1f       	adc	r31, r31
+    179a:	a2 17       	cp	r26, r18
+    179c:	b3 07       	cpc	r27, r19
+    179e:	e4 07       	cpc	r30, r20
+    17a0:	f5 07       	cpc	r31, r21
+    17a2:	20 f0       	brcs	.+8      	; 0x17ac <__udivmodsi4_ep>
+    17a4:	a2 1b       	sub	r26, r18
+    17a6:	b3 0b       	sbc	r27, r19
+    17a8:	e4 0b       	sbc	r30, r20
+    17aa:	f5 0b       	sbc	r31, r21
+
+000017ac <__udivmodsi4_ep>:
+    17ac:	66 1f       	adc	r22, r22
+    17ae:	77 1f       	adc	r23, r23
+    17b0:	88 1f       	adc	r24, r24
+    17b2:	99 1f       	adc	r25, r25
+    17b4:	1a 94       	dec	r1
+    17b6:	69 f7       	brne	.-38     	; 0x1792 <__udivmodsi4_loop>
+    17b8:	60 95       	com	r22
+    17ba:	70 95       	com	r23
+    17bc:	80 95       	com	r24
+    17be:	90 95       	com	r25
+    17c0:	9b 01       	movw	r18, r22
+    17c2:	ac 01       	movw	r20, r24
+    17c4:	bd 01       	movw	r22, r26
+    17c6:	cf 01       	movw	r24, r30
+    17c8:	08 95       	ret
+
+000017ca <__cmpsf2>:
+    17ca:	0e 94 27 0c 	call	0x184e	; 0x184e <__fp_cmp>
+    17ce:	08 f4       	brcc	.+2      	; 0x17d2 <__cmpsf2+0x8>
+    17d0:	81 e0       	ldi	r24, 0x01	; 1
+    17d2:	08 95       	ret
+
+000017d4 <__floatunsisf>:
+    17d4:	e8 94       	clt
+    17d6:	09 c0       	rjmp	.+18     	; 0x17ea <__floatsisf+0x12>
+
+000017d8 <__floatsisf>:
+    17d8:	97 fb       	bst	r25, 7
+    17da:	3e f4       	brtc	.+14     	; 0x17ea <__floatsisf+0x12>
+    17dc:	90 95       	com	r25
+    17de:	80 95       	com	r24
+    17e0:	70 95       	com	r23
+    17e2:	61 95       	neg	r22
+    17e4:	7f 4f       	sbci	r23, 0xFF	; 255
+    17e6:	8f 4f       	sbci	r24, 0xFF	; 255
+    17e8:	9f 4f       	sbci	r25, 0xFF	; 255
+    17ea:	99 23       	and	r25, r25
+    17ec:	a9 f0       	breq	.+42     	; 0x1818 <__floatsisf+0x40>
+    17ee:	f9 2f       	mov	r31, r25
+    17f0:	96 e9       	ldi	r25, 0x96	; 150
+    17f2:	bb 27       	eor	r27, r27
+    17f4:	93 95       	inc	r25
+    17f6:	f6 95       	lsr	r31
+    17f8:	87 95       	ror	r24
+    17fa:	77 95       	ror	r23
+    17fc:	67 95       	ror	r22
+    17fe:	b7 95       	ror	r27
+    1800:	f1 11       	cpse	r31, r1
+    1802:	f8 cf       	rjmp	.-16     	; 0x17f4 <__floatsisf+0x1c>
+    1804:	fa f4       	brpl	.+62     	; 0x1844 <__floatsisf+0x6c>
+    1806:	bb 0f       	add	r27, r27
+    1808:	11 f4       	brne	.+4      	; 0x180e <__floatsisf+0x36>
+    180a:	60 ff       	sbrs	r22, 0
+    180c:	1b c0       	rjmp	.+54     	; 0x1844 <__floatsisf+0x6c>
+    180e:	6f 5f       	subi	r22, 0xFF	; 255
+    1810:	7f 4f       	sbci	r23, 0xFF	; 255
+    1812:	8f 4f       	sbci	r24, 0xFF	; 255
+    1814:	9f 4f       	sbci	r25, 0xFF	; 255
+    1816:	16 c0       	rjmp	.+44     	; 0x1844 <__floatsisf+0x6c>
+    1818:	88 23       	and	r24, r24
+    181a:	11 f0       	breq	.+4      	; 0x1820 <__floatsisf+0x48>
+    181c:	96 e9       	ldi	r25, 0x96	; 150
+    181e:	11 c0       	rjmp	.+34     	; 0x1842 <__floatsisf+0x6a>
+    1820:	77 23       	and	r23, r23
+    1822:	21 f0       	breq	.+8      	; 0x182c <__floatsisf+0x54>
+    1824:	9e e8       	ldi	r25, 0x8E	; 142
+    1826:	87 2f       	mov	r24, r23
+    1828:	76 2f       	mov	r23, r22
+    182a:	05 c0       	rjmp	.+10     	; 0x1836 <__floatsisf+0x5e>
+    182c:	66 23       	and	r22, r22
+    182e:	71 f0       	breq	.+28     	; 0x184c <__floatsisf+0x74>
+    1830:	96 e8       	ldi	r25, 0x86	; 134
+    1832:	86 2f       	mov	r24, r22
+    1834:	70 e0       	ldi	r23, 0x00	; 0
+    1836:	60 e0       	ldi	r22, 0x00	; 0
+    1838:	2a f0       	brmi	.+10     	; 0x1844 <__floatsisf+0x6c>
+    183a:	9a 95       	dec	r25
+    183c:	66 0f       	add	r22, r22
+    183e:	77 1f       	adc	r23, r23
+    1840:	88 1f       	adc	r24, r24
+    1842:	da f7       	brpl	.-10     	; 0x183a <__floatsisf+0x62>
+    1844:	88 0f       	add	r24, r24
+    1846:	96 95       	lsr	r25
+    1848:	87 95       	ror	r24
+    184a:	97 f9       	bld	r25, 7
+    184c:	08 95       	ret
+
+0000184e <__fp_cmp>:
+    184e:	99 0f       	add	r25, r25
+    1850:	00 08       	sbc	r0, r0
+    1852:	55 0f       	add	r21, r21
+    1854:	aa 0b       	sbc	r26, r26
+    1856:	e0 e8       	ldi	r30, 0x80	; 128
+    1858:	fe ef       	ldi	r31, 0xFE	; 254
+    185a:	16 16       	cp	r1, r22
+    185c:	17 06       	cpc	r1, r23
+    185e:	e8 07       	cpc	r30, r24
+    1860:	f9 07       	cpc	r31, r25
+    1862:	c0 f0       	brcs	.+48     	; 0x1894 <__fp_cmp+0x46>
+    1864:	12 16       	cp	r1, r18
+    1866:	13 06       	cpc	r1, r19
+    1868:	e4 07       	cpc	r30, r20
+    186a:	f5 07       	cpc	r31, r21
+    186c:	98 f0       	brcs	.+38     	; 0x1894 <__fp_cmp+0x46>
+    186e:	62 1b       	sub	r22, r18
+    1870:	73 0b       	sbc	r23, r19
+    1872:	84 0b       	sbc	r24, r20
+    1874:	95 0b       	sbc	r25, r21
+    1876:	39 f4       	brne	.+14     	; 0x1886 <__fp_cmp+0x38>
+    1878:	0a 26       	eor	r0, r26
+    187a:	61 f0       	breq	.+24     	; 0x1894 <__fp_cmp+0x46>
+    187c:	23 2b       	or	r18, r19
+    187e:	24 2b       	or	r18, r20
+    1880:	25 2b       	or	r18, r21
+    1882:	21 f4       	brne	.+8      	; 0x188c <__fp_cmp+0x3e>
+    1884:	08 95       	ret
+    1886:	0a 26       	eor	r0, r26
+    1888:	09 f4       	brne	.+2      	; 0x188c <__fp_cmp+0x3e>
+    188a:	a1 40       	sbci	r26, 0x01	; 1
+    188c:	a6 95       	lsr	r26
+    188e:	8f ef       	ldi	r24, 0xFF	; 255
+    1890:	81 1d       	adc	r24, r1
+    1892:	81 1d       	adc	r24, r1
+    1894:	08 95       	ret
+
+00001896 <_exit>:
+    1896:	f8 94       	cli
+
+00001898 <__stop_program>:
+    1898:	ff cf       	rjmp	.-2      	; 0x1898 <__stop_program>
