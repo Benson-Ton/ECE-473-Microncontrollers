@@ -84,6 +84,11 @@ uint8_t segment_data[5] = {0xFF};
 uint8_t dec_to_7seg[13]={0xC0,0xF9,0xA4 ,0xB0 ,0x99 ,0x92 ,0x82,0xF8 ,0x80 ,0x98,0xFF,0x07,0x7F};//numbers from 0-9, all blank, blank colon
 
 
+// use lcd refresh
+// put in the isr and use a counter so it wont trigger so often like 2000us and 30us for it to update
+
+
+
 
 //*******************************************************************************
 //                            chk_buttons                                  

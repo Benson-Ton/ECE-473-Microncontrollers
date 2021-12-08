@@ -9,7 +9,6 @@
 //  PORTB bits 4-6 go to a,b,c inputs of the 74HC138.
 //  PORTB bit 7 goes to the PWM transistor base.
 
-//#define F_CPU 16000000 // cpu speed in hertz 
 #define TRUE 1
 #define FALSE 0
 #define BUTTON_ONE 1
@@ -28,7 +27,6 @@
 #include "twi_master.h"
 #include "hd44780.h"
 
-//#include "ADC.h"
 
 //GLOBAL VARIABLES
 uint16_t 	i;
@@ -41,10 +39,10 @@ volatile uint8_t  rcv_rdy;
 char              rx_char;
 
 //Remote temperature variables 
-int 		remote_temp = 10;
 char		alarm_str[32] = {"ALARM"};
 char		lcd_temp_array[32] = {"local:          remote:         "};//LCD format for temperatures
 char		temp_str[32];
+volatile int	lcd_display = FALSE;
 
 
 //ADC variables
@@ -55,34 +53,30 @@ uint16_t 	adc_data; //holds the adc raw values
 volatile int time_setting = FALSE; //12 hr or 24 hr setting
 
 //alarm variables
-volatile int 	alarm = FALSE;
-volatile int	sec_temp;
-volatile int	min_temp;
-volatile int	hr_temp;
-volatile int dp = FALSE;
-volatile int toggle = FALSE;
-volatile int holder;
-volatile int time = 1259;
-volatile int alarm_time = 1200;
-int 		tone = FALSE;
-int 		display = FALSE;
-int 		snooze_time = FALSE;
-
+volatile int 	alarm = FALSE;		//alarm flag
+volatile int 	dp = FALSE;		//decimal point flag
+volatile int 	time = 1000;      	//set time
+volatile int 	alarm_time = 1200;	//set start alarm time as 1200
+int 		tone = FALSE; 		//tone flag
+int 		display = FALSE; 	//display the alarm flag
+int 		snooze_time = FALSE; 	//snooze flag 
+volatile int	snooze_seconds = 0;	//snooze time
 
 //time variables
-volatile int 	seconds = 0;
-volatile int 	incr_time = 0; // count increment status
-volatile int 	incr_alarm = 0;
-volatile uint8_t mode = 0; // mode select state
+volatile int 	seconds = 0;  	//seconds of real time
+volatile int 	incr_time = 0; 	// count increment status
+volatile int 	incr_alarm = 0; // count increment alarm status
+volatile uint8_t mode = 0; 	// mode select state
 volatile uint8_t setting = 0;
 
 volatile int seconds_holder = 1;
+
 //encoder variables
-volatile uint8_t raw_encoder_val;// raw data for the left encoder
-volatile uint8_t raw_encoder_valR; // raw data for the right encoder
-volatile int read = 0; // status of whether the encoder turned CW or CCW
-int state_counter = 0; // status of the pins being contacted of the left encoder
-int r_counter = 0; // status of the pins being contacted of the right encoder
+volatile uint8_t raw_encoder_val;	// raw data for the left encoder
+volatile uint8_t raw_encoder_valR; 	// raw data for the right encoder
+volatile int read = 0; 			// status of whether the encoder turned CW or CCW
+int state_counter = 0; 			// status of the pins being contacted of the left encoder
+int r_counter = 0; 			// status of the pins being contacted of the right encoder
 
 //left encoder process raw values
 volatile int 	old_A;
@@ -102,7 +96,20 @@ uint8_t segment_data[5] = {0xFF};
 uint8_t dec_to_7seg[13]={0xC0,0xF9,0xA4 ,0xB0 ,0x99 ,0x92 ,0x82,0xF8 ,0x80 ,0x98,0xFF,0x07,0x7F};//numbers from 0-9, all blank, blank colon
 
 
+/********************************************************************
+ *				alarm_compare
+ *******************************************************************/
+void alarm_compare(void){
+	//checks alarm flag and whether button is pressed
+	if(( mode != 0x08 && mode != 0x40)){  
 
+		//triggers the alarm if alarm time matches with real time 
+		if((alarm_time == time) && (tone == TRUE)){
+		OCR3A = 5; 
+		TCCR1B |= 1 << CS10;
+		}
+	}	
+}
 
 //*******************************************************************************
 //                            chk_buttons                                  
@@ -222,6 +229,19 @@ void update_EN(int val_rot){
 	else{val_rot =-1;} // dont do anything if nothing is rotated
 }
 
+/********************************************************************
+ *				update_encoder_alarm
+ ********************************************************************/
+void update_EN_alarm(int val_rot){
+//changes the alarm time without affecting real time
+	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
+	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
+	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
+	else if(val_rot == 3){alarm_time += incr_alarm;}// if rotatiing to the right for right encoder then increment
+	else{val_rot =-1;} // dont do anything if nothing is rotated
+}
+
+
 
 /********************************************************************
  *				read_SPI
@@ -261,8 +281,6 @@ ISR(TIMER1_COMPA_vect){
 //dimming for LED display 
 ISR( TIMER2_COMP_vect){
 	
-//	if(adc_data > 70){OCR2 = 10;} // dim the light if it is bright
-//	else{OCR2 = 200;} // brighten the light otherwise
 	OCR2 = adc_data;
 }
 
@@ -293,7 +311,7 @@ static uint16_t timer = 0;  //hold value of count between interrupts
 timer++;  //extend counter
 
 
-if((timer% 64) == 0){ // turn off for half a second 
+if((timer% 128) == 0){ // turn off for half a second 
 	segment_data[2] = 0x07; //turn off colon
 } 
 
@@ -302,6 +320,7 @@ if((timer% 512) == 0){
 	uart_putc('\0');		//ADD a null character
 	segment_data[2] = 0x0C; 	//turn on colon
  	seconds+= seconds_holder; 	//increment seconds
+	snooze_seconds += seconds_holder;//increment seconds of snooze
 } 
 
 
@@ -359,41 +378,6 @@ void disable_alarm(void){
 
 
 /********************************************************************
- *				alarm_compare
- *******************************************************************/
-void alarm_compare(void){
-	if(( mode != 0x08 && mode != 0x40)){
-		
-		if((alarm_time == time) && (tone == TRUE)){
-		OCR3A = 5; 
-		TCCR1B |= 1 << CS10;
-		}
-	}	
-}
-
-
-/********************************************************************
- *				alarm_bound_24
- * used to bound the alarm with respect to the time setting when setting
- * the alarm with the encoders.
- ****** *************************************************************/
-void alarm_bound_24(void){
-//bound minutes from 0 to 60
-/*
-	if (al_min12 > 59){
-	  al_min12 = 0;
-}
-
-if(al_min12 < 0){al_min12 = 59;}//need to save the negative value to add toward the decrement 
-
-//bound the hours from 12 to 1 and 1 to 12
-if(al_hr12 > 23){al_hr12 = 0;}
-if(al_hr12 < 0){al_hr12 = 23;}
-*/
-}
-
-
-/********************************************************************
  *				alarm_bound_12
  * used to bound the alarm with respect to the time setting when setting
  * the alarm with the encoders.
@@ -418,26 +402,7 @@ if(hours < 1){alarm_time = 1200;alarm_time += minutes;}
 
 }
 
-/********************************************************************
- *				time_bound_24
- * used to bound the correct time when wanting to change the real time 
- * with encoders
- ********************************************************************/
-void time_bound_24(void){
-/*
-	//bound the minutes from 0 to 60
-if (minutes > 59){
-	  minutes = 0;
-}
 
-// bound the minutes from 60 to 0
-if(minutes < 0){minutes = 59;}//need to save the negative value to add toward the decrement 
-
-//bound the hours from 24 to 0 and 0 to 24
-if(hours > 23){hours = 0;}
-if(hours < 0){hours = 23;}
-*/
-}
 
 /********************************************************************
  *				time_bound_12
@@ -467,6 +432,8 @@ if (minutes == 60){
 if(hours > 12){time = 100;time += minutes;}
 if(hours < 1){time = 1200;time += minutes;}
 }
+
+
 /***************************************************************
 /				time_tracker_12
 ****************************************************************/
@@ -486,37 +453,7 @@ int minutes = time - (hours*100);
 	
 	if(hours > 12){ time = 100;} // reset hours to 1 o'clock
 }
-/***************************************************************
-/				time_tracker_24
-****************************************************************/
-void time_tracker_24(int sec, int min){
-/*
-	//if 60 seconds has been reached then increase the minutes by one
-	if(sec == 60){
-		minutes++; // increment minutes 
-		min = minutes; 
-		seconds = 0; // reset seconds
-		//increment hours if 60 minutes has passed
-		if(min > 59){ 
-			hours++;
-			minutes = 0;//reset minutes
-			if(hours > 23){ hours = 0;} // reset hours
-		}
-	}
-*/
-	}
 
-/********************************************************************
- *				update_encoder_alarm
- ********************************************************************/
-void update_EN_alarm(int val_rot){
-//changes the alarm time without affecting real time
-	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
-	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
-	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
-	else if(val_rot == 3){alarm_time += incr_alarm;}// if rotatiing to the right for right encoder then increment
-	else{val_rot =-1;} // dont do anything if nothing is rotated
-}
 
 /**********************************************************************
  *				digit_display
@@ -579,9 +516,7 @@ void clock_init(void){
 ASSR   |=  1<<AS0; //ext osc TOSC in 32kHz 
 TIMSK |= 1 << OCIE0; //interrupt flag on compare register 
 TCCR0 |= ((1 << WGM01) | (1 << CS00)); //CTC mode, with clk/no pre-scaling
-OCR0 = 127; // Set top 
-//TIMSK |= 1 << TOIE0;
-//TCCR0 |= (1 << CS00) | (1 << CS02) ; 
+OCR0 = 63; // Set top 
 }
 
 /**********************************************************************
@@ -641,7 +576,6 @@ if(sum == 0){segment_data[digit_index] = dec_to_7seg[0];};
 //***********************************************************************************
 uint8_t main()
 {
-//DDRE &= ~(1 << PE3);
 spi_init();	//initialize SPI and port configurations
 init_twi(); //initalize TWI (twi_master.h)  
 uart_init(); 	//initialize uart
@@ -656,7 +590,7 @@ volume_init();	//initialize timer/counter3
 
 uint16_t lm73_temp;  //a place to assemble the temperature from the lm73
 
-
+refresh_lcd(lcd_temp_array);
 while(1){ // main loop
 
 ADCSR |= (1<<ADSC); //start writing 
@@ -665,6 +599,11 @@ while(bit_is_clear(ADCSRA, ADIF)){};
 ADCSR |= (1 << ADIF);//clear flag by writing one
 adc_data = ADCH; // store ADC values
 
+
+if(lcd_display){
+lcd_display = FALSE;
+refresh_lcd(lcd_temp_array);
+}
 
 
 //temperature sensor
@@ -700,7 +639,6 @@ switch(mode){
 
 //you can set an if statement to change the bounds whether setting == true or false
 		alarm_bound_12(); //bound the time for 12hr mark
-//		alarm_bound_24(); //bound the time for 24hr mark	
 		break;
 
 	case 0x20: //disable alarm	
@@ -714,21 +652,23 @@ switch(mode){
 		break;
 	
 	case 0x04://snooze alarm
-	//	if( (seconds % 10) == 0){hr_temp = holder;} //after 10 seconds has passed then trigger alarm
 	if(snooze_time == FALSE){
-		tone = FALSE;
-		OCR3A = 0;
-		TCCR1B &= ~(1 << CS10);	//clear the clock
-	}
-		snooze_time = TRUE;
-		if(snooze_time){
-			if(seconds % 10 == 0){
+		snooze_seconds = 0;
+		tone = FALSE; //turn off the tone
+		OCR3A = 0; // turn off the volume
+		TCCR1B &= ~(1 << CS10);	//clear the clock for the tone
+		}	
+		
+	snooze_time = TRUE; //set flag for snooze
+		//if snooze flag is initiated then trigger count 
+	if(snooze_time){
+		if(snooze_seconds == 10){
+			snooze_seconds = 0;
 			tone = TRUE;
 			OCR3A = 5;
 			TCCR1B |= 1 << CS10;
-			}	
-		}
-		
+		}	
+	}
 		break;
 
 	default:
@@ -745,8 +685,6 @@ PORTA = 0xFF;  //make PORTA an input port with pullups
 
 if((alarm == TRUE) && (mode == 0x40)){
 	segsum(alarm_time);
-//	string2lcd(lcd_string_array);
-//	cursor_home();
 }
 else{segsum(time);}
 
@@ -773,6 +711,8 @@ sei(); // ISR will return here
 
 }//main
 
+
+//ISR triggers whenever UART receives any data
 ISR(USART0_RX_vect){
 // stores what it receives into a buffer and once it gets a null character
 // let the program know it is received

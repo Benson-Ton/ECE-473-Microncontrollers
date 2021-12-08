@@ -50,7 +50,7 @@ sei();           //enable interrupts before entering loop
 
 lm73_wr_buf[0] = LM73_PTR_TEMP; //load lm73_wr_buf[0] with temperature pointer address
 
-twi_start_wr(LM73_ADDRESS, lm73_wr_buf, 2 ); //start the TWI write process
+twi_start_wr(LM73_ADDRESS, lm73_wr_buf, 1 ); //start the TWI write process
 _delay_ms(2);    //wait for the xfer to finish
 
 clear_display(); //clean up the display
@@ -63,7 +63,8 @@ while(1){          //main while loop
   lm73_temp =  lm73_rd_buf[0];//save high temperature byte into lm73_temp
   lm73_temp = ( lm73_temp << 8); //shift it into upper byte 
   lm73_temp = lm73_temp | lm73_rd_buf[1]; //"OR" in the low temp byte to lm73_temp 
-  itoa( lm73_temp, lcd_string_array, 2); //convert to string in array with itoa() from avr-libc                           
+  lm73_temp = lm73_temp >> 7;
+  itoa( lm73_temp, lcd_string_array, 10); //convert to string in array with itoa() from avr-libc                           
    string2lcd(lcd_string_array);//send the string to LCD (lcd_functions)
   } //while
 

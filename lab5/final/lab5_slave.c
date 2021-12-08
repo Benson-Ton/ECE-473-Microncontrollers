@@ -65,18 +65,10 @@ lm73_wr_buf[0] = LM73_PTR_TEMP; //load lm73_wr_buf[0] with temperature pointer a
 twi_start_wr(LM73_ADDRESS, lm73_wr_buf, 1 ); //start the TWI write process
 _delay_ms(2);    //wait for the xfer to finish
 
-//clear_display(); //clean up the display
-
-
 
   while(1){
-//test = uart_getc();
-//if(test[0] == "R"){transmit = TRUE;}
-//else{transmit = FALSE;}
 
  /************** reading temperature *************/
-//  _delay_ms(100); //tenth second wait
- // clear_display(); //wipe the display
  twi_start_rd(LM73_ADDRESS, lm73_rd_buf, 2) ; //read temperature data from LM73 (2 bytes) 
   _delay_ms(2);    //wait for it to finish
   lm73_temp =  lm73_rd_buf[0];//save high temperature byte into lm73_temp
@@ -87,33 +79,7 @@ _delay_ms(2);    //wait for the xfer to finish
 _delay_ms(100);
 	  
 	  
-	  
-	  
-//**************  start rcv portion ****************
-  //    if(rcv_rdy==1){
-       // string2lcd(lcd_str_array);  //write out string if its ready
-    //    rcv_rdy=0;
-      //  cursor_home();
-//test = uart_getc();
-  //  }//if 
-//**************  end rcv portion ***************
-
-//reads in the temperature from TWI converts it to F then sends it to Master
-
-//**************  start tx portion ***************
-
-
-//if(transmit == TRUE){  
-//  uart_puts("99");
-   // itoa(send_seq,lcd_str_array,10);
-   // uart_puts(lcd_str_array);
-   // uart_putc('\0');
-    //for(i=0;i<=9;i++){_delay_ms(100);}
-//    send_seq++;
-  //  send_seq=(send_seq%20);
-//}
-//**************  end tx portion ***************
-  }//while
+ }//while
 }//main
 
 ISR(USART0_RX_vect){
@@ -146,5 +112,4 @@ rx_char = UDR0;              //get character
 }
 */
 }
-//************************************//
 

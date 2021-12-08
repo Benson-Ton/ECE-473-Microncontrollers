@@ -1,0 +1,654 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+                              /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o (exit)
+/usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+                              twi_master/twi_master.o (__tablejump2__)
+/usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+                              si4734_driver/si4734.o (__do_copy_data)
+/usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+                              radio_test.o (__do_clear_bss)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(itoa_ncheck.o)
+                              si4734_driver/si4734.o (__itoa_ncheck)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(utoa_ncheck.o)
+                              /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(itoa_ncheck.o) (__utoa_common)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(strrev.o)
+                              /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(utoa_ncheck.o) (strrev)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_byte.o)
+                              si4734_driver/si4734.o (eeprom_read_byte)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_word.o)
+                              si4734_driver/si4734.o (eeprom_read_word)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_byte.o)
+                              si4734_driver/si4734.o (eeprom_write_byte)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_word.o)
+                              si4734_driver/si4734.o (eeprom_write_word)
+/usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_block.o)
+                              /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_word.o) (eeprom_read_blraw)
+
+Allocating common symbols
+Common symbol       size              file
+
+eeprom_volume       0x1               radio_test.o
+eeprom_fm_freq      0x2               radio_test.o
+uart_tx_buf         0x28              uart_functions.o
+twi_state           0x1               twi_master/twi_master.o
+current_radio_band  0x2               radio_test.o
+twi_buf             0x2               twi_master/twi_master.o
+uart1_tx_buf        0x28              uart_functions.o
+si4734_wr_buf       0x9               radio_test.o
+si4734_tune_status_buf
+                    0x8               radio_test.o
+eeprom_am_freq      0x2               radio_test.o
+current_volume      0x1               radio_test.o
+si4734_revision_buf
+                    0x10              si4734_driver/si4734.o
+twi_bus_addr        0x1               twi_master/twi_master.o
+twi_msg_size        0x1               twi_master/twi_master.o
+current_am_freq     0x2               radio_test.o
+uart1_rx_buf        0x28              uart_functions.o
+current_fm_freq     0x2               radio_test.o
+STC_interrupt       0x1               radio_test.o
+current_sw_freq     0x2               radio_test.o
+uart_rx_buf         0x28              uart_functions.o
+eeprom_sw_freq      0x2               radio_test.o
+si4734_rd_buf       0xf               si4734_driver/si4734.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800100 0x000000000000ff00 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+fuse             0x0000000000820000 0x0000000000000003 rw !x
+lock             0x0000000000830000 0x0000000000000400 rw !x
+signature        0x0000000000840000 0x0000000000000400 rw !x
+user_signatures  0x0000000000850000 0x0000000000000400 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+LOAD radio_test.o
+LOAD si4734_driver/si4734.o
+LOAD uart_functions.o
+LOAD twi_master/twi_master.o
+START GROUP
+LOAD /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a
+LOAD /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libm.a
+LOAD /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a
+LOAD /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a
+END GROUP
+                0x0000000000000000                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
+                0x0000000000800100                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800100
+                0x0000000000020000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
+                0x000000000000ff00                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xff00
+                0x0000000000010000                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                [0x0000000000000003]                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x0000000000000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x0000000000000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x0000000000000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000      0xb1c
+ *(.vectors)
+ .vectors       0x0000000000000000       0x8c /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+                0x0000000000000000                __vectors
+                0x0000000000000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ .progmem.gcc_sw_table
+                0x000000000000008c       0xa2 twi_master/twi_master.o
+                0x000000000000012e                . = ALIGN (0x2)
+                0x000000000000012e                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x000000000000012e        0x0 linker stubs
+ *(.trampolines*)
+                0x000000000000012e                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+ *(.progmem*)
+                0x000000000000012e                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x000000000000012e                __ctors_start = .
+ *(.ctors)
+                0x000000000000012e                __ctors_end = .
+                0x000000000000012e                __dtors_start = .
+ *(.dtors)
+                0x000000000000012e                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x000000000000012e        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+                0x000000000000012e                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x000000000000012e        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000000000013a       0x1a /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+                0x000000000000013a                __do_copy_data
+ .init4         0x0000000000000154       0x10 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+                0x0000000000000154                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000000000000164        0x8 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+ *(.init9)
+ *(.text)
+ .text          0x000000000000016c        0x4 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+                0x000000000000016c                __vector_22
+                0x000000000000016c                __vector_28
+                0x000000000000016c                __vector_1
+                0x000000000000016c                __vector_32
+                0x000000000000016c                __vector_34
+                0x000000000000016c                __vector_24
+                0x000000000000016c                __vector_12
+                0x000000000000016c                __bad_interrupt
+                0x000000000000016c                __vector_6
+                0x000000000000016c                __vector_31
+                0x000000000000016c                __vector_3
+                0x000000000000016c                __vector_23
+                0x000000000000016c                __vector_30
+                0x000000000000016c                __vector_25
+                0x000000000000016c                __vector_11
+                0x000000000000016c                __vector_13
+                0x000000000000016c                __vector_17
+                0x000000000000016c                __vector_19
+                0x000000000000016c                __vector_7
+                0x000000000000016c                __vector_27
+                0x000000000000016c                __vector_5
+                0x000000000000016c                __vector_4
+                0x000000000000016c                __vector_9
+                0x000000000000016c                __vector_2
+                0x000000000000016c                __vector_21
+                0x000000000000016c                __vector_15
+                0x000000000000016c                __vector_29
+                0x000000000000016c                __vector_26
+                0x000000000000016c                __vector_14
+                0x000000000000016c                __vector_10
+                0x000000000000016c                __vector_16
+                0x000000000000016c                __vector_18
+                0x000000000000016c                __vector_20
+ .text          0x0000000000000170       0x7e radio_test.o
+                0x0000000000000170                write_SPI
+                0x000000000000017c                __vector_8
+                0x000000000000019a                spi_init
+                0x00000000000001a6                volume_init
+                0x00000000000001d0                radio_reset
+ .text          0x00000000000001ee      0x55a si4734_driver/si4734.o
+                0x00000000000001ee                get_int_status
+                0x000000000000022e                fm_tune_freq
+                0x0000000000000266                am_tune_freq
+                0x00000000000002a2                sw_tune_freq
+                0x00000000000002dc                radio_pwr_dwn
+                0x0000000000000350                fm_rsq_status
+                0x0000000000000392                fm_tune_status
+                0x00000000000003d4                am_tune_status
+                0x000000000000040c                am_rsq_status
+                0x0000000000000444                set_property
+                0x000000000000046e                fm_pwr_up
+                0x00000000000004c2                am_pwr_up
+                0x0000000000000516                sw_pwr_up
+                0x0000000000000582                get_rev
+                0x0000000000000614                get_fm_rsq_status
+ .text          0x0000000000000748       0xf6 uart_functions.o
+                0x0000000000000748                uart_putc
+                0x0000000000000754                uart1_putc
+                0x000000000000076a                uart_puts
+                0x0000000000000786                uart1_puts
+                0x00000000000007ac                uart_puts_p
+                0x00000000000007d2                uart_init
+                0x00000000000007ec                uart1_init
+                0x000000000000080c                uart_getc
+                0x0000000000000822                uart1_getc
+ .text          0x000000000000083e      0x17c twi_master/twi_master.o
+                0x000000000000083e                __vector_33
+                0x000000000000095c                twi_busy
+                0x0000000000000964                twi_start_wr
+                0x0000000000000986                twi_start_rd
+                0x00000000000009a8                init_twi
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(itoa_ncheck.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(utoa_ncheck.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(strrev.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_byte.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_word.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_byte.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_word.o)
+ .text          0x00000000000009ba        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_block.o)
+                0x00000000000009ba                . = ALIGN (0x2)
+ *(.text.*)
+ .text.startup  0x00000000000009ba       0x82 radio_test.o
+                0x00000000000009ba                main
+ .text.libgcc.mul
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text.libgcc.div
+                0x0000000000000a3c        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text.libgcc   0x0000000000000a3c       0x12 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+                0x0000000000000a3c                __tablejump2__
+ .text.libgcc.prologue
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text.libgcc.builtins
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text.libgcc.fmul
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text.libgcc.fixed
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .text.libgcc.mul
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x0000000000000a4e        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000000000000a4e       0x16 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(itoa_ncheck.o)
+                0x0000000000000a4e                __itoa_ncheck
+ .text.avr-libc
+                0x0000000000000a64       0x34 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(utoa_ncheck.o)
+                0x0000000000000a64                __utoa_ncheck
+                0x0000000000000a66                __utoa_common
+ .text.avr-libc
+                0x0000000000000a98       0x20 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(strrev.o)
+                0x0000000000000a98                strrev
+ .text.avr-libc
+                0x0000000000000ab8       0x10 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_byte.o)
+                0x0000000000000ab8                eeprom_read_byte
+ .text.avr-libc
+                0x0000000000000ac8        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_word.o)
+                0x0000000000000ac8                eeprom_read_word
+ .text.avr-libc
+                0x0000000000000ad4       0x1a /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_byte.o)
+                0x0000000000000ad4                eeprom_write_byte
+                0x0000000000000ad6                eeprom_write_r18
+ .text.avr-libc
+                0x0000000000000aee        0xa /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_word.o)
+                0x0000000000000aee                eeprom_write_word
+ .text.avr-libc
+                0x0000000000000af8       0x20 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_block.o)
+                0x0000000000000af8                eeprom_read_block
+                0x0000000000000afc                eeprom_read_blraw
+                0x0000000000000b18                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000000000000b18        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+                0x0000000000000b18                exit
+                0x0000000000000b18                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000000000000b18        0x4 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000000000000b1c                _etext = .
+
+.data           0x0000000000800100       0xfe load address 0x0000000000000b1c
+                0x0000000000800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+ .data          0x0000000000800100        0x0 radio_test.o
+ .data          0x0000000000800100        0x0 si4734_driver/si4734.o
+ .data          0x0000000000800100        0x0 uart_functions.o
+ .data          0x0000000000800100        0x0 twi_master/twi_master.o
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(itoa_ncheck.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(utoa_ncheck.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(strrev.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_byte.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_word.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_byte.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_word.o)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_block.o)
+ *(.data*)
+ *(.gnu.linkonce.d*)
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000800100       0xfd si4734_driver/si4734.o
+                                        0x10e (size before relaxing)
+ *(.gnu.linkonce.r*)
+                0x00000000008001fe                . = ALIGN (0x2)
+ *fill*         0x00000000008001fd        0x1 
+                0x00000000008001fe                _edata = .
+                0x00000000008001fe                PROVIDE (__data_end, .)
+
+.bss            0x00000000008001fe       0xe7
+                0x00000000008001fe                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00000000008001fe        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+ .bss           0x00000000008001fe        0x0 radio_test.o
+ .bss           0x00000000008001fe        0x0 si4734_driver/si4734.o
+ .bss           0x00000000008001fe        0x0 uart_functions.o
+ .bss           0x00000000008001fe        0x1 twi_master/twi_master.o
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_exit.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_tablejump2.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_copy_data.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/avr51/libgcc.a(_clear_bss.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(itoa_ncheck.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(utoa_ncheck.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libc.a(strrev.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_byte.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_word.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_byte.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eewr_word.o)
+ .bss           0x00000000008001ff        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/libatmega128.a(eerd_block.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00000000008001ff       0x22 radio_test.o
+                0x00000000008001ff                eeprom_volume
+                0x0000000000800200                eeprom_fm_freq
+                0x0000000000800202                current_radio_band
+                0x0000000000800204                si4734_wr_buf
+                0x000000000080020d                si4734_tune_status_buf
+                0x0000000000800215                eeprom_am_freq
+                0x0000000000800217                current_volume
+                0x0000000000800218                current_am_freq
+                0x000000000080021a                current_fm_freq
+                0x000000000080021c                STC_interrupt
+                0x000000000080021d                current_sw_freq
+                0x000000000080021f                eeprom_sw_freq
+ COMMON         0x0000000000800221       0x1f si4734_driver/si4734.o
+                0x0000000000800221                si4734_revision_buf
+                0x0000000000800231                si4734_rd_buf
+ COMMON         0x0000000000800240       0xa0 uart_functions.o
+                0x0000000000800240                uart_tx_buf
+                0x0000000000800268                uart1_tx_buf
+                0x0000000000800290                uart1_rx_buf
+                0x00000000008002b8                uart_rx_buf
+ COMMON         0x00000000008002e0        0x5 twi_master/twi_master.o
+                0x00000000008002e0                twi_state
+                0x00000000008002e1                twi_buf
+                0x00000000008002e3                twi_bus_addr
+                0x00000000008002e4                twi_msg_size
+                0x00000000008002e5                PROVIDE (__bss_end, .)
+                0x0000000000000b1c                __data_load_start = LOADADDR (.data)
+                0x0000000000000c1a                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00000000008002e5        0x0
+                [!provide]                        PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                [!provide]                        PROVIDE (__noinit_end, .)
+                0x00000000008002e5                _end = .
+                [!provide]                        PROVIDE (__heap_start, .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab           0x0000000000000000     0x2730
+ *(.stab)
+ .stab          0x0000000000000000      0x8e8 radio_test.o
+ .stab          0x00000000000008e8      0xfe4 si4734_driver/si4734.o
+                                       0x11ac (size before relaxing)
+ .stab          0x00000000000018cc      0x7ec uart_functions.o
+                                        0xa08 (size before relaxing)
+ .stab          0x00000000000020b8      0x678 twi_master/twi_master.o
+                                        0x894 (size before relaxing)
+
+.stabstr        0x0000000000000000     0x15cf
+ *(.stabstr)
+ .stabstr       0x0000000000000000     0x15cf radio_test.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x11
+ *(.comment)
+ .comment       0x0000000000000000       0x11 radio_test.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011       0x12 si4734_driver/si4734.o
+ .comment       0x0000000000000011       0x12 uart_functions.o
+ .comment       0x0000000000000011       0x12 twi_master/twi_master.o
+
+.note.gnu.avr.deviceinfo
+                0x0000000000000000       0x3c
+ .note.gnu.avr.deviceinfo
+                0x0000000000000000       0x3c /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000      0x780
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0x780 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+
+.debug_abbrev   0x0000000000000000      0x718
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x718 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+
+.debug_line     0x0000000000000000       0x1a
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000       0x1a /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000      0x27d
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x27d /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr51/crtatmega128.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(radio_test.elf elf32-avr)
+LOAD linker stubs

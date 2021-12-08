@@ -1,10 +1,10 @@
 SHELL           = /bin/bash
 
-PRG             = uart_rxtx
+PRG             = lab5_slave
 
-OBJS            = uart_rxtx.o uart_functions.o hd44780.o
+OBJS            = lab5_slave.o uart_functions.o hd44780.o lm73_functions.o twi_master.o
 
-SRCS            = uart_rxtx.c uart_functions.c  hd44780.c
+SRCS            = lab5_slave.c uart_functions.c  hd44780.c lm73_functions.c twi_master.c
 
 MCU_TARGET     = atmega128
 #MCU_TARGET     = atmega48
