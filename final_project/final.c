@@ -28,7 +28,7 @@
 
 //GLOBAL VARIABLES
 uint16_t 	i;
-
+uint16_t	flag = 0;
 
 //RADIO Variables
 volatile uint8_t STC_interrupt;     //indicates tune or seek is done
@@ -36,6 +36,7 @@ enum radio_band{FM, AM, SW};
 volatile enum radio_band current_radio_band;
 int radio = FALSE;
 uint8_t radio_status = FALSE;
+uint8_t radio_on_off = FALSE;
 
 //EEPROM Radio 
 uint16_t eeprom_fm_freq;
@@ -53,7 +54,7 @@ uint8_t incr_freq;
 //10470 -> 104.7
 //9990 -> 99.0
 uint16_t  current_fm_freq; //0x2706, arg2, arg3; 99.9Mhz, 200khz steps
-uint16_t  fm_freq = 9990;
+volatile uint16_t  fm_freq = 9990;
 
 //TWI Radio Variables
 uint8_t  si4734_wr_buf[9];
@@ -275,42 +276,47 @@ return ( en_val ); // return encoder state
 /********************************************************************
  *				update_encoder
  ********************************************************************/
-void update_freq(int val_rot){
-//changes the real time without affecting alarm time
-	if(val_rot == 1){ fm_freq += incr_freq;} //if rotating to the right for left encoder then increment 
-	else if(val_rot ==0){fm_freq -= incr_freq;}//if rotating to the left for left encoder then decrement
-	else if(val_rot == 2){fm_freq -= incr_freq;} // if rotating to the left for right encoder then decrement
-	else if(val_rot == 3){fm_freq += incr_freq;}// if rotatiing to the right for right encoder then increment
-	else{val_rot =-1;} // dont do anything if nothing is rotated
-
-}
-
-/********************************************************************
- *				update_encoder
- ********************************************************************/
 
 void update_EN(int val_rot){
 //changes the real time without affecting alarm time
-	if(val_rot == 1){ time += (100*incr_time);} //if rotating to the right for left encoder then increment 
-	else if(val_rot ==0){time -= (100*incr_time);}//if rotating to the left for left encoder then decrement
-	else if(val_rot == 2){time -= incr_time;} // if rotating to the left for right encoder then decrement
-	else if(val_rot == 3){time += incr_time;}// if rotatiing to the right for right encoder then increment
+	if(val_rot == 1){ 
+		time += (100*incr_time);
+		fm_freq += incr_freq;
+		alarm_time += (100*incr_alarm);
+	} //if rotating to the right for left encoder then increment 
+	
+	else if(val_rot ==0){
+		time -= (100*incr_time);
+		fm_freq -= incr_freq;
+		alarm_time -= (100*incr_alarm);
+	}//if rotating to the left for left encoder then decrement
+	
+	else if(val_rot == 2){
+		time -= incr_time;
+		fm_freq -= incr_freq;
+		alarm_time -= (100*incr_alarm);
+	} // if rotating to the left for right encoder then decrement
+	
+	else if(val_rot == 3){
+		time += incr_time;
+		fm_freq += incr_freq;
+		alarm_time += (100*incr_alarm);
+	}// if rotatiing to the right for right encoder then increment
+	
 	else{val_rot =-1;} // dont do anything if nothing is rotated
 }
 
 /********************************************************************
- *				update_encoder_alarm
+ *				detect_volume
  ********************************************************************/
-void update_EN_alarm(int val_rot){
-//changes the alarm time without affecting real time
-	if(val_rot == 1){ alarm_time += (100*incr_alarm);} //if rotating to the right for left encoder then increment 
-	else if(val_rot ==0){alarm_time -= (100*incr_alarm);}//if rotating to the left for left encoder then decrement
-	else if(val_rot == 2){alarm_time -= incr_alarm;} // if rotating to the left for right encoder then decrement
-	else if(val_rot == 3){alarm_time += incr_alarm;}// if rotatiing to the right for right encoder then increment
-	else{val_rot =-1;} // dont do anything if nothing is rotated
+void detect_volume(uint8_t value){
+
+if(value == 0){} //left
+if(value == 1){} //right
+
+
+
 }
-
-
 
 /********************************************************************
  *				read_SPI
@@ -357,6 +363,7 @@ ISR( TIMER2_COMP_vect){
 
 // TIMER0 Compare Match
 ISR( TIMER0_COMP_vect ) {
+    ////////////////// fm_tune_freq();     //tune to frequency
 /*
 PORTB = 0x00;
 
@@ -382,22 +389,24 @@ refresh_lcd(lcd_temp_array); //display the interface with the temperature and al
 
 alarm_compare2(); //checks if the alarm set time and the clock time matches then trigger alarm
 
-
+if(current_fm_freq != fm_freq){flag = 1;}
 
 static uint16_t timer = 0;  //hold value of count between interrupts
 timer++;  //extend counter
 
-
+//if((timer%64) == 0){flag = 1; }
 if((timer% 128) == 0){ // turn off for half a second 
 	segment_data[2] = 0x07; //turn off colon
+//	flag = 1;
 } 
 
 if((timer% 512) == 0){
 	uart_puts(temp_str);		//send a string through the UART
 	uart_putc('\0');		//ADD a null character
-
+//	flag = 1;
 if(radio != TRUE){
 	segment_data[2] = 0x0C; 
+//	flag = 1;
 }	//turn on colon
  	seconds+= seconds_holder; 	//increment seconds
 	snooze_seconds += seconds_holder;//increment seconds of snooze
@@ -410,7 +419,7 @@ _delay_ms(.1);//need a delay to active buffer
 
 if(chk_buttons(0)){mode ^= 1 << 6;}//sets alarm, 0x40
 if(chk_buttons(4)){mode ^= 1 << 1;}//set tone to be alarm or radio (default: ALARM), 0x02
-if(chk_buttons(6)){mode ^= 1 << 4;}// sets Radio frequency, 0x10
+if(chk_buttons(7)){mode ^= 1 << 4;}// sets Radio frequency, 0x10
 if(chk_buttons(2)){mode ^= 1 << 5;}//disable alarm, 0x20
 if(chk_buttons(3)){mode ^= 1 << 2;}//snooze alarm, 0x08
 if(chk_buttons(1)){mode ^= 1 << 3;} //sets time, 0x04
@@ -421,25 +430,16 @@ PORTB = 0x70;//disable tristate
 read_SPI();		//read in from the SPI
 read = process_EN(); 	// decrypt the data from the SPI and determine the encoder movement
 update_EN(read);	// increase the time with the encoder movement 
-update_EN_alarm(read);	// increase the alarm_time with the encoder movement
-update_freq(read);
-
 write_SPI(mode); 	// write to the bar graph
 
 static uint8_t index = 0;
 PORTB = 0x00;
-		PORTB = index << 4; // within 4 digits for the hex value
-		PORTA = segment_data[index]; //send 7 segment code to LED segments
-		_delay_ms(1); // add delay	
-
-	//handles decimal point display when alarm is triggered
-//	if(alarm){
-//		PORTB = 0; // digit 0
-//		PORTA = 0x7F; // turn on decimal point
-//	}
+PORTB = index << 4; // within 4 digits for the hex value
+PORTA = segment_data[index]; //send 7 segment code to LED segments
+_delay_ms(.8); // add delay	
 index++;
-if(index == 5){index = 0;}
 
+if(index == 5){index = 0;}
 //restore the state when leaving the ISR
 PORTA = saveA;
 PORTB = saveB;
@@ -490,10 +490,10 @@ void freq_bound(void){
 
 
 //88.1
-if(current_fm_freq > 10800){current_fm_freq = 8810;}; //0x2706, arg2, arg3; 99.9Mhz, 200khz steps
+if(fm_freq > 10800){fm_freq = 8810;}; //0x2706, arg2, arg3; 99.9Mhz, 200khz steps
 
 //108.1
-if(current_fm_freq < 8800){current_fm_freq = 10810;}
+if(fm_freq < 8800){fm_freq = 10810;}
 
 }
 
@@ -626,7 +626,7 @@ DDRC = 0xFF; // set all of PORTC as outputs
 TCCR1A = 0x00; // normal operation w/ OC1A is disconnected
 TIMSK |= 1 << OCIE1A; //output compare enable for timercounter1A
 //OCR1A = 3999; // 4kHz and triggers ISR
-OCR1A = 2000;
+OCR1A = 3999;
 //OCR1A = 18517;
 //clk is not set
 TCCR1B |= (1 << WGM12); // CTC mode, clear with OCR and no prescaling
@@ -809,20 +809,37 @@ if(mode != 0x42){
 
 void radio_on(void){
 
-if((mode == 0x10)){
-//      int temp = time;
-        OCR3A = 8; // set radio volume
-//      _delay_ms(1);
-        fm_pwr_up();        //power up radio
+if((radio_status == FALSE) && (mode == 0x10)){
+//if(mode == 0x10){
+	OCR3A = 7;
+  //      OCR3A = 8; // set radio volume
+//        current_fm_freq = fm_freq;
+        fm_pwr_up();
         _delay_ms(1);
         while(twi_busy()){} //spin while twi is busy
+	radio_status = TRUE;    
+	// }adio_status = TRUE;
+}
+
+if((mode == 0x10)){
+//      int temp = time;
+      //  OCR3A = 8; // set radio volume
+//      _delay_ms(1);
+//
+      //	if(radio_status == FALSE){ 
+	 //fm_pwr_up();
+        //_delay_ms(100);
+       // while(twi_busy()){} //spin while twi is busy
+    // }	//power up radio
         //current_fm_freq = 10470; //99.9 good
         current_fm_freq = fm_freq;
-        _delay_ms(1);
-        fm_tune_freq();     //tune to frequency
+	fm_tune_freq();     //tune to frequency
+        //while(twi_busy()){} //spin while twi is busy
+        //_delay_ms(100);
+	//_delay_ms(40);
 //      radio = FALSE;
-        radio_status = TRUE;
-//      time = temp;
+        //radio_status = TRUE;
+	//      time = temp;
 }
 
 }
@@ -843,6 +860,7 @@ DDRE  &= ~(0x80);   //now Port E bit 7 becomes input from the radio interrupt
 //***********************************************************************************
 uint8_t main()
 {
+//uint16_t  fm_freq = 9990;
 spi_init();	//initialize SPI and port configurations
 init_twi(); //initalize TWI (twi_master.h)  
 
@@ -863,6 +881,10 @@ radio_reset();
 //radio_reset();
 //OCR3A = 6;
 //DDRE &= ~( 1 << PE7);
+//        fm_pwr_up();
+//        _delay_ms(100);
+  //      while(twi_busy()){} //spin while twi is busy
+
 while(1){ // main loop
 
 
@@ -901,11 +923,29 @@ switch(mode){
 
 	case 0x10: //setting radio
 		radio = TRUE;
+		//fm_pwr_up();
 		//sound = TRUE;
+
 		incr_freq = 20;
-		radio_on();
+if((radio_status == FALSE) && (mode == 0x10)){
+	OCR3A = 8;
+        fm_pwr_up();
+        _delay_ms(1);
+        while(twi_busy()){} //spin while twi is busy
+	radio_status = TRUE;    
+}
+
+if((mode == 0x10) && (flag == 1)){
+  //	OCR3A = 8;
+  	current_fm_freq = fm_freq;
+	fm_tune_freq();     //tune to frequency
+   // }adio_status = TRUE;
+   flag = 0;
+}
+  
 		freq_bound();
-		//mode &= ~(0x10);
+//		radio_on();
+//		mode &= ~(0x10);
 		break;
 
 	case 0x20: //disable alarm	
@@ -945,7 +985,12 @@ switch(mode){
 		seconds_holder = 1; // increment seconds 
 		OCR3A = 0;	// mute the sound of both alarm and radio
 		radio = FALSE;	// radio is defaulted as off
-	if(radio_status){radio_pwr_dwn();} //power down the radio if it was previously on
+	//	radio_status = FALSE;
+		
+		if(radio_status){
+			radio_pwr_dwn();
+			radio_status = FALSE;;
+		} //power down the radio if it was previously on
 		//_delay_ms(.1);
 }
 
@@ -965,7 +1010,8 @@ if( ((alarm == TRUE) && (mode == 0x40)) | (mode == 0x42)){
 	segsum(alarm_time);
 }
 else if((radio == TRUE) && (mode != 0x08)){
-segsum(current_fm_freq/10);
+	current_fm_freq = fm_freq;
+	segsum(current_fm_freq/10);
 }
 
 else{segsum(time);}
@@ -980,8 +1026,9 @@ PORTB = 0x00;
 		PORTA = segment_data[index]; //send 7 segment code to LED segments
 		_delay_ms(1); // add delay	
 	}
-*/
-	//handles decimal point display when alarm is triggered
+	*/
+//DDRA = 0xFF;
+//handles decimal point display when alarm is triggered
 //	if(alarm){
 //		PORTB = 0; // digit 0
 //		PORTA = 0x7F; // turn on decimal point
