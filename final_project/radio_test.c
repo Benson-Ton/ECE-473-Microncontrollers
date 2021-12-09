@@ -3,7 +3,9 @@
 #include "twi_master/twi_master.h"
 #include <avr/interrupt.h>
 #include <util/delay.h>
-
+#include "lm73_functions.h"
+#include <stdio.h>
+#include "hd44780.h"
 
 volatile uint8_t STC_interrupt;     //indicates tune or seek is done
 enum radio_band{FM, AM, SW};
@@ -154,10 +156,11 @@ while(twi_busy()){} //spin while TWI is busy
 current_fm_freq = 9990; //99.9 good
 //current_fm_freq = 9910; //good
 //current_fm_freq = 10053;
+//current_fm_freq = 8870; //88.7
 
-//current_fm_freq = 10075;//107.5
-//current_fm_freq = 10053;
-//current_fm_freq = 10063;
+//current_fm_freq = 10750;//107.5
+//current_fm_freq = 10530;
+//current_fm_freq = 10530;
 
 _delay_ms(.1);
 

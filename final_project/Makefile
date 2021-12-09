@@ -1,5 +1,5 @@
-PRG            =radio_test
-OBJ            = $(PRG).o si4734_driver/si4734.o uart_functions.o twi_master/twi_master.o
+PRG            = final
+OBJ            = $(PRG).o si4734_driver/si4734.o uart_functions.o twi_master/twi_master.o lm73_functions.o hd44780.o
 
 MCU_TARGET     = atmega128
 OPTIMIZE       = -O2    # options are 1, 2, 3, s

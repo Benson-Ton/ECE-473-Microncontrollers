@@ -68,10 +68,10 @@ void spi_init(void){
 
 void volume_init(void){
 //volume pin is PE3
-TCCR3A = (1 << COM3A1 | (1 << WGM31) ); //normal operation w/ OC3A is disconnected
+TCCR3A = (1 << COM3A1 | (1 << WGM31) ); //normal operation w/ OC3A is connected
 TCCR3B |= (  (1 << CS30) | ( 1 << WGM32) | (1 << WGM33) ); //fast pwm 
 ICR3 = 10; // Set overflow top ; controls frequency 
-OCR3A = 7; // set compare match; duty cycle
+OCR3A = 8; // set compare match; duty cycle
 
 }
 
@@ -153,6 +153,9 @@ _delay_ms(1);
 while(twi_busy()){} //spin while TWI is busy 
 current_fm_freq = 9990; //99.9 good
 //current_fm_freq = 9910; //good
+//current_fm_freq = 10470; //104.7 good
+//current_fm_freq = 10750; 
+
 //current_fm_freq = 10053;
 
 //current_fm_freq = 10075;//107.5

@@ -6,7 +6,7 @@
 //#define TRUE  1
 //#define FALSE 0
 
-#include "twi_master.h"  //my TWCR_START, STOP, NACK, RNACK, SEND
+//#include "twi_master.h"  //my TWCR_START, STOP, NACK, RNACK, SEND
 //use the status codes in: usr/local/AVRMacPack/avr-3/include/util/twi.h
 
 #define LM73_ADDRESS 0x90                    //LM73-0, address pin floating
